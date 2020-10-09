@@ -1,0 +1,68 @@
+.App {
+  text-align: center;
+}
+
+body {
+  background: #222;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.buildorderstep-icon {
+  background-image: url('/icons.png');
+  color: transparent;
+}
+
+.App-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+.buildorderstep {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 0.5em;
+  padding: 1em 2em;
+  border: solid 1px black;
+  align-items: center;
+  background: black;
+  color: #666;
+}
+.buildorderstep > * {
+  margin-right: 0.5em;
+}
+.buildorderstep > *:last-child {
+  margin-right: 0;
+}
+
+.buildorderstep-icon {
+  margin-right: 0.5em;
+  width: 50px;
+  height: 50px;
+  border: solid black;
+  /* color: transparent; */
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
