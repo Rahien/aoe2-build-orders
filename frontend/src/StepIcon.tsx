@@ -2,7 +2,8 @@ import React from "react";
 
 export interface IBuildOrderIconProps {
   icon: string,
-  scale?: number
+  scale?: number,
+  text?: string|number
 }
 
 const iconPositions = [
@@ -25,7 +26,7 @@ const iconPositions = [
 ];
 
 
-const BuildOrderIcon:React.FC<IBuildOrderIconProps> = ({icon, scale}) => {
+const BuildOrderIcon:React.FC<IBuildOrderIconProps> = ({icon, scale, text}) => {
   const classes = `buildorderstep-icon ${icon}`;
   scale = scale || 50;
   let position = iconPositions.findIndex((currentIcon) => {
@@ -42,6 +43,7 @@ const BuildOrderIcon:React.FC<IBuildOrderIconProps> = ({icon, scale}) => {
   }
   return <div className={classes} style={style}>
     {icon}
+    {text?<label>{text}</label>:null}
   </div>;
 }
 

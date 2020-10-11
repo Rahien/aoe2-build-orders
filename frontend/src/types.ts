@@ -10,5 +10,18 @@ export interface IBuildOrderStep {
   newVillager?:boolean
 }
 
+export interface IBuildOrder {
+  steps: IBuildOrderStep[],
+  name: string,
+  startingVillagers: number,
+  currentStep?: IBuildOrderStep,
+  currentVillagers?: number,
+  currentFood?: number,
+  currentWood?: number,
+  currentGold?: number,
+  currentStone?: number,
+  currentMilitaryPop?: number
+}
+
 export type StepRenderer = ((step:IBuildOrderStep) => React.ReactNode);
 
