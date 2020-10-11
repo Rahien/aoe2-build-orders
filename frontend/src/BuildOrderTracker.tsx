@@ -83,7 +83,7 @@ const BuildOrderTracker:React.FC<IBuildOrderTrackerProps> = ({buildOrder, startT
       handleBuildOrderStateChange(buildOrder, completedSteps, onNewBuildOrderState);
       if(startTime){
         const tracker = document.getElementsByClassName("buildorder-tracker")[0];
-        tracker && tracker.scrollIntoView({block: "center"});
+        tracker && tracker.scrollIntoView({behavior: "smooth", block: "center"});
       }
     }, 50);
     return () => clearTimeout(timeout);
