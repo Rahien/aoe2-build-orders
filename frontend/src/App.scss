@@ -150,6 +150,15 @@ body {
     justify-content: center;
     font-size: 18px;
     font-weight: bold;
+    position:relative;
+    label.end-time {
+      position: absolute;
+      bottom: 0.5em;
+      right: 0.5em;
+      font-size: 0.6em;
+      font-weight: normal;
+      color: #666;
+    }
   }
 }
 .buildorderstep svg.fa-caret-right {

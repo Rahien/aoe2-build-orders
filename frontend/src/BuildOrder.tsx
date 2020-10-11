@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import BuildOrderStep from "./BuildOrderStep";
+import BuildOrderStep, {getStepDuration} from "./BuildOrderStep";
 import BuildOrderTracker from "./BuildOrderTracker";
 import BuildOrderHeader from "./BuildOrderHeader";
 import usePlayingState from "./BuildOrderPlayingStateHook";
@@ -161,6 +161,16 @@ const addResourcesUpToCurrentStep = (buildOrder:IBuildOrder) => {
     addResourcesFromStep(buildOrder, step);
   });
 };
+
+const computeEndTimes = (buildOrderSteps:IBuildOrderStep[]) => {
+  let time = 0;
+  buildOrderSteps.forEach((step) => {
+    time += getStepDuration(step);
+    step.endTime = time;
+  });
+}
+
+computeEndTimes(exampleBuildOrder.steps);
 
 function BuildOrder() {
   const [startTime, playing, timeAlreadyPlayed, togglePlaying] = usePlayingState();

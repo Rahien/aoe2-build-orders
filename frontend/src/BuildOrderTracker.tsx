@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faChevronLeft, faChevronRight} from "@fortawesome/free-solid-svg-icons";
 import {IBuildOrder, IBuildOrderStep} from "./types";
+import {getStepDuration} from "./BuildOrderStep";
 
 interface IBuildOrderTrackerProps {
   buildOrder: IBuildOrder,
@@ -24,7 +25,7 @@ const computeTrackerPosition = (completedSteps:IBuildOrderStep[], currentStepPer
   offset += (currentStepPercentage * stepHeight);
   return offset;
 }
-const gameSpeed = 10.7;
+const gameSpeed = 1.7;
 const getCompletion:(buildOrderSteps: IBuildOrderStep[], timeSinceStart:number) => ICompletion = (buildOrderSteps, timeSinceStart) => {
   const completedSteps:IBuildOrderStep[] = [];
   const uncompletedSteps:IBuildOrderStep[] = [];
@@ -53,26 +54,6 @@ const getTimeSinceStart: (startTime: (Date | null), elapsedTime: number) => numb
   let timeSinceStart = gameSpeed * (new Date().getTime() - startTime.getTime())/ 1000;
   timeSinceStart = timeSinceStart + elapsedTime;
   return timeSinceStart;
-}
-
-const getStepDuration = (step:IBuildOrderStep) => {
-  if(step.kind === "move"){
-    return 0;
-  }
-  if(step.kind === "create"){
-    return 25;
-  }
-  if(step.kind === "build"){
-    return step.newVillager!==false?25:0;
-
-  }
-  if(step.kind === "loom"){
-    return 25;
-  }
-  if(step.kind === "age2"){
-    return 130;
-  }
-  return 0;
 }
 
 const handleBuildOrderStateChange = (currentBuildOrder:IBuildOrder, completedSteps: IBuildOrderStep[], onNewBuildOrderState: (buildOrder: IBuildOrder) => void) => {

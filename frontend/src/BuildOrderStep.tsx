@@ -56,9 +56,35 @@ export interface IBuildOrderStepProps {
 
 const BuildOrderStep:React.FC<IBuildOrderStepProps> = ({step}) => {
   const stepInfo = (kindMapping[step.kind] || kindMapping['default'])(step);
+  const endTime = step.endTime || 0;
+  let endTimeMinutes = ""+Math.floor(endTime/60);
+  endTimeMinutes = endTimeMinutes.length>1?endTimeMinutes:`0${endTimeMinutes}`;
+  let endTimeSeconds = ""+Math.floor(endTime%60);
+  endTimeSeconds = endTimeSeconds.length>1?endTimeSeconds:`0${endTimeSeconds}`;
   return <div className="buildorderstep">
     {stepInfo}
+    <label className="end-time">[{endTimeMinutes}:{endTimeSeconds}]</label>
   </div>;
 }
 
 export default BuildOrderStep;
+
+export const getStepDuration = (step:IBuildOrderStep) => {
+  if(step.kind === "move"){
+    return 0;
+  }
+  if(step.kind === "create"){
+    return 25;
+  }
+  if(step.kind === "build"){
+    return step.newVillager!==false?25:0;
+
+  }
+  if(step.kind === "loom"){
+    return 25;
+  }
+  if(step.kind === "age2"){
+    return 130;
+  }
+  return 0;
+}

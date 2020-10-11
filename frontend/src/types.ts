@@ -8,7 +8,8 @@ export interface IBuildOrderStep {
   buildAmount?: number,
   build?: string,
   newVillager?:boolean,
-  targetText?: string
+  targetText?: string,
+  endTime?: number
 }
 
 export interface IBuildOrder {
