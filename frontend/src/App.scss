@@ -1,0 +1,137 @@
+.App {
+  text-align: center;
+}
+
+body {
+  background: #222;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.buildorderstep-icon {
+  background-image: url('/icons.png');
+  color: transparent;
+}
+
+.App-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+.buildOrder {
+  padding-top: 70px;
+}
+
+.buildorder-header {
+  position: fixed;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  background: #222;
+  width: 100%;
+  border-bottom: 4px solid black;
+  padding: 10px;
+  box-sizing: border-box;
+
+  .control {
+    width: 36px;
+    height: 36px;
+    background: black;
+    color: white;
+    flex-shrink: 0;
+    line-height: 36px;
+    border-radius: 2px;
+    cursor: pointer;
+  }
+
+  .buildorderstep-icon {
+    background-size: 1650%;
+    width: 30px;
+    height: 30px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-right: 0;
+    margin: 0;
+  }
+}
+.buildorder-step-wrap {
+  padding-bottom: 0.5em;
+  .buildorderstep {
+    display: flex;
+    flex-direction: row;
+    padding: 1em 2em;
+    border: solid 1px black;
+    align-items: center;
+    background: black;
+    color: #eee;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: bold;
+  }
+}
+.buildorderstep svg.fa-caret-right {
+  font-size: 30px;
+}
+.buildorderstep > * {
+  margin-right: 10px;
+}
+.buildorderstep > *:last-child {
+  margin-right: 0;
+}
+.buildorderstep span.number {
+  min-width: 50px;
+  text-align: center;
+}
+.buildorderstep-icon {
+  margin-right: 13px;
+  width: 50px;
+  height: 50px;
+  border: solid black;
+  flex-shrink: 0;
+}
+
+.buildorder-tracker {
+  position: absolute;
+  top: 427px;
+  color: red;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin-top: -10px;
+
+  .line {
+    flex-grow: 1;
+    border: solid 2px red;
+    height: 0px;
+    border-radius: 100px;
+  }
+
+  svg {
+    margin-left: 0.2em;
+    margin-right: 0.2em;
+    font-size: 1.3em;
+  }
+
+}
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

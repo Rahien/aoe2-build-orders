@@ -1,7 +1,8 @@
 import React from "react";
 
 export interface IBuildOrderIconProps {
-  icon: string
+  icon: string,
+  scale?: number
 }
 
 const iconPositions = [
@@ -24,8 +25,9 @@ const iconPositions = [
 ];
 
 
-const BuildOrderIcon:React.FC<IBuildOrderIconProps> = ({icon}) => {
+const BuildOrderIcon:React.FC<IBuildOrderIconProps> = ({icon, scale}) => {
   const classes = `buildorderstep-icon ${icon}`;
+  scale = scale || 50;
   let position = iconPositions.findIndex((currentIcon) => {
     return currentIcon === icon.toLowerCase();
   });
@@ -35,8 +37,8 @@ const BuildOrderIcon:React.FC<IBuildOrderIconProps> = ({icon}) => {
   const positionX = position;
   const positionY = 0;
   const style = {
-    backgroundPositionY: `${positionY * -50}px`,
-    backgroundPositionX: `${positionX * -50}px`
+    backgroundPositionY: `${positionY * -scale}px`,
+    backgroundPositionX: `${positionX * -scale}px`
   }
   return <div className={classes} style={style}>
     {icon}

@@ -1,10 +1,24 @@
 import React from 'react';
 import BuildOrderStep from "./BuildOrderStep";
+import BuildOrderTracker from "./BuildOrderTracker";
+import BuildOrderHeader from "./BuildOrderHeader";
+import usePlayingState from "./BuildOrderPlayingStateHook";
 
 const buildOrderSteps = [
   {
-    kind: "move",
+    kind: "build",
+    build: "house",
+    buildAmount: 2,
+    newVillager: false,
     number: 4,
+    target: "sheep"
+  },
+  {
+    kind: "create",
+    target: "sheep"
+  },
+  {
+    kind: "create",
     target: "sheep"
   },
   {
@@ -71,13 +85,20 @@ const buildOrderSteps = [
   }
 ];
 
+
+
 function BuildOrder() {
+  const [startTime, playing, timeAlreadyPlayed, togglePlaying] = usePlayingState();
   const steps = buildOrderSteps.map((step, index) => {
-    return <BuildOrderStep step={step} key={index}/>
+    return <div className="buildorder-step-wrap" key={index}>
+      <BuildOrderStep step={step}/>
+    </div>;
   });
   return (
     <div className="buildOrder">
+      <BuildOrderHeader playing={playing} togglePlaying={togglePlaying}/>
       {steps}
+      <BuildOrderTracker buildOrderSteps={buildOrderSteps} startTime={startTime} elapsedTime={timeAlreadyPlayed}/>
     </div>
   );
 }

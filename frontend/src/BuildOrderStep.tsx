@@ -1,32 +1,44 @@
 import React from 'react';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
+import { faCaretRight } from '@fortawesome/free-solid-svg-icons'
 import {StepRenderer, IBuildOrderStep} from "./types";
 import BuildOrderIcon from "./StepIcon";
 
 
 const kindMapping: {[id:string]: StepRenderer} = {
   "create": (step) => {
-    const from = step.from ? `${step.from} -> `:null;
     const target = step.target ? <BuildOrderIcon icon={step.target}/> : null;
+    const number = step.number ? <span className="number">x {step.number}</span> : null;
     return <>
-      <BuildOrderIcon icon={"villager"}/> {step.number} {from}{target}
+      <BuildOrderIcon icon={"villager"}/>
+      {number}
+      <FontAwesomeIcon icon={faCaretRight}/>
+      {target}
     </>;
   },
   "move": (step) => {
-    const number = step.number?step.number:null;
+    const number = step.number ? <span className="number">x {step.number}</span> : null;
     const from = step.from?<BuildOrderIcon icon={step.from}/>:null;
     return <>
-      {from}{number}<FontAwesomeIcon icon={faArrowRight}/><BuildOrderIcon icon={step.target || "sheep"}/>
+      {from}
+      {number}
+      <FontAwesomeIcon icon={faCaretRight}/>
+      <BuildOrderIcon icon={step.target || "sheep"}/>
     </>
   },
   "build": (step) => {
-    const times = step.buildAmount?` x ${step.buildAmount}`:null;
+    const times = step.buildAmount?<span className="number">{` x ${step.buildAmount}`}</span>:null;
     const target = step.target ? <BuildOrderIcon icon={step.target}/> : null;
-    const newVillager = step.newVillager || true;
-    const buildVillagerFirst = newVillager? <><BuildOrderIcon icon={"villager"}/><FontAwesomeIcon icon={faArrowRight}/></>:null;
+    const newVillager = typeof step.newVillager === "undefined"?true:step.newVillager;
+    const moveAmount = step.number?<span className="number">{` x ${step.number}`}</span>:null;
+    const buildVillagerFirst = newVillager? <><BuildOrderIcon icon={"villager"}/><FontAwesomeIcon icon={faCaretRight}/></>:null;
     return <>
-      {buildVillagerFirst}<BuildOrderIcon icon={step.build || "house"}/>{times}<FontAwesomeIcon icon={faArrowRight}/>{target}
+      {buildVillagerFirst}
+      {times}
+      <BuildOrderIcon icon={step.build || "house"}/>
+      <FontAwesomeIcon icon={faCaretRight}/>
+      {moveAmount}
+      {target}
     </>
   },
   "default": (step) => {
