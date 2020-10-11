@@ -1,12 +1,12 @@
 import {useState} from "react";
 
-const usePlayingState:(() => [(Date|null),boolean,number,() => void]) = () => {
+const usePlayingState:(() => [(Date|null),boolean,number,(gameTime:number) => void]) = () => {
   const [startTime, setStartTime] = useState<Date|null>(null);
   const [timeAlreadyPlayed, setTimeAlreadyPlayed] = useState(0);
 
-  const togglePlaying = () => {
+  const togglePlaying = (gameTime:number) => {
     if(startTime){
-      setTimeAlreadyPlayed(timeAlreadyPlayed + (new Date().getTime() - startTime.getTime())/1000);
+      setTimeAlreadyPlayed(gameTime);
       setStartTime(null);
     }else{
       setStartTime(new Date());

@@ -56,7 +56,8 @@ const buildOrderSteps = [
   {
     kind:"move",
     from: "boar",
-    target: "second-boar"
+    target: "boar",
+    targetText: "2"
   },
   {
     kind: "create",
@@ -72,14 +73,28 @@ const buildOrderSteps = [
   },
   {
     kind: "create",
-    target: "wood"
+    target: "boar"
   },
   {
     kind: "create",
-    target: "wood"
+    target: "boar"
+  },
+  {
+    kind: "create",
+    target: "boar"
+  },
+  {
+    kind: "create",
+    target: "boar"
   },
   {
     kind: "loom"
+  },
+  {
+    kind:"move",
+    from: "boar",
+    target: "wood",
+    number: 5
   },
   {
     kind: "age2"
@@ -87,7 +102,7 @@ const buildOrderSteps = [
 ];
 
 const exampleBuildOrder = {
-  name: "Scouts",
+  name: "21 pop Scouts",
   startingVillagers: 4,
   steps: buildOrderSteps
 }
@@ -98,7 +113,7 @@ const addResourcesFromStep = (buildOrder:IBuildOrder, step:IBuildOrderStep) => {
   }
   if(step.target){
     const number = step.number || 1;
-    if(['sheep', 'berries', 'farm', 'boar', 'second-boar'].indexOf(step.target) >= 0){
+    if(['sheep', 'berries', 'farm', 'boar'].indexOf(step.target) >= 0){
       buildOrder.currentFood = (buildOrder.currentFood || 0) + number;
     }
     if(step.target === "wood"){
@@ -113,7 +128,7 @@ const addResourcesFromStep = (buildOrder:IBuildOrder, step:IBuildOrderStep) => {
   }
   if(step.from){
     const number = step.number || 1;
-    if(['sheep', 'berries', 'farm', 'boar', 'second-boar'].indexOf(step.from) >= 0){
+    if(['sheep', 'berries', 'farm', 'boar'].indexOf(step.from) >= 0){
       buildOrder.currentFood = (buildOrder.currentFood || 0) - number;
     }
     if(step.from === "wood"){
@@ -150,6 +165,7 @@ const addResourcesUpToCurrentStep = (buildOrder:IBuildOrder) => {
 function BuildOrder() {
   const [startTime, playing, timeAlreadyPlayed, togglePlaying] = usePlayingState();
   addResourcesUpToCurrentStep(exampleBuildOrder);
+  const [gameTime, setGameTime] = useState(0);
   const [buildOrder, setBuildOrder] = useState<IBuildOrder>(exampleBuildOrder);
   const onNewBuildOrderState = (newBuildOrder:IBuildOrder) => {
     addResourcesUpToCurrentStep(newBuildOrder);
@@ -162,9 +178,13 @@ function BuildOrder() {
   });
   return (
     <div className="buildOrder">
-      <BuildOrderHeader playing={playing} togglePlaying={togglePlaying} buildOrder={buildOrder}/>
+      <BuildOrderHeader playing={playing} togglePlaying={() => togglePlaying(gameTime)}
+                        buildOrder={buildOrder} gameTime={gameTime}/>
       {steps}
-      <BuildOrderTracker buildOrder={buildOrder} startTime={startTime} elapsedTime={timeAlreadyPlayed} onNewBuildOrderState={onNewBuildOrderState}/>
+      <BuildOrderTracker buildOrder={buildOrder} startTime={startTime}
+                         elapsedTime={timeAlreadyPlayed}
+                         gameTimeChange={setGameTime}
+                         onNewBuildOrderState={onNewBuildOrderState}/>
     </div>
   );
 }

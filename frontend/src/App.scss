@@ -33,7 +33,11 @@ body {
   color: #61dafb;
 }
 .buildOrder {
-  padding-top: 70px;
+  padding-top: 112px;
+}
+.flex {
+  display: flex;
+  align-items: center;
 }
 
 .buildorder-header {
@@ -47,6 +51,59 @@ body {
   padding: 10px;
   box-sizing: border-box;
   z-index: 1;
+  flex-wrap: wrap;
+
+  .flex {
+    width: 100%;
+    justify-content: space-between;
+    margin-bottom: 0.2em;
+  }
+
+  .buildorder-name {
+    flex-grow: 1;
+    text-align: left;
+    color: white;
+    font-size: 1.2em;
+    font-weight: bold;
+    background: black;
+    margin-right: 0.5em;
+    padding: 0.2em;
+    border: ridge 3px #333;
+  }
+
+  .resources {
+    flex-grow: 1;
+    justify-content: space-between;
+  }
+
+  .time {
+    margin-left: 0.5em;
+  }
+
+  .time-display {
+    padding: 0.4em 0;
+    background: black;
+    margin-right: 0.5em;
+    color: white;
+    border: ridge #333 3px;
+    width: 70px;
+    text-align: center;
+  }
+
+  .resources .buildorderstep-icon {border: ridge 3px #333;}
+
+  .control {
+    border: outset 3px #333;
+  }
+
+  .resources {
+    display: flex;
+  }
+
+  .time {
+    display: flex;
+    align-items: center;
+  }
 
   .control {
     width: 36px;
@@ -114,6 +171,13 @@ body {
   height: 50px;
   border: solid black;
   flex-shrink: 0;
+  position: relative;
+  label {
+    color: white;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+  }
 }
 
 .buildorder-tracker {
@@ -123,7 +187,7 @@ body {
   display: flex;
   align-items: center;
   width: 100%;
-  margin-top: -10px;
+  margin-top: -8px;
 
   .line {
     flex-grow: 1;

@@ -7,7 +7,7 @@ import BuildOrderIcon from "./StepIcon";
 
 const kindMapping: {[id:string]: StepRenderer} = {
   "create": (step) => {
-    const target = step.target ? <BuildOrderIcon icon={step.target}/> : null;
+    const target = step.target ? <BuildOrderIcon icon={step.target} text={step.targetText}/> : null;
     const number = step.number ? <span className="number">x {step.number}</span> : null;
     return <>
       <BuildOrderIcon icon={"villager"}/>
@@ -23,7 +23,7 @@ const kindMapping: {[id:string]: StepRenderer} = {
       {from}
       {number}
       <FontAwesomeIcon icon={faCaretRight}/>
-      <BuildOrderIcon icon={step.target || "sheep"}/>
+      <BuildOrderIcon icon={step.target || "sheep"} text={step.targetText}/>
     </>
   },
   "build": (step) => {
@@ -43,7 +43,7 @@ const kindMapping: {[id:string]: StepRenderer} = {
   },
   "default": (step) => {
     const from = step.from ? `${step.from} -> `:null;
-    const target = step.target ? <BuildOrderIcon icon={step.target}/> : null;
+    const target = step.target ? <BuildOrderIcon icon={step.target} text={step.targetText}/> : null;
     return <>
       <BuildOrderIcon icon={step.kind}/> {step.number} {from}{target}
     </>;
