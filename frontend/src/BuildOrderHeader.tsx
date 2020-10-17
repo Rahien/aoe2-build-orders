@@ -3,19 +3,17 @@ import BuildOrderIcon from "./StepIcon";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faPause, faPlay, faEllipsisH} from "@fortawesome/free-solid-svg-icons";
 import {IBuildOrder} from "./types";
+import GameTimeClock from "./GameTimeClock";
 interface IBuildOrderHeaderProps {
   playing: boolean,
   buildOrder: IBuildOrder,
   togglePlaying: (event:React.MouseEvent) => void,
-  gameTime:number
+  gameTime:number,
+  setGameTime: (time:number) => void
 }
-const BuildOrderHeader:React.FC<IBuildOrderHeaderProps> = ({playing, togglePlaying, buildOrder, gameTime}) => {
+const BuildOrderHeader:React.FC<IBuildOrderHeaderProps> = ({playing, togglePlaying, buildOrder, gameTime, setGameTime}) => {
   const playPauseIcon = playing?faPause:faPlay;
   const scale = 31;
-  let gameTimeMinutes = ""+Math.floor(gameTime / 60);
-  gameTimeMinutes = gameTimeMinutes.length > 1?gameTimeMinutes:`0${gameTimeMinutes}`;
-  let gameTimeSeconds = ""+(Math.floor(gameTime) % 60);
-  gameTimeSeconds = gameTimeSeconds.length > 1?gameTimeSeconds:`0${gameTimeSeconds}`;
   const foodCount = buildOrder.currentFood;
   const woodCount = buildOrder.currentWood;
   const goldCount = buildOrder.currentGold;
@@ -23,7 +21,7 @@ const BuildOrderHeader:React.FC<IBuildOrderHeaderProps> = ({playing, togglePlayi
   const popCount = (buildOrder.currentVillagers || 0) + (buildOrder.currentMilitaryPop || 0);
   const showMenu = () => {
     console.log('menu open');
-  }
+  };
   return <div className="buildorder-header">
     <div className="flex">
       <div className="buildorder-name">{buildOrder.name}</div>
@@ -40,7 +38,7 @@ const BuildOrderHeader:React.FC<IBuildOrderHeaderProps> = ({playing, togglePlayi
         <BuildOrderIcon icon={"population"} scale={scale} text={popCount}/>
       </div>
       <div className="time">
-        <div className="time-display">{gameTimeMinutes}:{gameTimeSeconds}</div>
+        <GameTimeClock gameTime={gameTime} setGameTime={setGameTime}/>
         <div className="control" onClick={togglePlaying}>
           <FontAwesomeIcon icon={playPauseIcon}/>
         </div>

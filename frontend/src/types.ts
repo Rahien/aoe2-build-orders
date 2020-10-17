@@ -3,13 +3,14 @@ import React from 'react';
 export interface IBuildOrderStep {
   kind: string,
   number?: number,
-  from?: string,
+  from?: string|null,
   target?: string,
   buildAmount?: number,
   build?: string,
-  newVillager?:boolean,
   targetText?: string,
-  endTime?: number
+  endTime?: number,
+  techs?: string[],
+  duringPrevious?: boolean
 }
 
 export interface IBuildOrder {

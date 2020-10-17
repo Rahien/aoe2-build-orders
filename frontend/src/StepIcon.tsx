@@ -22,7 +22,24 @@ const iconPositions = [
   'house',
   'loom',
   'stone',
-  'population'
+  'population',
+  'skirmisher',
+  'archer',
+  'militia',
+  'manatarmupgrade',
+  'stable',
+  'scout',
+  'range',
+  'wheelbarrow',
+  'doublebitaxe',
+  'manatarms',
+  'eaglescout',
+  'age3',
+  'horsecollar',
+  'market',
+  'farm',
+  'blacksmith',
+  'builder'
 ];
 
 
@@ -35,14 +52,14 @@ const BuildOrderIcon:React.FC<IBuildOrderIconProps> = ({icon, scale, text}) => {
   if(position < 0){
     position = 0;
   }
-  const positionX = position;
-  const positionY = 0;
+  const positionX = Math.floor(position % 16);
+  const positionY = Math.floor(position / 16);
   const style = {
     backgroundPositionY: `${positionY * -scale}px`,
     backgroundPositionX: `${positionX * -scale}px`
   }
   return <div className={classes} style={style}>
-    {icon}
+    <span className="icon-text">{icon}</span>
     {text?<label>{text}</label>:null}
   </div>;
 }

@@ -168,12 +168,32 @@ body {
 .buildorderstep > * {
   margin-right: 10px;
 }
+.buildorderstep.research {
+  justify-content: space-around;
+}
 .buildorderstep > *:last-child {
   margin-right: 0;
 }
 .buildorderstep span.number {
   min-width: 50px;
   text-align: center;
+}
+.time-display input {
+  background: none;
+  width: 1.5em;
+  border: none;
+  color: white;
+  font-size: 1em;
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    display:none;
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}
+
+.time-display input:first-child {
+  text-align: right;
 }
 .buildorderstep-icon {
   margin-right: 13px;
@@ -187,6 +207,9 @@ body {
     position: absolute;
     bottom: 0;
     right: 0;
+  }
+  .icon-text {
+    display: none;
   }
 }
 

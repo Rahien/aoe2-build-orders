@@ -29,16 +29,26 @@ const kindMapping: {[id:string]: StepRenderer} = {
   "build": (step) => {
     const times = step.buildAmount?<span className="number">{` x ${step.buildAmount}`}</span>:null;
     const target = step.target ? <BuildOrderIcon icon={step.target}/> : null;
-    const newVillager = typeof step.newVillager === "undefined"?true:step.newVillager;
+    const newVillager = typeof step.from === "undefined";
     const moveAmount = step.number?<span className="number">{` x ${step.number}`}</span>:null;
     const buildVillagerFirst = newVillager? <><BuildOrderIcon icon={"villager"}/><FontAwesomeIcon icon={faCaretRight}/></>:null;
+    const from = step.from?<><BuildOrderIcon icon={step.from}/><FontAwesomeIcon icon={faCaretRight}/></>:null;
     return <>
       {buildVillagerFirst}
+      {from}
       {times}
       <BuildOrderIcon icon={step.build || "house"}/>
-      <FontAwesomeIcon icon={faCaretRight}/>
+      {target && <FontAwesomeIcon icon={faCaretRight}/>}
       {moveAmount}
       {target}
+    </>
+  },
+  "research": (step) => {
+    const techs = (step.techs || []).map((tech) => {
+      return <BuildOrderIcon key={tech} icon={tech}/>
+    });
+    return <>
+      {techs}
     </>
   },
   "default": (step) => {
@@ -61,7 +71,8 @@ const BuildOrderStep:React.FC<IBuildOrderStepProps> = ({step}) => {
   endTimeMinutes = endTimeMinutes.length>1?endTimeMinutes:`0${endTimeMinutes}`;
   let endTimeSeconds = ""+Math.floor(endTime%60);
   endTimeSeconds = endTimeSeconds.length>1?endTimeSeconds:`0${endTimeSeconds}`;
-  return <div className="buildorderstep">
+  const className = `buildorderstep ${step.kind}`
+  return <div className={className}>
     {stepInfo}
     <label className="end-time">[{endTimeMinutes}:{endTimeSeconds}]</label>
   </div>;
@@ -77,14 +88,16 @@ export const getStepDuration = (step:IBuildOrderStep) => {
     return 25 * (step.number || 1);
   }
   if(step.kind === "build"){
-    return step.newVillager!==false?25:0;
-
+    return typeof step.from === "undefined" ? 25:0;
   }
   if(step.kind === "loom"){
     return 25;
   }
   if(step.kind === "age2"){
     return 130;
+  }
+  if(step.kind === "age3"){
+    return 160;
   }
   return 0;
 }
