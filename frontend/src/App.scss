@@ -11,10 +11,44 @@ body {
   pointer-events: none;
 }
 
+.App-body {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.buildorder-list {
+  flex-grow: 1;
+}
+
+.control {
+  width: 40px;
+  height: 40px;
+  background: black;
+  color: white;
+  flex-shrink: 0;
+  line-height: 40px;
+  cursor: pointer;
+  font-size: 23px;
+}
+
+
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
+}
+
+.game-content-useage-notice {
+  font-size: 0.6em;
+  color: white;
+  text-align: center;
+  padding: 0.5em 1em;
+}
+
+.game-content-useage-notice a {
+  color: white;
 }
 
 .buildorderstep-icon {
@@ -45,13 +79,13 @@ body {
   top: 0;
   display: flex;
   justify-content: space-between;
-  background: #222;
+  background: black;
   width: 100%;
   padding: 10px;
   box-sizing: border-box;
   z-index: 1;
   flex-wrap: wrap;
-  border-bottom: ridge 2px #333;
+  border-bottom: solid 0.5em #222;
 
   .flex {
     width: 100%;
@@ -68,7 +102,6 @@ body {
     background: black;
     margin-right: 10px;
     padding: 0.2em;
-    border: ridge 3px #333;
   }
 
   .resources {
@@ -92,9 +125,6 @@ body {
 
   .resources .buildorderstep-icon {border: ridge 3px #333;}
 
-  .control {
-    border: outset 3px #333;
-  }
 
   .resources {
     display: flex;
@@ -104,18 +134,6 @@ body {
     display: flex;
     align-items: center;
   }
-
-  .control {
-    width: 36px;
-    height: 36px;
-    background: black;
-    color: white;
-    flex-shrink: 0;
-    line-height: 36px;
-    border-radius: 2px;
-    cursor: pointer;
-  }
-
   .buildorderstep-icon {
     background-size: 1650%;
     width: 30px;
@@ -253,11 +271,40 @@ body {
   }
 
 }
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+a.buildorder.list-item {
+  background: black;
+  /* display: block; */
+  margin-bottom: 0.5em;
+  color: white;
+  display: flex;
+  font-size: 1.2em;
+  text-decoration: none;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  padding: 0.5em;
+  height: 1.7em;
+  .control {
+    margin-left: 1em;
   }
-  to {
-    transform: rotate(360deg);
+  label {
+    width: 80vw;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+a.buildorder.list-item .buildorderstep-icon {
+  margin-right: 1em;
+  transform: scale(0.6);
+}
+
+.buildorder-list {
+  color: white;
+  h1 {
+    background: black;
+    margin: 0;
+    padding: 1em;
+    margin-bottom: 0.3em;
   }
 }

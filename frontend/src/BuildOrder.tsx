@@ -1,121 +1,11 @@
-import React, {useState} from 'react';
-import BuildOrderStep, {getStepDuration} from "./BuildOrderStep";
+import React, {useEffect, useState} from 'react';
+import BuildOrderStep from "./BuildOrderStep";
 import BuildOrderTracker from "./BuildOrderTracker";
 import BuildOrderHeader from "./BuildOrderHeader";
 import usePlayingState from "./BuildOrderPlayingStateHook";
 import {IBuildOrder, IBuildOrderStep} from "./types";
-
-const buildOrderSteps = [
-  {
-    kind: "build",
-    build: "house",
-    buildAmount: 2,
-    from: null,
-    number: 4,
-    target: "sheep"
-  },
-  {
-    kind: "create",
-    number: 2,
-    target: "sheep"
-  },
-  {
-    kind: "create",
-    target: "wood",
-    number: 3
-  },
-  {
-    kind: "create",
-    target: "boar"
-  },
-  {
-    kind: "build",
-    build: "house",
-    buildAmount: 2,
-    target: "berries"
-  },
-  {
-    kind: "build",
-    build: "mill",
-    target: "berries"
-  },
-  {
-    kind: "create",
-    target: "berries",
-  },
-  {
-    kind:"move",
-    from: "boar",
-    target: "boar",
-    targetText: "2"
-  },
-  {
-    kind: "create",
-    target: "berries"
-  },
-  {
-    kind: "create",
-    target: "boar",
-    number: 6
-  },
-  {
-    kind: "loom"
-  },
-  {
-    kind:"move",
-    from: "sheep",
-    target: "wood",
-    number: 5
-  },
-  {
-    kind: "age2"
-  },
-  {
-    kind: "build",
-    build: "barracks",
-    from: "sheep",
-    target: "builder",
-    duringPrevious: true
-  },
-  {
-    kind: "research",
-    techs: ['doublebitaxe', 'horsecollar']
-  },
-  {
-    kind:"move",
-    from: "sheep",
-    target: "farm",
-    number: 6
-  },
-  {
-    kind:"create",
-    target: "farm",
-    number: 8
-  },
-  {
-    kind:"move",
-    from: "berries",
-    target: "gold",
-    number: 4
-  },
-  {
-    kind:"build",
-    from: "builder",
-    build: "blacksmith"
-  },
-  {
-    kind: "wheelbarrow"
-  },
-  {
-    kind: "age3"
-  }
-];
-
-const exampleBuildOrder:IBuildOrder = {
-  name: "21 pop Scouts",
-  startingVillagers: 4,
-  steps: buildOrderSteps
-}
+import {getBuildOrder} from "./BuildOrderList";
+import { useParams } from 'react-router-dom';
 
 const addResourcesFromStep = (buildOrder:IBuildOrder, step:IBuildOrderStep, percentageComplete: number = 1) => {
   if(step.kind === "create" || (step.kind === "build" && (typeof step.from === "undefined"))){
@@ -178,13 +68,6 @@ const addResourcesUpToCurrentStep = (buildOrder:IBuildOrder, gameTime:number) =>
   });
 };
 
-const computeEndTimes = (buildOrderSteps:IBuildOrderStep[]) => {
-  let time = 0;
-  buildOrderSteps.forEach((step) => {
-    time += getStepDuration(step);
-    step.endTime = time;
-  });
-}
 
 const mergeSubsteps: (steps: IBuildOrderStep[]) => IBuildOrderStep[] = (buildOrderSteps) => {
   const newSteps:IBuildOrderStep[] = [];
@@ -201,21 +84,21 @@ const mergeSubsteps: (steps: IBuildOrderStep[]) => IBuildOrderStep[] = (buildOrd
   return newSteps;
 }
 
-const shuffleVillagerGenders: (steps: IBuildOrderStep[]) => void = (steps) => {
-  steps.forEach((step) => {
-    step.femaleVillager = Math.random() < 0.5;
-  });
-}
-
-computeEndTimes(exampleBuildOrder.steps);
-shuffleVillagerGenders(exampleBuildOrder.steps);
 
 function BuildOrder() {
   const [startTime, playing, timeAlreadyPlayed, togglePlaying, updateGameTime] = usePlayingState();
   const [gameTime, setGameTime] = useState(0);
-  addResourcesUpToCurrentStep(exampleBuildOrder, gameTime);
-  exampleBuildOrder.steps = mergeSubsteps(exampleBuildOrder.steps);
-  const [buildOrder, setBuildOrder] = useState<IBuildOrder>(exampleBuildOrder);
+  const [buildOrder, setBuildOrder] = useState<IBuildOrder|null>(null);
+  const {id} = useParams();
+  useEffect(() => {
+    const build = getBuildOrder(id);
+    addResourcesUpToCurrentStep(build, 0);
+    build.steps = mergeSubsteps(build.steps);
+    setBuildOrder(build)
+  }, [id]);
+  if(!buildOrder){
+    return <div>Loading</div>;
+  }
   const onNewBuildOrderState = (newBuildOrder:IBuildOrder) => {
     addResourcesUpToCurrentStep(newBuildOrder, gameTime);
     setBuildOrder(newBuildOrder);
@@ -225,15 +108,16 @@ function BuildOrder() {
       <BuildOrderStep step={step}/>
     </div>;
   });
+  const showTracker = timeAlreadyPlayed || playing;
   return (
     <div className="buildOrder">
       <BuildOrderHeader playing={playing} togglePlaying={() => togglePlaying(gameTime)}
                         buildOrder={buildOrder} gameTime={gameTime} setGameTime={updateGameTime}/>
       {steps}
-      <BuildOrderTracker buildOrder={buildOrder} startTime={startTime}
+      {showTracker?<BuildOrderTracker buildOrder={buildOrder} startTime={startTime}
                          elapsedTime={timeAlreadyPlayed}
                          gameTimeChange={setGameTime}
-                         onNewBuildOrderState={onNewBuildOrderState}/>
+                         onNewBuildOrderState={onNewBuildOrderState}/>:null}
     </div>
   );
 }

@@ -18,6 +18,8 @@ export interface IBuildOrderStep {
 export interface IBuildOrder {
   steps: IBuildOrderStep[],
   name: string,
+  id: string,
+  icon: string,
   startingVillagers: number,
   currentStep?: IBuildOrderStep,
   currentStepPercentage?: number,

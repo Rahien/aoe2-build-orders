@@ -1,6 +1,12 @@
 import React from 'react';
 import './App.scss';
 import BuildOrder from "./BuildOrder";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
+import BuildOrderList from "./BuildOrderList";
 
 function App() {
   return (
@@ -8,7 +14,18 @@ function App() {
       <header className="App-header">
       </header>
       <div className="App-body">
-        <BuildOrder/>
+        <Router>
+          <Switch>
+            <Route path="/build/:id">
+              <BuildOrder/>
+            </Route>
+            <Route path="/">
+              <BuildOrderList/>
+            </Route>
+          </Switch>
+        </Router>
+
+        <div className="wrap-960 game-content-useage-notice">Age of Empires II: HD© and Age of Empires II: Definitive Edition© Microsoft Corporation. AoE2-profile was created under Microsoft's <a href="https://www.xbox.com/en-US/developers/rules" target="_blank" rel="noopener noreferrer">"Game Content Usage Rules"</a> using assets from Age of Empires II: Definitive Edition, and it is not endorsed by or affiliated with Microsoft.</div>
       </div>
     </div>
   );
