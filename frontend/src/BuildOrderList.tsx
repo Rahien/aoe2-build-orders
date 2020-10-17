@@ -265,6 +265,157 @@ const buildOrders:{[id:string]: IBuildOrder} = {
         kind: "age3"
       }
     ]
+  },
+  "3": {
+    name: "22 pop M@A > Archers",
+    id: "3",
+    icon: "manatarms",
+    startingVillagers: 4,
+    steps: [
+      {
+        kind: "build",
+        build: "house",
+        buildAmount: 2,
+        from: null,
+        number: 4,
+        target: "sheep"
+      },
+      {
+        kind: "create",
+        number: 2,
+        target: "sheep"
+      },
+      {
+        kind: "create",
+        target: "wood",
+        number: 4
+      },
+      {
+        kind: "create",
+        target: "boar",
+        number: 2
+      },
+      {
+        kind: "build",
+        build: "house",
+        buildAmount: 2,
+        target: "berries"
+      },
+      {
+        kind: "build",
+        build: "mill",
+        target: "berries"
+      },
+      {
+        kind: "create",
+        target: "berries",
+      },
+      {
+        kind:"move",
+        from: "boar",
+        target: "boar",
+        targetText: "2"
+      },
+      {
+        kind: "create",
+        target: "berries"
+      },
+      {
+        kind: "create",
+        target: "sheep",
+        number: 2
+      },
+      {
+        kind: "build",
+        build: "barracks",
+        target: "builder"
+      },
+      {
+        kind: "build",
+        build: "militia",
+        from: null,
+        buildAmount: 3,
+        duringPrevious: true
+      },
+
+      {
+        kind: "build",
+        build: "house",
+        target: "gold"
+      },
+      {
+        kind: "create",
+        target: "gold"
+      },
+      {
+        kind: "loom"
+      },
+      {
+        kind:"move",
+        from: "sheep",
+        target: "wood",
+        number: 7
+      },
+      {
+        kind:"move",
+        from: "sheep",
+        target: "farm",
+        number: 2
+      },
+      {
+        kind: "age2"
+      },
+      {
+        kind: "research",
+        techs: ['doublebitaxe', 'manatarmsupgrade']
+      },
+      {
+        kind: "create",
+        target: "wood"
+      },
+      {
+        kind: "build",
+        from: "berries",
+        build: "range",
+        buildAmount: 2,
+        number: 2,
+        target: "gold"
+      },
+      {
+        kind: "build",
+        from: null,
+        build: "archer",
+        buildAmount: 20,
+        duringPrevious: true
+      },
+      {
+        kind: "build",
+        from: "builder",
+        build: "blacksmith"
+      },
+      {
+        kind:"create",
+        target: "gold",
+        number: 4
+      },
+      {
+        kind: "move",
+        from: "berries",
+        target: "farm",
+        number: 2
+      },
+      {
+        kind:"create",
+        target: "farm",
+        number: 13
+      },
+      {
+        kind:"wheelbarrow",
+      },
+      {
+        kind: "age3"
+      }
+    ]
   }
 };
 

@@ -61,10 +61,11 @@ const kindMapping: {[id:string]: StepRenderer} = {
 }
 
 export interface IBuildOrderStepProps {
-  step: IBuildOrderStep
+  step: IBuildOrderStep,
+  setGameTime?: (time:number) => void
 }
 
-const BuildOrderStep:React.FC<IBuildOrderStepProps> = ({step}) => {
+const BuildOrderStep:React.FC<IBuildOrderStepProps> = ({step, setGameTime}) => {
   const stepInfo = (kindMapping[step.kind] || kindMapping['default'])(step);
   const endTime = step.endTime || 0;
   let endTimeMinutes = ""+Math.floor(endTime/60);
@@ -73,6 +74,11 @@ const BuildOrderStep:React.FC<IBuildOrderStepProps> = ({step}) => {
   endTimeSeconds = endTimeSeconds.length>1?endTimeSeconds:`0${endTimeSeconds}`;
   const className = `buildorderstep ${step.kind}`;
   let subSteps = null;
+  const handleClick = () => {
+    if(setGameTime){
+      setGameTime(step.endTime || 0);
+    }
+  }
   if(step.subSteps){
     subSteps = step.subSteps.map((subStep, index) => {
       return <BuildOrderStep key={index} step={subStep}/>;
@@ -80,7 +86,7 @@ const BuildOrderStep:React.FC<IBuildOrderStepProps> = ({step}) => {
     subSteps = <div className="sub-steps">{subSteps}</div>;
   }
 
-  return <div className={className}>
+  return <div className={className} onClick={handleClick}>
     <div className="step-info">
       {stepInfo}
     </div>

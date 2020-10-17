@@ -105,7 +105,7 @@ function BuildOrder() {
   };
   const steps = buildOrder.steps.map((step, index) => {
     return <div className="buildorder-step-wrap" key={index}>
-      <BuildOrderStep step={step}/>
+      <BuildOrderStep step={step} setGameTime={updateGameTime}/>
     </div>;
   });
   const showTracker = timeAlreadyPlayed || playing;

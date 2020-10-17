@@ -26,7 +26,7 @@ const iconPositions = [
   'skirmisher',
   'archer',
   'militia',
-  'manatarmupgrade',
+  'manatarmsupgrade',
   'stable',
   'scout',
   'range',
