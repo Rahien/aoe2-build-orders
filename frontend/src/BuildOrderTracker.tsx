@@ -21,7 +21,7 @@ interface ICompletion {
 const computeTrackerPosition = (completion: ICompletion) => {
   let offset = 106;
   const topLevelSteps = document.querySelectorAll(".buildOrder > .buildorder-step-wrap");
-  completion.completedSteps.map((step, index) => {
+  completion.completedSteps.forEach((step, index) => {
     const elementHeight = topLevelSteps[index].scrollHeight;
     offset += elementHeight;
   });
