@@ -74,7 +74,7 @@ export const getStepDuration = (step:IBuildOrderStep) => {
     return 0;
   }
   if(step.kind === "create"){
-    return 25;
+    return 25 * (step.number || 1);
   }
   if(step.kind === "build"){
     return step.newVillager!==false?25:0;

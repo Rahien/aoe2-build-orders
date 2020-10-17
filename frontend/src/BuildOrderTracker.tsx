@@ -18,11 +18,11 @@ interface ICompletion {
   currentStepPercentage: number
 }
 
-const computeTrackerPosition = (completedSteps:IBuildOrderStep[], currentStepPercentage:number) => {
-  let offset = 112;
+const computeTrackerPosition = (completion: ICompletion) => {
+  let offset = 106;
   let stepHeight = 102;
-  offset += (completedSteps.length * stepHeight);
-  offset += (currentStepPercentage * stepHeight);
+  offset += (completion.completedSteps.length * stepHeight);
+  offset += (completion.currentStepPercentage * stepHeight);
   return offset;
 }
 const gameSpeed = 1.7;
@@ -56,19 +56,12 @@ const getTimeSinceStart: (startTime: (Date | null), elapsedTime: number) => numb
   return timeSinceStart;
 }
 
-const handleBuildOrderStateChange = (currentBuildOrder:IBuildOrder, completedSteps: IBuildOrderStep[], onNewBuildOrderState: (buildOrder: IBuildOrder) => void) => {
-  if(completedSteps.length === 0 && !currentBuildOrder.currentStone){
-    return;
-  }
-  if(completedSteps.length > 0 && completedSteps[completedSteps.length - 1] === currentBuildOrder.currentStep){
-    return;
-  }
+const handleBuildOrderStateChange = (currentBuildOrder:IBuildOrder, completion: ICompletion,
+                                     onNewBuildOrderState: (buildOrder: IBuildOrder) => void) => {
+  const {uncompletedSteps, currentStepPercentage} = completion;
   const newBuildOrder = Object.assign({}, currentBuildOrder);
-  if(completedSteps.length === 0){
-    newBuildOrder.currentStep = undefined;
-  }else{
-    newBuildOrder.currentStep = completedSteps[completedSteps.length - 1];
-  }
+  newBuildOrder.currentStep = uncompletedSteps[0];
+  newBuildOrder.currentStepPercentage = currentStepPercentage;
   onNewBuildOrderState(newBuildOrder);
 };
 
@@ -78,14 +71,14 @@ const BuildOrderTracker:React.FC<IBuildOrderTrackerProps> = ({buildOrder, startT
     const timeout = window.setTimeout(() => {
       const timeSinceStart = getTimeSinceStart(startTime, elapsedTime);
       gameTimeChange(timeSinceStart);
-      const {completedSteps, currentStepPercentage} = getCompletion(buildOrder.steps, timeSinceStart);
-      setTrackerPosition(computeTrackerPosition(completedSteps, currentStepPercentage));
-      handleBuildOrderStateChange(buildOrder, completedSteps, onNewBuildOrderState);
+      const completion = getCompletion(buildOrder.steps, timeSinceStart);
+      setTrackerPosition(computeTrackerPosition(completion));
+      handleBuildOrderStateChange(buildOrder, completion, onNewBuildOrderState);
       if(startTime){
         const tracker = document.getElementsByClassName("buildorder-tracker")[0];
         tracker && tracker.scrollIntoView({behavior: "smooth", block: "center"});
       }
-    }, 50);
+    }, 200);
     return () => clearTimeout(timeout);
   } );
   const style = {

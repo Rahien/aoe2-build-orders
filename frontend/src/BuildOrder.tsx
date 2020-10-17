@@ -16,23 +16,13 @@ const buildOrderSteps = [
   },
   {
     kind: "create",
+    number: 2,
     target: "sheep"
   },
   {
     kind: "create",
-    target: "sheep"
-  },
-  {
-    kind: "create",
-    target: "wood"
-  },
-  {
-    kind: "create",
-    target: "wood"
-  },
-  {
-    kind: "create",
-    target: "wood"
+    target: "wood",
+    number: 3
   },
   {
     kind: "create",
@@ -65,34 +55,15 @@ const buildOrderSteps = [
   },
   {
     kind: "create",
-    target: "boar"
-  },
-  {
-    kind: "create",
-    target: "boar"
-  },
-  {
-    kind: "create",
-    target: "boar"
-  },
-  {
-    kind: "create",
-    target: "boar"
-  },
-  {
-    kind: "create",
-    target: "boar"
-  },
-  {
-    kind: "create",
-    target: "boar"
+    target: "boar",
+    number: 6
   },
   {
     kind: "loom"
   },
   {
     kind:"move",
-    from: "boar",
+    from: "sheep",
     target: "wood",
     number: 5
   },
@@ -107,12 +78,13 @@ const exampleBuildOrder = {
   steps: buildOrderSteps
 }
 
-const addResourcesFromStep = (buildOrder:IBuildOrder, step:IBuildOrderStep) => {
+const addResourcesFromStep = (buildOrder:IBuildOrder, step:IBuildOrderStep, percentageComplete: number = 1) => {
   if(step.kind === "create" || (step.kind === "build" && step.newVillager !== false)){
-    buildOrder.currentVillagers = (buildOrder.currentVillagers || 0) + 1;
+    const number = Math.floor((step.number || 1) * percentageComplete);
+    buildOrder.currentVillagers = (buildOrder.currentVillagers || 0) + number;
   }
   if(step.target){
-    const number = step.number || 1;
+    const number = Math.floor((step.number || 1) * percentageComplete);
     if(['sheep', 'berries', 'farm', 'boar'].indexOf(step.target) >= 0){
       buildOrder.currentFood = (buildOrder.currentFood || 0) + number;
     }
@@ -127,7 +99,7 @@ const addResourcesFromStep = (buildOrder:IBuildOrder, step:IBuildOrderStep) => {
     }
   }
   if(step.from){
-    const number = step.number || 1;
+    const number = Math.floor((step.number || 1) * percentageComplete);
     if(['sheep', 'berries', 'farm', 'boar'].indexOf(step.from) >= 0){
       buildOrder.currentFood = (buildOrder.currentFood || 0) - number;
     }
@@ -141,7 +113,6 @@ const addResourcesFromStep = (buildOrder:IBuildOrder, step:IBuildOrderStep) => {
       buildOrder.currentStone = (buildOrder.currentStone || 0) - number;
     }
   }
-
 };
 
 const addResourcesUpToCurrentStep = (buildOrder:IBuildOrder) => {
@@ -158,7 +129,8 @@ const addResourcesUpToCurrentStep = (buildOrder:IBuildOrder) => {
     if(step === buildOrder.currentStep){
       currentStepSeen = true;
     }
-    addResourcesFromStep(buildOrder, step);
+    addResourcesFromStep(buildOrder, step,
+      currentStepSeen?buildOrder.currentStepPercentage:1);
   });
 };
 

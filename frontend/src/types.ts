@@ -17,6 +17,7 @@ export interface IBuildOrder {
   name: string,
   startingVillagers: number,
   currentStep?: IBuildOrderStep,
+  currentStepPercentage?: number,
   currentVillagers?: number,
   currentFood?: number,
   currentWood?: number,
