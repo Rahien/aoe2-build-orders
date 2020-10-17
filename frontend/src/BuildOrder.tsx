@@ -62,13 +62,14 @@ const buildOrderSteps = [
     kind: "loom"
   },
   {
+    kind: "age2"
+  },
+  {
     kind:"move",
     from: "sheep",
     target: "wood",
-    number: 5
-  },
-  {
-    kind: "age2"
+    number: 5,
+    duringPrevious: true
   },
   {
     kind: "build",
@@ -201,7 +202,14 @@ const mergeSubsteps: (steps: IBuildOrderStep[]) => IBuildOrderStep[] = (buildOrd
   return newSteps;
 }
 
+const shuffleVillagerGenders: (steps: IBuildOrderStep[]) => void = (steps) => {
+  steps.forEach((step) => {
+    step.femaleVillager = Math.random() < 0.5;
+  });
+}
+
 computeEndTimes(exampleBuildOrder.steps);
+shuffleVillagerGenders(exampleBuildOrder.steps);
 
 function BuildOrder() {
   const [startTime, playing, timeAlreadyPlayed, togglePlaying, updateGameTime] = usePlayingState();

@@ -11,7 +11,8 @@ export interface IBuildOrderStep {
   endTime?: number,
   techs?: string[],
   duringPrevious?: boolean,
-  subSteps?: IBuildOrderStep[]
+  subSteps?: IBuildOrderStep[],
+  femaleVillager?: boolean
 }
 
 export interface IBuildOrder {

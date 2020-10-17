@@ -10,7 +10,7 @@ const kindMapping: {[id:string]: StepRenderer} = {
     const target = step.target ? <BuildOrderIcon icon={step.target} text={step.targetText}/> : null;
     const number = step.number ? <span className="number">x {step.number}</span> : null;
     return <>
-      <BuildOrderIcon icon={"villager"}/>
+      <BuildOrderIcon icon={step.femaleVillager?"villagerf":"villager"}/>
       {number}
       <FontAwesomeIcon icon={faCaretRight}/>
       {target}
@@ -31,7 +31,7 @@ const kindMapping: {[id:string]: StepRenderer} = {
     const target = step.target ? <BuildOrderIcon icon={step.target}/> : null;
     const newVillager = typeof step.from === "undefined";
     const moveAmount = step.number?<span className="number">{` x ${step.number}`}</span>:null;
-    const buildVillagerFirst = newVillager? <><BuildOrderIcon icon={"villager"}/><FontAwesomeIcon icon={faCaretRight}/></>:null;
+    const buildVillagerFirst = newVillager? <><BuildOrderIcon icon={step.femaleVillager?"villagerf":"villager"}/><FontAwesomeIcon icon={faCaretRight}/></>:null;
     const from = step.from?<><BuildOrderIcon icon={step.from}/><FontAwesomeIcon icon={faCaretRight}/></>:null;
     return <>
       {buildVillagerFirst}

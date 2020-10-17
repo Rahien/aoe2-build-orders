@@ -66,7 +66,7 @@ body {
     font-size: 1.2em;
     font-weight: bold;
     background: black;
-    margin-right: 0.5em;
+    margin-right: 10px;
     padding: 0.2em;
     border: ridge 3px #333;
   }
@@ -83,7 +83,7 @@ body {
   .time-display {
     padding: 0.4em 0;
     background: black;
-    margin-right: 0.5em;
+    margin-right: 10px;
     color: white;
     border: ridge #333 3px;
     width: 70px;
@@ -128,7 +128,7 @@ body {
     label {
       position: absolute;
       bottom: -1px;
-      right: -1px;
+      right: 0px;
       color: white;
       font-size: 10px;
       font-weight: bold;
@@ -176,7 +176,11 @@ body {
         text-align: center;
       }
     }
-    .buildorderstep {transform: scale(0.66);}
+    .buildorderstep {
+      transform: scale(0.66);
+      box-sizing: border-box;
+      height: 60px;
+    }
 
     .buildorderstep .end-time {
       display: none;
