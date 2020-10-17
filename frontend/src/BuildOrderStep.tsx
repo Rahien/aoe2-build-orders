@@ -71,9 +71,20 @@ const BuildOrderStep:React.FC<IBuildOrderStepProps> = ({step}) => {
   endTimeMinutes = endTimeMinutes.length>1?endTimeMinutes:`0${endTimeMinutes}`;
   let endTimeSeconds = ""+Math.floor(endTime%60);
   endTimeSeconds = endTimeSeconds.length>1?endTimeSeconds:`0${endTimeSeconds}`;
-  const className = `buildorderstep ${step.kind}`
+  const className = `buildorderstep ${step.kind}`;
+  let subSteps = null;
+  if(step.subSteps){
+    subSteps = step.subSteps.map((subStep, index) => {
+      return <BuildOrderStep key={index} step={subStep}/>;
+    });
+    subSteps = <div className="sub-steps">{subSteps}</div>;
+  }
+
   return <div className={className}>
-    {stepInfo}
+    <div className="step-info">
+      {stepInfo}
+    </div>
+    {subSteps}
     <label className="end-time">[{endTimeMinutes}:{endTimeSeconds}]</label>
   </div>;
 }

@@ -111,7 +111,7 @@ const buildOrderSteps = [
   }
 ];
 
-const exampleBuildOrder = {
+const exampleBuildOrder:IBuildOrder = {
   name: "21 pop Scouts",
   startingVillagers: 4,
   steps: buildOrderSteps
@@ -152,6 +152,11 @@ const addResourcesFromStep = (buildOrder:IBuildOrder, step:IBuildOrderStep, perc
       buildOrder.currentStone = (buildOrder.currentStone || 0) - number;
     }
   }
+  if(step.subSteps){
+    step.subSteps.forEach((step) => {
+      addResourcesFromStep(buildOrder, step, percentageComplete);
+    });
+  }
 };
 
 const addResourcesUpToCurrentStep = (buildOrder:IBuildOrder, gameTime:number) => {
@@ -181,12 +186,28 @@ const computeEndTimes = (buildOrderSteps:IBuildOrderStep[]) => {
   });
 }
 
+const mergeSubsteps: (steps: IBuildOrderStep[]) => IBuildOrderStep[] = (buildOrderSteps) => {
+  const newSteps:IBuildOrderStep[] = [];
+  let previousStep:(IBuildOrderStep|null) = null;
+  buildOrderSteps.forEach((step) => {
+    if(step.duringPrevious && previousStep){
+      previousStep.subSteps = previousStep.subSteps || [];
+      previousStep.subSteps.push(step);
+    }else{
+      newSteps.push(step);
+      previousStep = step;
+    }
+  });
+  return newSteps;
+}
+
 computeEndTimes(exampleBuildOrder.steps);
 
 function BuildOrder() {
   const [startTime, playing, timeAlreadyPlayed, togglePlaying, updateGameTime] = usePlayingState();
   const [gameTime, setGameTime] = useState(0);
   addResourcesUpToCurrentStep(exampleBuildOrder, gameTime);
+  exampleBuildOrder.steps = mergeSubsteps(exampleBuildOrder.steps);
   const [buildOrder, setBuildOrder] = useState<IBuildOrder>(exampleBuildOrder);
   const onNewBuildOrderState = (newBuildOrder:IBuildOrder) => {
     addResourcesUpToCurrentStep(newBuildOrder, gameTime);

@@ -20,9 +20,14 @@ interface ICompletion {
 
 const computeTrackerPosition = (completion: ICompletion) => {
   let offset = 106;
-  let stepHeight = 102;
-  offset += (completion.completedSteps.length * stepHeight);
-  offset += (completion.currentStepPercentage * stepHeight);
+  const topLevelSteps = document.querySelectorAll(".buildOrder > .buildorder-step-wrap");
+  completion.completedSteps.map((step, index) => {
+    const elementHeight = topLevelSteps[index].scrollHeight;
+    offset += elementHeight;
+  });
+  const currentStepElement = topLevelSteps[completion.completedSteps.length];
+  const currentStepHeight = currentStepElement?currentStepElement.scrollHeight:0;
+  offset += (completion.currentStepPercentage * currentStepHeight);
   return offset;
 }
 const gameSpeed = 1.7;

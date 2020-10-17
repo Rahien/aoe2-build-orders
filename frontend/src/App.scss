@@ -141,14 +141,10 @@ body {
   padding-bottom: 0.25em;
   padding-top: 0.25em;
   .buildorderstep {
-    display: flex;
-    flex-direction: row;
     padding: 1em 2em;
     border: solid 1px black;
-    align-items: center;
     background: black;
     color: #eee;
-    justify-content: center;
     font-size: 18px;
     font-weight: bold;
     position:relative;
@@ -160,23 +156,39 @@ body {
       font-weight: normal;
       color: #666;
     }
+    .sub-steps {
+      border-top: dashed #666 4px;
+      margin-top: 1em;
+    }
+    .step-info {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      > * {
+        margin-right: 10px;
+      }
+      > *:last-child {
+        margin-right: 0;
+      }
+      span.number {
+        min-width: 50px;
+        text-align: center;
+      }
+    }
+    .buildorderstep {transform: scale(0.66);}
+
+    .buildorderstep .end-time {
+      display: none;
+    }
+
   }
 }
 .buildorderstep svg.fa-caret-right {
   font-size: 30px;
 }
-.buildorderstep > * {
-  margin-right: 10px;
-}
-.buildorderstep.research {
+.buildorderstep.research .step-info {
   justify-content: space-around;
-}
-.buildorderstep > *:last-child {
-  margin-right: 0;
-}
-.buildorderstep span.number {
-  min-width: 50px;
-  text-align: center;
 }
 .time-display input {
   background: none;

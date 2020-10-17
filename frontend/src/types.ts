@@ -10,7 +10,8 @@ export interface IBuildOrderStep {
   targetText?: string,
   endTime?: number,
   techs?: string[],
-  duringPrevious?: boolean
+  duringPrevious?: boolean,
+  subSteps?: IBuildOrderStep[]
 }
 
 export interface IBuildOrder {
