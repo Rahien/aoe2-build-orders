@@ -62,14 +62,13 @@ const buildOrderSteps = [
     kind: "loom"
   },
   {
-    kind: "age2"
-  },
-  {
     kind:"move",
     from: "sheep",
     target: "wood",
-    number: 5,
-    duringPrevious: true
+    number: 5
+  },
+  {
+    kind: "age2"
   },
   {
     kind: "build",
