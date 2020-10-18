@@ -19,7 +19,6 @@ const BuildOrderHeader:React.FC<IBuildOrderHeaderProps> = ({playing, togglePlayi
     function handleClickOutside(event: MouseEvent) {
       const current = menuRef.current;
       if (current && !current.contains(event.target as HTMLElement)) {
-        console.log('outside');
         setShowMenu(false);
       }
     }

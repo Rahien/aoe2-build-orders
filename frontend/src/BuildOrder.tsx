@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import BuildOrderStep from "./BuildOrderStep";
+import BuildOrderStep, {getStepDuration} from "./BuildOrderStep";
 import BuildOrderTracker from "./BuildOrderTracker";
 import BuildOrderHeader from "./BuildOrderHeader";
 import usePlayingState from "./BuildOrderPlayingStateHook";
@@ -49,7 +49,7 @@ const addResourcesFromStep = (buildOrder:IBuildOrder, step:IBuildOrderStep, perc
   }
 };
 
-const addResourcesUpToCurrentStep = (buildOrder:IBuildOrder, gameTime:number) => {
+export const addResourcesUpToCurrentStep = (buildOrder:IBuildOrder, gameTime:number) => {
   let currentStepSeen = false;
   buildOrder.currentVillagers = buildOrder.startingVillagers;
   buildOrder.currentStone = 0;
@@ -68,8 +68,21 @@ const addResourcesUpToCurrentStep = (buildOrder:IBuildOrder, gameTime:number) =>
   });
 };
 
+export const shuffleVillagerGenders: (steps: IBuildOrderStep[]) => void = (steps) => {
+  steps.forEach((step) => {
+    step.femaleVillager = Math.random() < 0.5;
+  });
+}
 
-const mergeSubsteps: (steps: IBuildOrderStep[]) => IBuildOrderStep[] = (buildOrderSteps) => {
+export const computeEndTimes = (buildOrderSteps:IBuildOrderStep[]) => {
+  let time = 0;
+  buildOrderSteps.forEach((step) => {
+    time += getStepDuration(step);
+    step.endTime = time;
+  });
+}
+
+export const mergeSubsteps: (steps: IBuildOrderStep[]) => IBuildOrderStep[] = (buildOrderSteps) => {
   const newSteps:IBuildOrderStep[] = [];
   let previousStep:(IBuildOrderStep|null) = null;
   buildOrderSteps.forEach((step) => {

@@ -65,3 +65,4 @@ const BuildOrderIcon:React.FC<IBuildOrderIconProps> = ({icon, scale, text}) => {
 }
 
 export default BuildOrderIcon;
+export const iconNames = iconPositions;

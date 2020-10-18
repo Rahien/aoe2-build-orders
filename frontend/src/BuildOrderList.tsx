@@ -1,11 +1,11 @@
-import {IBuildOrder, IBuildOrderStep} from "./types";
+import {IBuildOrder} from "./types";
 import React from "react";
-import {getStepDuration} from "./BuildOrderStep";
 import BuildOrderIcon from "./StepIcon";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faPencilAlt, faPlus} from "@fortawesome/free-solid-svg-icons";
 import { useHistory } from "react-router-dom";
 import { v4 as uuidv4 } from 'uuid';
+import {computeEndTimes, shuffleVillagerGenders} from "./BuildOrder";
 
 const buildOrders:{[id:string]: IBuildOrder} = {
   "1": {
@@ -422,20 +422,6 @@ const buildOrders:{[id:string]: IBuildOrder} = {
 };
 
 
-const shuffleVillagerGenders: (steps: IBuildOrderStep[]) => void = (steps) => {
-  steps.forEach((step) => {
-    step.femaleVillager = Math.random() < 0.5;
-  });
-}
-
-const computeEndTimes = (buildOrderSteps:IBuildOrderStep[]) => {
-  let time = 0;
-  buildOrderSteps.forEach((step) => {
-    time += getStepDuration(step);
-    step.endTime = time;
-  });
-}
-
 export function getBuildOrder(id:string){
   const build = buildOrders[id];
   computeEndTimes(build.steps);
@@ -444,8 +430,16 @@ export function getBuildOrder(id:string){
 }
 
 export function setBuildOrder(id:string, build:IBuildOrder){
-  Object.assign(buildOrders[id], build);
+  if(buildOrders[id]){
+    Object.assign(buildOrders[id], build);
+  }else{
+    buildOrders[id] = build;
+  }
   buildOrders[id].id = id;
+}
+
+export function deleteBuildOrder(id:string){
+  delete buildOrders[id];
 }
 
 const newBuildOrder = () => {

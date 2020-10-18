@@ -73,6 +73,60 @@ body {
   display: flex;
   align-items: center;
 }
+.add-step, .upload-build {
+  background: none;
+  border: none;
+  background: black;
+  padding: 0.5em 1em;
+  margin: 0.5em 0;
+  width: 100%;
+  color: white;
+  font-size: 1.3em;
+   svg {
+     margin-right: 1em;
+   }
+}
+
+.edit-header {
+  background: black;
+  height: 70px;
+  display: flex;
+  justify-content: flex-start;
+  padding: 1em;
+  align-items: center;
+
+  input {
+    max-width: 70vw;
+    background: none;
+    color: white;
+    border: none;
+    border-bottom: 1px solid white;
+    flex-grow: 1;
+    font-size: 1.2em;
+    font-weight: bold;
+    justify-self: flex-end;
+    min-width: 0;
+  }
+  svg.svg-inline--fa.fa-check.fa-w-16 {
+    font-size: 1.5em;
+    color: white;
+    margin-left: 0.5em;
+  }
+}
+.select-icon {
+  position: absolute;
+  padding: 0.5em;
+  background: #222;
+  z-index: 1;
+  max-height: 80vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .buildorderstep-icon {
+    margin-right: 0;
+  }
+}
 
 .buildorder-header {
   position: fixed;
