@@ -86,7 +86,9 @@ body {
   z-index: 1;
   flex-wrap: wrap;
   border-bottom: solid 0.5em #222;
-
+  > .flex > .buildorderstep-icon {
+    margin-right: 4px;
+  }
   .flex {
     width: 100%;
     justify-content: space-between;
@@ -135,7 +137,7 @@ body {
     align-items: center;
   }
   .buildorderstep-icon {
-    background-size: 1650%;
+    background-size: 1600%;
     width: 30px;
     height: 30px;
     margin-top: 5px;
@@ -271,7 +273,7 @@ body {
   }
 
 }
-a.buildorder.list-item {
+.buildorder.list-item {
   background: black;
   /* display: block; */
   margin-bottom: 0.5em;
@@ -286,6 +288,7 @@ a.buildorder.list-item {
   height: 1.7em;
   .control {
     margin-left: 1em;
+    font-size: 1em;
   }
   label {
     width: 80vw;
@@ -294,7 +297,7 @@ a.buildorder.list-item {
   }
 }
 
-a.buildorder.list-item .buildorderstep-icon {
+.buildorder.list-item .buildorderstep-icon {
   margin-right: 1em;
   transform: scale(0.6);
 }
@@ -307,4 +310,94 @@ a.buildorder.list-item .buildorderstep-icon {
     padding: 1em;
     margin-bottom: 0.3em;
   }
+  > button {
+    background: black;
+    border: none;
+    margin-bottom: 0.5em;
+    margin-top: 0;
+    font-size: 1.3em;
+    height: 51.8px;
+    display: flex;
+    width: 100%;
+    color: white;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    svg {
+      margin-right: 1em;
+    }
+  }
+
+}
+
+.bmc-btn svg {
+  height: 30px !important;
+  margin-bottom: 1px !important;
+  box-shadow: none !important;
+  border: none !important;
+  vertical-align: middle !important;
+  transform: scale(0.9);
+}
+
+.bmc-btn {
+  color: #fff;
+  background-color: #000000 !important;
+  height: 60px;
+  border-radius: 12px;
+  font-size: 26px;
+  border: none;
+  padding: 0px 24px;
+  line-height: 27px;
+  text-decoration: none !important;
+  display: inline-flex !important;
+  align-items: center;
+  font-family: 'Cookie', cursive !important;
+  -webkit-box-sizing: border-box !important;
+  box-sizing: border-box !important;
+  margin: 0.5em 1em;
+  min-height: 2em;
+}
+
+.bmc-btn:hover, .bmc-btn:active, .bmc-btn:focus {
+  text-decoration: none !important;
+  cursor: pointer;
+}
+
+.bmc-btn{
+  .bmc-btn-text {
+    margin-left: 18px;
+    display: inline;
+    line-height: 0;
+  }
+
+  .logo-outline {
+    fill: #fff;
+  }
+
+  .logo-coffee {
+    fill: #fd0;
+  }
+}
+.menu {
+  position: absolute;
+  top: 50px;
+  right: 10px;
+  background: #222;
+  padding: 0.5em 1em;
+  z-index: 1;
+  .menu-item {
+    width: 60vw;
+    display: flex;
+    align-items: center;
+    padding-bottom: 0.5em;
+  }
+
+  .menu-item label {
+    text-align: left;
+    flex-grow: 1;
+  }
+}
+
+.menu svg {
+  margin-right: 1em;
 }

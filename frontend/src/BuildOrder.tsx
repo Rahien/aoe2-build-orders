@@ -84,7 +84,6 @@ const mergeSubsteps: (steps: IBuildOrderStep[]) => IBuildOrderStep[] = (buildOrd
   return newSteps;
 }
 
-
 function BuildOrder() {
   const [startTime, playing, timeAlreadyPlayed, togglePlaying, updateGameTime] = usePlayingState();
   const [gameTime, setGameTime] = useState(0);
@@ -99,6 +98,7 @@ function BuildOrder() {
   if(!buildOrder){
     return <div>Loading</div>;
   }
+
   const onNewBuildOrderState = (newBuildOrder:IBuildOrder) => {
     addResourcesUpToCurrentStep(newBuildOrder, gameTime);
     setBuildOrder(newBuildOrder);

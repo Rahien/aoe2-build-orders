@@ -3,7 +3,9 @@ import React from "react";
 import {getStepDuration} from "./BuildOrderStep";
 import BuildOrderIcon from "./StepIcon";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faDownload} from "@fortawesome/free-solid-svg-icons";
+import {faPencilAlt, faPlus} from "@fortawesome/free-solid-svg-icons";
+import { useHistory } from "react-router-dom";
+import { v4 as uuidv4 } from 'uuid';
 
 const buildOrders:{[id:string]: IBuildOrder} = {
   "1": {
@@ -441,34 +443,55 @@ export function getBuildOrder(id:string){
   return build;
 }
 
-function BuildOrderList() {
-  const handleDownload = (build:IBuildOrder) => {
-    const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(build, null, 2));
-    const downloadAnchorNode = document.createElement('a');
-    downloadAnchorNode.setAttribute("href",     dataStr);
-    downloadAnchorNode.setAttribute("download", build.name + ".json");
-    document.body.appendChild(downloadAnchorNode); // required for firefox
-    downloadAnchorNode.click();
-    downloadAnchorNode.remove();
+export function setBuildOrder(id:string, build:IBuildOrder){
+  Object.assign(buildOrders[id], build);
+  buildOrders[id].id = id;
+}
+
+const newBuildOrder = () => {
+  const id = uuidv4();
+  buildOrders[id] = {
+    name: "new build order",
+    startingVillagers: 4,
+    id: id,
+    icon: Math.random() < 0.5?"villager":"villagerf",
+    steps: []
   };
+  return id;
+}
+
+function BuildOrderList() {
+  const history = useHistory();
+
+  const handleNewBuildClick = () => {
+    const id = newBuildOrder();
+    history.push(`/edit-build/${id}`);
+  }
+
+  const goToBuild = (build: IBuildOrder) => {
+    history.push(`/build/${build.id}`);
+  }
 
   const list = Object.values(buildOrders).map((build) => {
-    return <a key={build.id} className="buildorder list-item" href={`/build/${build.id}`}>
+    return <div key={build.id} className="buildorder list-item" onClick={() => goToBuild(build)}>
       <BuildOrderIcon icon={build.icon}/>
       <label>{build.name}</label>
       <div className="control" onClick={(event) => {
-        handleDownload(build);
+        history.push(`/edit-build/${build.id}`);
         event.preventDefault();
         event.stopPropagation();
       }}>
-        <FontAwesomeIcon icon={faDownload}/>
+        <FontAwesomeIcon icon={faPencilAlt}/>
       </div>
-    </a>;
+    </div>;
   });
   return (
     <div className="buildorder-list">
-      <h1>Build Orders</h1>
+      <h1>AoE2 Build Orders</h1>
       {list}
+      <button onClick={handleNewBuildClick}>
+        <FontAwesomeIcon icon={faPlus}/><span>New Build</span>
+      </button>
     </div>
   );
 }
