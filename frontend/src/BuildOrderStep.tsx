@@ -29,10 +29,10 @@ const kindMapping: {[id:string]: StepRenderer} = {
   "build": (step) => {
     const times = step.buildAmount?<span className="number">{` x ${step.buildAmount}`}</span>:null;
     const target = step.target ? <BuildOrderIcon icon={step.target}/> : null;
-    const newVillager = typeof step.from === "undefined";
+    const newVillager = step.from !== "nothing";
     const moveAmount = step.number?<span className="number">{` x ${step.number}`}</span>:null;
     const buildVillagerFirst = newVillager? <><BuildOrderIcon icon={step.femaleVillager?"villagerf":"villager"}/><FontAwesomeIcon icon={faCaretRight}/></>:null;
-    const from = step.from?<><BuildOrderIcon icon={step.from}/><FontAwesomeIcon icon={faCaretRight}/></>:null;
+    const from = step.from && step.from !== "nothing"?<><BuildOrderIcon icon={step.from}/><FontAwesomeIcon icon={faCaretRight}/></>:null;
     return <>
       {buildVillagerFirst}
       {from}

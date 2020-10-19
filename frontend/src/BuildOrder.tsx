@@ -7,6 +7,15 @@ import {IBuildOrder, IBuildOrderStep} from "./types";
 import {getBuildOrder} from "./BuildOrderList";
 import { useParams } from 'react-router-dom';
 
+export const stepKinds: {[id:string]:string} = {
+ "create": "Create Villager",
+ "build": "Build",
+ "loom": "Get Loom",
+ "move": "Move",
+ "age2": "Feudal Age",
+ "age3": "Castle Age"
+}
+
 const addResourcesFromStep = (buildOrder:IBuildOrder, step:IBuildOrderStep, percentageComplete: number = 1) => {
   if(step.kind === "create" || (step.kind === "build" && (typeof step.from === "undefined"))){
     const number = Math.floor((step.number || 1) * percentageComplete);

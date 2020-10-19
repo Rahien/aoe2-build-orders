@@ -3,24 +3,36 @@ import {faCheck, faPlus, faUpload} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import { useParams, useHistory } from "react-router-dom";
 import UploadBuildOrder from "./UploadBuildOrder";
-import {IBuildOrder, IBuildOrderStep} from "./types";
+import {IBuildOrder, IBuildOrderStep, ISortableBuildOrder, ISortableBuildOrderStep} from "./types";
 import {getBuildOrder, setBuildOrder} from "./BuildOrderList";
 import BuildOrderIconSelect from "./BuildOrderIconSelect";
 import BuildOrderStep from "./BuildOrderStep";
 import {addResourcesUpToCurrentStep, computeEndTimes, mergeSubsteps, shuffleVillagerGenders} from "./BuildOrder";
+import { v4 as uuidv4 } from 'uuid';
+import { ReactSortable } from "react-sortablejs";
+import BuildOrderStepEdit from "./BuildOrderStepEdit";
+
+const makeStepsSortable:(steps:IBuildOrderStep[]) => ISortableBuildOrderStep[] = (steps) => {
+  return steps.map((step) => {
+    return Object.assign({id: uuidv4()}, step);
+  });
+}
 
 function EditBuildOrder() {
   const {id} = useParams();
   const history = useHistory();
-  const [build, setBuild] = useState<IBuildOrder|null>(null);
+  const [build, setBuild] = useState<ISortableBuildOrder|null>(null);
   useEffect(() => {
-    setBuild(getBuildOrder(id))
+    const buildOrder = getBuildOrder(id);
+    const sortableBuildOrder = Object.assign({}, buildOrder);
+    sortableBuildOrder.steps = makeStepsSortable(sortableBuildOrder.steps);
+    setBuild(sortableBuildOrder as unknown as ISortableBuildOrder);
   }, [id]);
   const [loadingFromFile, setLoadingFromFile] = useState(false);
   if(!build){
     return <div>Loading...</div>
   }
-  const updateBuild = (build:IBuildOrder, shuffle:boolean = false) => {
+  const updateBuild = (build:ISortableBuildOrder, shuffle:boolean = false) => {
     addResourcesUpToCurrentStep(build, 0);
     mergeSubsteps(build.steps);
     computeEndTimes(build.steps);
@@ -42,19 +54,32 @@ function EditBuildOrder() {
 
   const addStep = () => {
     const newBuild = Object.assign({}, build);
-    newBuild.steps = ([] as IBuildOrderStep[]).concat(...newBuild.steps);
+    newBuild.steps = ([] as ISortableBuildOrderStep[]).concat(...newBuild.steps);
     newBuild.steps.push({
       kind: "create",
-      target: "sheep"
+      target: "sheep",
+      id: uuidv4()
     });
     updateBuild(newBuild, true);
   };
 
-  const steps = build.steps.map((step, index) => {
-    return <div className="buildorder-step-wrap" key={index}>
-      <BuildOrderStep step={step}/>
-    </div>
-  });
+  const getStepUpdateHandler = (index:number) => {
+      return (newStep:ISortableBuildOrderStep) => {
+      };
+  }
+
+  const reorderSteps = (steps:ISortableBuildOrderStep[]) => {
+    const newBuild = Object.assign({}, build);
+    newBuild.steps = steps;
+    updateBuild(newBuild);
+  };
+
+  const steps = <ReactSortable list={build.steps} setList={reorderSteps}>
+    {build.steps.map((step, index) => {
+      return <BuildOrderStepEdit key={step.id} step={step} onEdit={getStepUpdateHandler(index)}/>
+    })}
+  </ReactSortable>
+
 
   return (
     <>

@@ -3,7 +3,7 @@ import React from 'react';
 export interface IBuildOrderStep {
   kind: string,
   number?: number,
-  from?: string|null,
+  from?: string,
   target?: string,
   buildAmount?: number,
   build?: string,
@@ -15,11 +15,15 @@ export interface IBuildOrderStep {
   femaleVillager?: boolean
 }
 
+export interface ISortableBuildOrderStep extends IBuildOrderStep {
+  id: string
+}
+
 export interface IBuildOrder {
   steps: IBuildOrderStep[],
   name: string,
   id: string,
-  icon: string,
+  icon?: string,
   startingVillagers: number,
   currentStep?: IBuildOrderStep,
   currentStepPercentage?: number,
@@ -29,6 +33,10 @@ export interface IBuildOrder {
   currentGold?: number,
   currentStone?: number,
   currentMilitaryPop?: number
+}
+
+export interface ISortableBuildOrder extends IBuildOrder {
+  steps: ISortableBuildOrderStep[]
 }
 
 export type StepRenderer = ((step:IBuildOrderStep) => React.ReactNode);

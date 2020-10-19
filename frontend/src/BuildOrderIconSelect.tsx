@@ -2,13 +2,16 @@ import React, { useState} from "react";
 import BuildOrderIcon, {iconNames} from "./StepIcon";
 
 interface BuildOrderIconSelectProps {
-  icon:string,
+  icon?:string,
   allowText?: boolean,
   text?:string,
-  onIconSelect: (icon:string, text?:string) => void
+  onIconSelect: (icon?:string, text?:string) => void
 }
 
 const BuildOrderIconSelect:React.FC<BuildOrderIconSelectProps> = ({icon, text, allowText, onIconSelect}) => {
+  if(!icon){
+    icon = "villager";
+  }
   const classes = `edit-buildorderstep-icon`;
   const [selecting, setSelecting] = useState(false);
   const [newText, setNewText] = useState(text);

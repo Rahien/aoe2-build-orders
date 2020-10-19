@@ -86,12 +86,44 @@ body {
      margin-right: 1em;
    }
 }
+.edit-buildOrder {
+  .buildorder-step-wrap {
+    display: flex;
+    width: 100%;
+    background: black;
+    padding: 0;
+    margin: 0.5em 0;
+    justify-content: space-between;
+    .buildorderstep {
+      padding: 1em 0;
+    }
+  }
 
+  .controls {
+    color: #999;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .controls svg {
+    font-size: 1.6em;
+    padding: 0.2em;
+    cursor: pointer;
+    &:hover {
+      color: white;
+    }
+  }
+
+  .buildorderstep {
+    flex-grow: 1;
+  }
+}
 .edit-header {
   background: black;
   height: 70px;
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   padding: 1em;
   align-items: center;
 
@@ -455,3 +487,15 @@ body {
 .menu svg {
   margin-right: 1em;
 }
+
+.sortable-ghost {
+  opacity: 0.2;
+}
+.edit-buildOrder .buildorder-step-wrap {
+  flex-direction: column;
+  color: white;
+}
+.buildorder-step-edit {
+  padding: 1em;
+}
+.buildorderstep-icon.nothing {background-image: none;background: #222;}

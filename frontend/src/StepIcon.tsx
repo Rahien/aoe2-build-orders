@@ -1,7 +1,7 @@
 import React from "react";
 
 export interface IBuildOrderIconProps {
-  icon: string,
+  icon?: string,
   scale?: number,
   text?: string|number
 }
@@ -39,15 +39,26 @@ const iconPositions = [
   'market',
   'farm',
   'blacksmith',
-  'builder'
+  'builder',
+  'nothing'
 ];
 
 
 const BuildOrderIcon:React.FC<IBuildOrderIconProps> = ({icon, scale, text}) => {
+  if(!icon){
+    icon = "villager";
+  }
+  if(icon === "nothing"){
+    return <div className="buildorderstep-icon nothing">
+      <span className="icon-text"></span>
+      {text?<label>{text}</label>:null}
+    </div>;
+  }
+
   const classes = `buildorderstep-icon ${icon}`;
   scale = scale || 50;
   let position = iconPositions.findIndex((currentIcon) => {
-    return currentIcon === icon.toLowerCase();
+    return currentIcon === (icon||"").toLowerCase();
   });
   if(position < 0){
     position = 0;

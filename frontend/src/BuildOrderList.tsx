@@ -18,7 +18,7 @@ const buildOrders:{[id:string]: IBuildOrder} = {
         kind: "build",
         build: "house",
         buildAmount: 2,
-        from: null,
+        from: "nothing",
         number: 4,
         target: "sheep"
       },
@@ -139,7 +139,7 @@ const buildOrders:{[id:string]: IBuildOrder} = {
         kind: "build",
         build: "house",
         buildAmount: 2,
-        from: null,
+        from: "nothing",
         number: 4,
         target: "sheep"
       },
@@ -278,7 +278,7 @@ const buildOrders:{[id:string]: IBuildOrder} = {
         kind: "build",
         build: "house",
         buildAmount: 2,
-        from: null,
+        from: "nothing",
         number: 4,
         target: "sheep"
       },
@@ -335,7 +335,7 @@ const buildOrders:{[id:string]: IBuildOrder} = {
       {
         kind: "build",
         build: "militia",
-        from: null,
+        from: "nothing",
         buildAmount: 3,
         duringPrevious: true
       },
@@ -385,8 +385,8 @@ const buildOrders:{[id:string]: IBuildOrder} = {
       },
       {
         kind: "build",
-        from: null,
         build: "archer",
+        from: "nothing",
         buildAmount: 20,
         duringPrevious: true
       },
