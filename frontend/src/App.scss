@@ -270,6 +270,7 @@ body {
       display: flex;
       flex-direction: row;
       align-items: center;
+      flex-wrap: wrap;
       justify-content: center;
       > * {
         margin-right: 10px;
@@ -491,6 +492,9 @@ body {
 .sortable-ghost {
   opacity: 0.2;
 }
+.sortable-chosen {
+  border: solid 2px white;
+}
 .edit-buildOrder .buildorder-step-wrap {
   flex-direction: column;
   color: white;
@@ -499,3 +503,7 @@ body {
   padding: 1em;
 }
 .buildorderstep-icon.nothing {background-image: none;background: #222;}
+
+.buildorder-step-wrap.substep {
+  transform: scale(0.9);
+}

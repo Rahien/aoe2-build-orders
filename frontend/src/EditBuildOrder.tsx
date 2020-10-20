@@ -6,8 +6,7 @@ import UploadBuildOrder from "./UploadBuildOrder";
 import {IBuildOrder, IBuildOrderStep, ISortableBuildOrder, ISortableBuildOrderStep} from "./types";
 import {getBuildOrder, setBuildOrder} from "./BuildOrderList";
 import BuildOrderIconSelect from "./BuildOrderIconSelect";
-import BuildOrderStep from "./BuildOrderStep";
-import {addResourcesUpToCurrentStep, computeEndTimes, mergeSubsteps, shuffleVillagerGenders} from "./BuildOrder";
+import {addResourcesUpToCurrentStep, computeEndTimes, shuffleVillagerGenders} from "./BuildOrder";
 import { v4 as uuidv4 } from 'uuid';
 import { ReactSortable } from "react-sortablejs";
 import BuildOrderStepEdit from "./BuildOrderStepEdit";
@@ -34,7 +33,6 @@ function EditBuildOrder() {
   }
   const updateBuild = (build:ISortableBuildOrder, shuffle:boolean = false) => {
     addResourcesUpToCurrentStep(build, 0);
-    mergeSubsteps(build.steps);
     computeEndTimes(build.steps);
     if(shuffle){
       console.log(shuffle);
@@ -65,6 +63,10 @@ function EditBuildOrder() {
 
   const getStepUpdateHandler = (index:number) => {
       return (newStep:ISortableBuildOrderStep) => {
+        const newBuild = Object.assign({}, build);
+        newBuild.steps = ([] as ISortableBuildOrderStep[]).concat(...newBuild.steps);
+        newBuild.steps.splice(index, 1, newStep);
+        updateBuild(newBuild, true);
       };
   }
 
@@ -74,7 +76,7 @@ function EditBuildOrder() {
     updateBuild(newBuild);
   };
 
-  const steps = <ReactSortable list={build.steps} setList={reorderSteps}>
+  const steps = <ReactSortable delay={350} list={build.steps} setList={reorderSteps}>
     {build.steps.map((step, index) => {
       return <BuildOrderStepEdit key={step.id} step={step} onEdit={getStepUpdateHandler(index)}/>
     })}

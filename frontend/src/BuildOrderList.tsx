@@ -423,7 +423,7 @@ const buildOrders:{[id:string]: IBuildOrder} = {
 
 
 export function getBuildOrder(id:string){
-  const build = buildOrders[id];
+  const build = JSON.parse(JSON.stringify(buildOrders[id]));
   computeEndTimes(build.steps);
   shuffleVillagerGenders(build.steps);
   return build;
