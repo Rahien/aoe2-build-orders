@@ -26,7 +26,8 @@ const BuildOrderIconSelect:React.FC<BuildOrderIconSelectProps> = ({icon, text, a
   let selectIcon = null;
   if(selecting){
     // @ts-ignore
-    selectIcon = <div className="select-icon">
+    selectIcon = <div className="select-icon-wrap">
+     <div className="select-icon">
       {allowText?<input value={newText}
              onChange={(e) => setNewText(e.target.value)}
              onKeyDown={(e) => {
@@ -35,6 +36,7 @@ const BuildOrderIconSelect:React.FC<BuildOrderIconSelectProps> = ({icon, text, a
                }
              }}/>:null}
       {options}
+     </div>
     </div>
   }
   return <div className={classes}>

@@ -146,7 +146,8 @@ body {
   }
 }
 .select-icon {
-  position: absolute;
+
+  position: fixed;
   padding: 0.5em;
   background: #222;
   z-index: 1;
@@ -155,9 +156,21 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  top: 10vh;
+  left: 50%;
+  margin-left: -36px;
   .buildorderstep-icon {
     margin-right: 0;
   }
+}
+.select-icon-wrap {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.8);
+  top: 0;
+  left: 0;
+  z-index: 10;
 }
 
 .buildorder-header {
@@ -499,15 +512,17 @@ body {
   flex-direction: column;
   color: white;
 }
-.buildorder-step-edit {
-  padding: 1em;
-}
 .buildorderstep-icon.nothing {background-image: none;background: #222;}
 
 .buildorder-step-wrap.substep {
-  transform: scale(0.9);
+  > div:first-child {
+    background: #222;
+    .buildorderstep {
+      background: black;
+      transform: scale(0.9);
+    }
+  }
 }
-
 .buildorder-step-edit {
   display: flex;
   flex-direction: row;
@@ -532,7 +547,7 @@ body {
     justify-content: space-between;
     box-sizing: border-box;
     width: 100%;
-    padding-right: 0;
+    padding: 0 0.5em;
     .edit-buildorderstep-icon .buildorderstep-icon {
       margin-right: 0;
     }
@@ -588,7 +603,14 @@ body {
     text-align: left;
     display: flex;
     justify-content: flex-start;
+    font-size: 1.4em;
+    align-items: center;
+    border-top: solid 4px black;
   }
+
+  span.rc-select-arrow-icon:after {content: "▶";font-size: 1em;margin-right: 0.7em;}
+
+  .rc-select-open span.rc-select-arrow-icon:after {content: "▼";}
 
 }
 .rc-select-dropdown {

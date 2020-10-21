@@ -7,6 +7,7 @@ import {stepKinds} from "./BuildOrder";
 import BuildOrderIconSelect from "./BuildOrderIconSelect";
 import {faTimes} from "@fortawesome/free-solid-svg-icons/faTimes";
 import Select, {Option} from "rc-select";
+import Switch from "react-switch";
 
 interface IBuildOrderStepEditProps {
   step: ISortableBuildOrderStep,
@@ -45,10 +46,7 @@ const booleanProperty: (hide:boolean, property: string, state: [(boolean | undef
   return hide? null:
     <div className={`property text ${property}`}>
       <label>{property}</label>
-      <input
-        type="checkbox"
-        checked={state[0]}
-        onChange={(e) => state[1](!!e.target.value)}/>
+      <Switch onChange={() => state[1](!state[0])} checked={!!state[0]} />
     </div>;
 }
 
