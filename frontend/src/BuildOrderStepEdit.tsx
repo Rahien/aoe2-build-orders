@@ -6,6 +6,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {stepKinds} from "./BuildOrder";
 import BuildOrderIconSelect from "./BuildOrderIconSelect";
 import {faTimes} from "@fortawesome/free-solid-svg-icons/faTimes";
+import Select, {Option} from "rc-select";
 
 interface IBuildOrderStepEditProps {
   step: ISortableBuildOrderStep,
@@ -118,16 +119,21 @@ const EditBuildOrderStep: React.FC<IEditBuildOrderStepProps> = ({step, onEdit}) 
   const from = iconProperty(hideFrom, "from", fromState);
   const fromNumber = numberProperty(hideNumber, 'number', fromNumberState);
   const target = iconProperty(hideTarget, "target", targetState);
-  const targetText = stringProperty(hideTarget, "target", targetTextState);
+  const targetText = stringProperty(hideTarget, "targetText", targetTextState);
   const build = iconProperty(hideBuild, "build", buildState);
   const buildNumber = numberProperty(hideBuild, 'buildAmount', buildAmountState);
   const techsList = kind === "research"? <ResearchList techs={techs} setTechs={setTechs}/>:null;
   return <div className="buildorder-step-edit">
-    <select value={kind} onChange={(e) => setKind(e.target.value)}>
+    <Select
+
+      value={kind} onChange={setKind}
+      autoFocus
+      optionFilterProp="text"
+    >
       {Object.keys(stepKinds).map((kind) => {
-        return <option key={kind} value={kind}>{stepKinds[kind]}</option>;
+        return <Option key={kind} value={kind}>{stepKinds[kind]}</Option>;
       })}
-    </select>
+    </Select>
     {booleanProperty(false, "duringPrevious", duringPreviousState)}
     {from}
     {fromNumber}

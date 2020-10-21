@@ -507,3 +507,124 @@ body {
 .buildorder-step-wrap.substep {
   transform: scale(0.9);
 }
+
+.buildorder-step-edit {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+
+  .buildorder-step-edit {
+    display: flex;
+    /* flex-direction: column; */
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .rc-select.rc-select-single.rc-select-show-arrow {
+    width: 100%;
+  }
+
+  .property {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    width: 100%;
+    padding-right: 0;
+    .edit-buildorderstep-icon .buildorderstep-icon {
+      margin-right: 0;
+    }
+    input {
+      background-color: #333;
+      border: none;
+      padding: 0.5em 1em;
+      flex-grow: 1;
+      color: white;
+      font-size: 1em;
+      text-align: right;
+      min-width: 0;
+    }
+    label {
+      margin-right: 1em;
+      text-transform: capitalize;
+      width: 130px;
+      text-align: left;
+
+      &:after {
+        content: ":";
+      }
+    }
+
+
+    input[type="checkbox"] {
+      width: 20px;
+      height: 20px;
+    }
+  }
+  button {
+    width: 100%;
+    background: #222;
+    border: none;
+    padding: 0.5em 1em;
+    color: white;
+    font-weight: bold;
+    font-size: 1.2em;
+    margin-top: 1em;
+
+    svg {
+      margin-left: 0.5em;
+    }
+  }
+
+  > * {
+    margin-bottom: 0.5em;
+  }
+  .rc-select.rc-select-single.rc-select-show-arrow {
+    background: #222;
+    width: 100%;
+    position: relative;
+    text-align: left;
+    display: flex;
+    justify-content: flex-start;
+  }
+
+}
+.rc-select-dropdown {
+  background: #222;
+  color: white;
+
+  &.rc-select-dropdown-hidden {
+    display: none;
+  }
+
+
+  .rc-select-item-option-content {
+    padding: 0.5em 1em;
+  }
+
+  .rc-select-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  span.rc-select-item-option-state {
+    display: none;
+  }
+
+  .rc-select-item.rc-select-item-option-selected {
+    background: #555;
+  }
+}
+.rc-select{
+  span.rc-select-selection-search {
+    display: none;
+  }
+
+  .rc-select-selector {
+    width: 100%;
+    padding: 0.5em 1em;
+  }
+}
