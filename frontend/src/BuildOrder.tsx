@@ -59,9 +59,30 @@ const addResourcesFromStep = (buildOrder:IBuildOrder, step:IBuildOrderStep, perc
   }
 };
 
+export const computeStartingVillagers = (buildOrder: IBuildOrder) => {
+  let count = 0;
+  const stepsToCheck = ([] as IBuildOrderStep[]).concat(buildOrder.steps);
+  let seenCreate = false;
+  stepsToCheck.forEach((step) => {
+    if(seenCreate){
+      return;
+    }
+    if(step.kind === "create") {
+      seenCreate = true;
+      return;
+    }
+    count += (step.number || 0);
+  });
+
+  if(count === 0){
+    return 4;
+  }
+  return count;
+}
+
 export const addResourcesUpToCurrentStep = (buildOrder:IBuildOrder, gameTime:number) => {
   let currentStepSeen = false;
-  buildOrder.currentVillagers = buildOrder.startingVillagers;
+  buildOrder.currentVillagers = computeStartingVillagers(buildOrder);
   buildOrder.currentStone = 0;
   buildOrder.currentGold = 0;
   buildOrder.currentWood = 0;

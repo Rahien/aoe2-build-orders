@@ -24,7 +24,7 @@ export interface IBuildOrder {
   name: string,
   id: string,
   icon?: string,
-  startingVillagers: number,
+  startingVillagers?: number,
   currentStep?: IBuildOrderStep,
   currentStepPercentage?: number,
   currentVillagers?: number,

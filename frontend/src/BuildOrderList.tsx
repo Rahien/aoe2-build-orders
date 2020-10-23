@@ -12,7 +12,6 @@ const buildOrders:{[id:string]: IBuildOrder} = {
     name: "21 pop Scouts",
     id: "1",
     icon: "scout",
-    startingVillagers: 4,
     steps: [
       {
         kind: "build",
@@ -133,7 +132,6 @@ const buildOrders:{[id:string]: IBuildOrder} = {
     name: "23 pop Archers",
     id: "2",
     icon: "archer",
-    startingVillagers: 4,
     steps: [
       {
         kind: "build",
@@ -272,7 +270,6 @@ const buildOrders:{[id:string]: IBuildOrder} = {
     name: "22 pop M@A > Archers",
     id: "3",
     icon: "manatarms",
-    startingVillagers: 4,
     steps: [
       {
         kind: "build",
@@ -446,7 +443,6 @@ const newBuildOrder = () => {
   const id = uuidv4();
   buildOrders[id] = {
     name: "new build order",
-    startingVillagers: 4,
     id: id,
     icon: Math.random() < 0.5?"villager":"villagerf",
     steps: []
