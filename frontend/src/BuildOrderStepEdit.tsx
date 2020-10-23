@@ -37,7 +37,7 @@ const stringProperty: (hide:boolean, property: string, state: [(string | undefin
   return hide? null:
     <div className={`property text ${property}`}>
       <label>{property}</label>
-      <input value={state[0]}
+      <input value={state[0] || ""}
              onChange={(e) => state[1](e.target.value)}/>
     </div>;
 }
