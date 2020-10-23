@@ -70,6 +70,13 @@ function EditBuildOrder() {
       };
   }
 
+  const removeStep = (index:number) => {
+    const newBuild = Object.assign({}, build);
+    newBuild.steps = ([] as ISortableBuildOrderStep[]).concat(...newBuild.steps);
+    newBuild.steps.splice(index, 1);
+    updateBuild(newBuild, true);
+  }
+
   const reorderSteps = (steps:ISortableBuildOrderStep[]) => {
     const newBuild = Object.assign({}, build);
     newBuild.steps = steps;
@@ -78,7 +85,9 @@ function EditBuildOrder() {
 
   const steps = <ReactSortable delay={350} list={build.steps} setList={reorderSteps}>
     {build.steps.map((step, index) => {
-      return <BuildOrderStepEdit key={step.id} step={step} onEdit={getStepUpdateHandler(index)}/>
+      return <BuildOrderStepEdit key={step.id} step={step}
+                                 onEdit={getStepUpdateHandler(index)}
+                                 onRemove={() => removeStep(index)}/>
     })}
   </ReactSortable>
 

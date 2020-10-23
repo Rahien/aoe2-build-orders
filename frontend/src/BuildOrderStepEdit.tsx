@@ -1,7 +1,7 @@
 import {ISortableBuildOrderStep} from "./types";
 import React, {useState} from "react";
 import BuildOrderStep from "./BuildOrderStep";
-import {faCheck} from "@fortawesome/free-solid-svg-icons";
+import {faCheck, faTrash} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {stepKinds} from "./BuildOrder";
 import BuildOrderIconSelect from "./BuildOrderIconSelect";
@@ -11,11 +11,13 @@ import Switch from "react-switch";
 
 interface IBuildOrderStepEditProps {
   step: ISortableBuildOrderStep,
+  onRemove: () => void,
   onEdit: (newStep:ISortableBuildOrderStep) => void
 }
 
 interface IEditBuildOrderStepProps {
   step: ISortableBuildOrderStep,
+  onRemove: () => void,
   onEdit: (newStep:ISortableBuildOrderStep) => void
 }
 
@@ -82,7 +84,7 @@ const ResearchList: React.FC<IResearchListProps> = ({techs, setTechs}) => {
   </div>;
 }
 
-const EditBuildOrderStep: React.FC<IEditBuildOrderStepProps> = ({step, onEdit}) => {
+const EditBuildOrderStep: React.FC<IEditBuildOrderStepProps> = ({step, onEdit, onRemove}) => {
   const [kind, setKind] = useState(step.kind);
   const fromState = useState(step.from);
   const fromNumberState = useState(step.number);
@@ -140,17 +142,18 @@ const EditBuildOrderStep: React.FC<IEditBuildOrderStepProps> = ({step, onEdit}) 
     {build}
     {buildNumber}
     {techsList}
+    <button className="remove" onClick={onRemove}><span>Remove</span><FontAwesomeIcon icon={faTrash}/></button>
     <button onClick={doneEditing}><span>Done</span><FontAwesomeIcon icon={faCheck}/></button>
   </div>
 };
 
-const BuildOrderStepEdit:React.FC<IBuildOrderStepEditProps> = ({step, onEdit}) => {
+const BuildOrderStepEdit:React.FC<IBuildOrderStepEditProps> = ({step, onEdit, onRemove}) => {
   const [editing, setEditing] = useState(false);
   const doneEditing = (newStep:ISortableBuildOrderStep) => {
     setEditing(false);
     onEdit(newStep)
   };
-  const showEdit:React.ReactElement = <EditBuildOrderStep step={step} onEdit={doneEditing}/>;
+  const showEdit:React.ReactElement = <EditBuildOrderStep step={step} onEdit={doneEditing} onRemove={onRemove}/>;
   const className = `buildorder-step-wrap${step.duringPrevious?" substep":""}`;
   return <div className={className}>
     <div onClick={() => setEditing(!editing)}>
