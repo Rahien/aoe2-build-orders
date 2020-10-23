@@ -1,5 +1,6 @@
 import React, { useState} from "react";
 import BuildOrderIcon, {iconNames} from "./StepIcon";
+import {useClickOutside} from "./hooks";
 
 interface BuildOrderIconSelectProps {
   icon?:string,
@@ -15,6 +16,9 @@ const BuildOrderIconSelect:React.FC<BuildOrderIconSelectProps> = ({icon, text, a
   const classes = `edit-buildorderstep-icon`;
   const [selecting, setSelecting] = useState(false);
   const [newText, setNewText] = useState(text);
+  const menuRef = useClickOutside(() => {
+    setSelecting(false);
+  })
   const options = iconNames.map((option) => {
     return <div key={option} className="icon-option" onClick={() => {
       onIconSelect(option);
@@ -25,9 +29,8 @@ const BuildOrderIconSelect:React.FC<BuildOrderIconSelectProps> = ({icon, text, a
   });
   let selectIcon = null;
   if(selecting){
-    // @ts-ignore
     selectIcon = <div className="select-icon-wrap">
-     <div className="select-icon">
+     <div className="select-icon" ref={menuRef}>
       {allowText?<input value={newText}
              onChange={(e) => setNewText(e.target.value)}
              onKeyDown={(e) => {

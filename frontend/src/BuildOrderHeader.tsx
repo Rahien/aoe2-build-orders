@@ -1,10 +1,11 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useState} from 'react';
 import BuildOrderIcon from "./StepIcon";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faPause, faPlay, faEllipsisH} from "@fortawesome/free-solid-svg-icons";
 import {IBuildOrder} from "./types";
 import GameTimeClock from "./GameTimeClock";
 import BuildOrderMenu from "./BuildOrderMenu";
+import {useClickOutside} from "./hooks";
 interface IBuildOrderHeaderProps {
   playing: boolean,
   buildOrder: IBuildOrder,
@@ -14,21 +15,9 @@ interface IBuildOrderHeaderProps {
 }
 const BuildOrderHeader:React.FC<IBuildOrderHeaderProps> = ({playing, togglePlaying, buildOrder, gameTime, setGameTime}) => {
   const [showMenu, setShowMenu] = useState(false);
-  const menuRef = useRef<HTMLDivElement>(null);
-  useEffect(() => {
-    function handleClickOutside(event: MouseEvent) {
-      const current = menuRef.current;
-      if (current && !current.contains(event.target as HTMLElement)) {
-        setShowMenu(false);
-      }
-    }
-    // Bind the event listener
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      // Unbind the event listener on clean up
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [menuRef]);
+  const menuRef = useClickOutside(() => {
+    setShowMenu(false);
+  })
   const playPauseIcon = playing?faPause:faPlay;
   const scale = 30;
   const foodCount = buildOrder.currentFood;
