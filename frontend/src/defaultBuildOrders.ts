@@ -725,7 +725,8 @@ export const defaultBuildOrders:{[id:string]: IBuildOrder} = {
         kind: "move",
         from: "berries",
         number: 2,
-        target: "farm"
+        target: "farm",
+        duringPrevious: true
       },
       {
         kind: "build",

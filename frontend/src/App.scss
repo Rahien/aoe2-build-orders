@@ -406,11 +406,52 @@ body {
 
 .buildorder-list {
   color: white;
+  div.menu {
+    background: none;
+    padding: 0;
+    justify-content: center;
+    font-size: 1em;
+    outline: none;
+    border: none;
+    align-items: center;
+    display: flex;
+    text-align: center;
+    position: relative;
+    top: auto;
+    right: auto;
+    margin-left: 0.8em;
+    font-size: 1em;
+    svg {
+      margin-right: 0;
+    }
+    .menu {
+      position: absolute;
+      top: 40px;
+      right: 0px;
+      background: #222;
+      padding: 0.5em 1em;
+      font-size: 1.4rem;
+      justify-content: space-between;
+    }
+
+    .menu .menu-item {
+      padding-bottom: 0;
+      justify-content: space-between;
+    }
+
+    .menu .menu-item label {
+      text-align: right;
+    }
+  }
+
   h1 {
     background: black;
     margin: 0;
     padding: 1em;
     margin-bottom: 0.3em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
   > button {
     background: black;
