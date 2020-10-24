@@ -11,12 +11,12 @@ export const defaultBuildOrders:{[id:string]: IBuildOrder} = {
         build: "house",
         buildAmount: 2,
         from: "nothing",
-        number: 4,
+        number: 3,
         target: "sheep"
       },
       {
         kind: "create",
-        number: 2,
+        number: 3,
         target: "sheep"
       },
       {
@@ -152,12 +152,12 @@ export const defaultBuildOrders:{[id:string]: IBuildOrder} = {
         build: "house",
         buildAmount: 2,
         from: "nothing",
-        number: 4,
+        number: 3,
         target: "sheep"
       },
       {
         kind: "create",
-        number: 2,
+        number: 3,
         target: "sheep"
       },
       {
@@ -292,12 +292,12 @@ export const defaultBuildOrders:{[id:string]: IBuildOrder} = {
         build: "house",
         buildAmount: 2,
         from: "nothing",
-        number: 4,
+        number: 3,
         target: "sheep"
       },
       {
         kind: "create",
-        number: 2,
+        number: 3,
         target: "sheep"
       },
       {
@@ -458,12 +458,12 @@ export const defaultBuildOrders:{[id:string]: IBuildOrder} = {
         build: "house",
         buildAmount: 2,
         from: "nothing",
-        number: 4,
+        number: 3,
         target: "sheep"
       },
       {
         kind: "create",
-        number: 2,
+        number: 3,
         target: "sheep"
       },
       {
@@ -617,12 +617,12 @@ export const defaultBuildOrders:{[id:string]: IBuildOrder} = {
         build: "house",
         buildAmount: 2,
         from: "nothing",
-        number: 4,
+        number: 3,
         target: "sheep"
       },
       {
         kind: "create",
-        number: 2,
+        number: 3,
         target: "sheep"
       },
       {
