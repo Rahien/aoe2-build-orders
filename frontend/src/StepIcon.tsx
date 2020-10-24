@@ -26,6 +26,7 @@ const iconPositions = [
   'eagle',
   'mango',
   'unique',
+  'knight',
   'skirmisher',
   'archer',
   'militia',
@@ -45,6 +46,7 @@ const iconPositions = [
   'elephant',
   'galley',
   'lancer',
+  'ballistics',
   'builder',
   'fishingship',
   'miningcamp',
@@ -64,6 +66,7 @@ const iconPositions = [
   'monk',
   'spear',
   'ca',
+  'tower',
   'nothing'
 ];
 
@@ -87,8 +90,8 @@ const BuildOrderIcon:React.FC<IBuildOrderIconProps> = ({icon, scale, text}) => {
   if(position < 0){
     position = 0;
   }
-  const positionX = Math.floor(position % 19);
-  const positionY = Math.floor(position / 19);
+  const positionX = Math.floor(position % 20);
+  const positionY = Math.floor(position / 20);
   const style = {
     backgroundPositionY: `${positionY * -scale}px`,
     backgroundPositionX: `${positionX * -scale}px`
