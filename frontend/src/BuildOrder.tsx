@@ -18,7 +18,7 @@ export const stepKinds: {[id:string]:string} = {
 }
 
 const addResourcesFromStep = (buildOrder:IBuildOrder, step:IBuildOrderStep, percentageComplete: number = 1) => {
-  if(step.kind === "create" || (step.kind === "build" && (typeof step.from === "undefined"))){
+  if(step.kind === "create" || (step.kind === "build" && ['villager', 'villagerf'].indexOf(step.from || "") >= 0)){
     const number = Math.floor((step.number || 1) * percentageComplete);
     buildOrder.currentVillagers = (buildOrder.currentVillagers || 0) + number;
   }

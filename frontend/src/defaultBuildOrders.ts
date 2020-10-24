@@ -30,12 +30,14 @@ export const defaultBuildOrders:{[id:string]: IBuildOrder} = {
       },
       {
         kind: "build",
+        from: "villager",
         build: "house",
         buildAmount: 2,
         target: "berries"
       },
       {
         kind: "build",
+        from: "villager",
         build: "mill",
         target: "berries"
       },
@@ -150,12 +152,14 @@ export const defaultBuildOrders:{[id:string]: IBuildOrder} = {
       },
       {
         kind: "build",
+        from: "villager",
         build: "house",
         buildAmount: 2,
         target: "berries"
       },
       {
         kind: "build",
+        from: "villager",
         build: "mill",
         target: "berries"
       },
@@ -289,12 +293,14 @@ export const defaultBuildOrders:{[id:string]: IBuildOrder} = {
       },
       {
         kind: "build",
+        from: "villager",
         build: "house",
         buildAmount: 2,
         target: "berries"
       },
       {
         kind: "build",
+        from: "villager",
         build: "mill",
         target: "berries"
       },
@@ -319,6 +325,7 @@ export const defaultBuildOrders:{[id:string]: IBuildOrder} = {
       },
       {
         kind: "build",
+        from: "villager",
         build: "barracks",
         target: "builder"
       },
@@ -332,6 +339,7 @@ export const defaultBuildOrders:{[id:string]: IBuildOrder} = {
 
       {
         kind: "build",
+        from: "villager",
         build: "house",
         target: "gold"
       },
@@ -376,7 +384,7 @@ export const defaultBuildOrders:{[id:string]: IBuildOrder} = {
       {
         kind: "build",
         build: "archer",
-        from: "nothing",
+        from: "range",
         buildAmount: 20,
         duringPrevious: true
       },

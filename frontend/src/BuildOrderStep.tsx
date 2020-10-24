@@ -29,12 +29,10 @@ const kindMapping: {[id:string]: StepRenderer} = {
   "build": (step) => {
     const times = step.buildAmount?<span className="number">{` x ${step.buildAmount}`}</span>:null;
     const target = step.target ? <BuildOrderIcon icon={step.target} text={step.targetText}/> : null;
-    const newVillager = step.from !== "nothing";
     const moveAmount = step.number?<span className="number">{` x ${step.number}`}</span>:null;
-    const buildVillagerFirst = newVillager? <><BuildOrderIcon icon={step.femaleVillager?"villagerf":"villager"}/><FontAwesomeIcon icon={faCaretRight}/></>:null;
-    const from = step.from && step.from !== "nothing"?<><BuildOrderIcon icon={step.from}/><FontAwesomeIcon icon={faCaretRight}/></>:null;
+    const fromIcon = step.from === "villager" && step.femaleVillager?"villagerf":step.from;
+    const from = step.from && step.from !== "nothing"?<><BuildOrderIcon icon={fromIcon}/><FontAwesomeIcon icon={faCaretRight}/></>:null;
     return <>
-      {buildVillagerFirst}
       {from}
       {times}
       <BuildOrderIcon icon={step.build || "house"}/>
@@ -105,7 +103,7 @@ export const getStepDuration = (step:IBuildOrderStep) => {
     return 25 * (step.number || 1);
   }
   if(step.kind === "build"){
-    return typeof step.from === "undefined" ? 25:0;
+    return ['villager', 'villagerf'].indexOf(step.from || "") >= 0? 25:0;
   }
   if(step.kind === "loom"){
     return 25;
@@ -115,6 +113,9 @@ export const getStepDuration = (step:IBuildOrderStep) => {
   }
   if(step.kind === "age3"){
     return 160;
+  }
+  if(step.kind === "wheelbarrow"){
+    return 75;
   }
   return 0;
 }
