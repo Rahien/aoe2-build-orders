@@ -30,7 +30,7 @@ const computeTrackerPosition = (completion: ICompletion) => {
   offset += (completion.currentStepPercentage * currentStepHeight);
   return offset;
 }
-const gameSpeed = 1.7;
+const gameSpeed = 5/3;
 const getCompletion:(buildOrderSteps: IBuildOrderStep[], timeSinceStart:number) => ICompletion = (buildOrderSteps, timeSinceStart) => {
   const completedSteps:IBuildOrderStep[] = [];
   const uncompletedSteps:IBuildOrderStep[] = [];
