@@ -99,6 +99,11 @@ export const defaultBuildOrders:{[id:string]: IBuildOrder} = {
         techs: ['doublebitaxe', 'horsecollar']
       },
       {
+        kind: "build",
+        build: "stable",
+        from: "builder"
+      },
+      {
         kind:"move",
         from: "sheep",
         target: "farm",
