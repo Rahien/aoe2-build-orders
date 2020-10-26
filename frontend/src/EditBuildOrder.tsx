@@ -35,7 +35,6 @@ function EditBuildOrder() {
     addResourcesUpToCurrentStep(build, 0);
     computeEndTimes(build.steps);
     if(shuffle){
-      console.log(shuffle);
       shuffleVillagerGenders(build.steps);
     }
     setBuild(build);
