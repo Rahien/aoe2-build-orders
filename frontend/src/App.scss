@@ -185,6 +185,26 @@ body {
   z-index: 1;
   flex-wrap: wrap;
   border-bottom: solid 0.5em #222;
+  .timer {
+    position: fixed;
+    top: 20vh;
+    height: 60vh;
+    font-size: 50vw;
+    width: 80vw;
+    background: #333;
+    color: white;
+    border: solid #000 5px;
+    box-sizing: border-box;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: 10vw;
+    border-radius: 25px;
+    label.time {
+      margin-left: 0;
+    }
+  }
   > .flex > .buildorderstep-icon {
     margin-right: 4px;
   }

@@ -9,6 +9,7 @@ interface IBuildOrderTrackerProps {
   startTime: Date | null,
   elapsedTime: number,
   onNewBuildOrderState: (buildOrder: IBuildOrder) => void,
+  playing: boolean,
   gameTimeChange: (time:number) => void
 }
 
@@ -70,10 +71,13 @@ const handleBuildOrderStateChange = (currentBuildOrder:IBuildOrder, completion: 
   onNewBuildOrderState(newBuildOrder);
 };
 
-const BuildOrderTracker:React.FC<IBuildOrderTrackerProps> = ({buildOrder, startTime, elapsedTime, onNewBuildOrderState, gameTimeChange}) => {
+const BuildOrderTracker:React.FC<IBuildOrderTrackerProps> = ({buildOrder, startTime, elapsedTime, playing, onNewBuildOrderState, gameTimeChange}) => {
   const [trackerPosition, setTrackerPosition] = useState(0);
   useEffect(() => {
     const timeout = window.setTimeout(() => {
+      if(!playing){
+        return;
+      }
       const timeSinceStart = getTimeSinceStart(startTime, elapsedTime);
       gameTimeChange(timeSinceStart);
       const completion = getCompletion(buildOrder.steps, timeSinceStart);

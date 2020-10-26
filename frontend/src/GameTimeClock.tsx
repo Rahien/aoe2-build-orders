@@ -8,7 +8,7 @@ interface IGameTimeClockProps {
 const GameTimeClock:React.FC<IGameTimeClockProps> = ({gameTime, setGameTime}) => {
   const [gameTimeMinutes, setGameTimeMinutes] = useState("00");
   const [gameTimeSeconds, setGameTimeSeconds] = useState("00");
-
+  console.log(gameTime);
   useEffect(() => {
     let gameTimeMinutesTemp = ""+Math.floor(gameTime / 60)
     gameTimeMinutesTemp = gameTimeMinutesTemp.length > 1?gameTimeMinutesTemp:`0${gameTimeMinutesTemp}`;

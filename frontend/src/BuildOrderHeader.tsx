@@ -6,15 +6,17 @@ import {IBuildOrder} from "./types";
 import GameTimeClock from "./GameTimeClock";
 import BuildOrderMenu from "./BuildOrderMenu";
 import {useClickOutside} from "./hooks";
+import CountDown from "./CountDown";
 interface IBuildOrderHeaderProps {
   playing: boolean,
   buildOrder: IBuildOrder,
-  togglePlaying: (event:React.MouseEvent) => void,
+  togglePlaying: () => void,
   gameTime:number,
   setGameTime: (time:number) => void
 }
 const BuildOrderHeader:React.FC<IBuildOrderHeaderProps> = ({playing, togglePlaying, buildOrder, gameTime, setGameTime}) => {
   const [showMenu, setShowMenu] = useState(false);
+  const [showCountDown, setShowCountDown] = useState(false);
   const menuRef = useClickOutside(() => {
     setShowMenu(false);
   })
@@ -28,6 +30,16 @@ const BuildOrderHeader:React.FC<IBuildOrderHeaderProps> = ({playing, togglePlayi
   const toggleMenu = () => {
     setShowMenu(!showMenu);
   };
+  const clickPlayPause = () => {
+    if(playing){
+      togglePlaying();
+      setShowCountDown(false);
+    }else if(gameTime < 0.5){
+      setShowCountDown(true);
+    }else{
+      togglePlaying();
+    }
+  };
   return <div className="buildorder-header">
     <div className="flex">
       <BuildOrderIcon icon={buildOrder.icon} scale={30}/>
@@ -36,7 +48,7 @@ const BuildOrderHeader:React.FC<IBuildOrderHeaderProps> = ({playing, togglePlayi
         <FontAwesomeIcon icon={faEllipsisH}/>
         {showMenu?
           <BuildOrderMenu build={buildOrder}
-                          restartBuild={() => setGameTime(0.1)}
+                          restartBuild={() => setGameTime(0)}
                           hideMenu={(() => setShowMenu(false))}/>
           :null}
       </div>
@@ -51,12 +63,22 @@ const BuildOrderHeader:React.FC<IBuildOrderHeaderProps> = ({playing, togglePlayi
       </div>
       <div className="time">
         <GameTimeClock gameTime={gameTime} setGameTime={setGameTime}/>
-        <div className="control" onClick={togglePlaying}>
+        <div className="control" onClick={clickPlayPause}>
           <FontAwesomeIcon icon={playPauseIcon}/>
         </div>
       </div>
     </div>
-
+    {showCountDown?<CountDown
+      from={3}
+      onDone={() => {
+        togglePlaying();
+        setShowCountDown(false);
+      }}
+      onClick={() => {
+        togglePlaying();
+        setShowCountDown(false);
+      }}
+    />: null}
   </div>
 }
 

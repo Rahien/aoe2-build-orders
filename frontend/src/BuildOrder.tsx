@@ -143,6 +143,11 @@ function BuildOrder() {
     return <div>Loading</div>;
   }
 
+  const changeGameTime = (time:number) => {
+    setGameTime(time);
+    updateGameTime(time);
+  }
+
   const onNewBuildOrderState = (newBuildOrder:IBuildOrder) => {
     addResourcesUpToCurrentStep(newBuildOrder, gameTime);
     setBuildOrder(newBuildOrder);
@@ -156,10 +161,11 @@ function BuildOrder() {
   return (
     <div className="buildOrder">
       <BuildOrderHeader playing={playing} togglePlaying={() => togglePlaying(gameTime)}
-                        buildOrder={buildOrder} gameTime={gameTime} setGameTime={updateGameTime}/>
+                        buildOrder={buildOrder} gameTime={gameTime} setGameTime={changeGameTime}/>
       {steps}
       {showTracker?<BuildOrderTracker buildOrder={buildOrder} startTime={startTime}
                          elapsedTime={timeAlreadyPlayed}
+                         playing={playing}
                          gameTimeChange={setGameTime}
                          onNewBuildOrderState={onNewBuildOrderState}/>:null}
     </div>
