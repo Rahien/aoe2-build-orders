@@ -1,6 +1,6 @@
 import {useState} from "react";
 
-const usePlayingState:(() => [(Date|null),boolean,number,(gameTime:number) => void, (gameTime:number) => void]) = () => {
+const usePlayingState:(() => [(Date|null),boolean,number,(gameTime:number) => void, (gameTime:number, pause?:boolean) => void]) = () => {
   const [startTime, setStartTime] = useState<Date|null>(null);
   const [timeAlreadyPlayed, setTimeAlreadyPlayed] = useState(0);
 
@@ -12,9 +12,14 @@ const usePlayingState:(() => [(Date|null),boolean,number,(gameTime:number) => vo
       setStartTime(new Date());
     }
   };
-  const updateGameTime = (gameTime: number) => {
+  const updateGameTime = (gameTime: number, pause=true) => {
     setTimeAlreadyPlayed(gameTime);
-    setStartTime(null);
+    if(pause){
+      setStartTime(null);
+    }else{
+      setStartTime(new Date());
+    }
+
   }
   return [startTime, !!startTime, timeAlreadyPlayed, togglePlaying, updateGameTime];
 };

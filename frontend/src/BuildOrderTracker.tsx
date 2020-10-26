@@ -75,9 +75,6 @@ const BuildOrderTracker:React.FC<IBuildOrderTrackerProps> = ({buildOrder, startT
   const [trackerPosition, setTrackerPosition] = useState(0);
   useEffect(() => {
     const timeout = window.setTimeout(() => {
-      if(!playing){
-        return;
-      }
       const timeSinceStart = getTimeSinceStart(startTime, elapsedTime);
       gameTimeChange(timeSinceStart);
       const completion = getCompletion(buildOrder.steps, timeSinceStart);

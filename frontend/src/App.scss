@@ -191,9 +191,8 @@ body {
     height: 60vh;
     font-size: 50vw;
     width: 80vw;
-    background: #333;
+    background: #000;
     color: white;
-    border: solid #000 5px;
     box-sizing: border-box;
     left: 0;
     display: flex;
@@ -201,6 +200,10 @@ body {
     align-items: center;
     left: 10vw;
     border-radius: 25px;
+    border: outset #333 5px;
+    border-right-color: #777;
+    border-bottom-color: #777;
+    cursor: pointer;
     label.time {
       margin-left: 0;
     }
@@ -717,5 +720,31 @@ body {
   .rc-select-selector {
     width: 100%;
     padding: 0.5em 1em;
+  }
+}
+
+.speedcontrol-button {
+  background: #000;
+  border: outset 3px #333;
+  width: 40vw;
+  height: 70px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  font-size: 8vw;
+  z-index: 10;
+  box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.5);
+  border-right-color: #666;
+  border-bottom-color: #666;
+  cursor: pointer;
+
+  &.back {
+    right: auto;
+    left: 10px;
   }
 }

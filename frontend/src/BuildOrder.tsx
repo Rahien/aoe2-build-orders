@@ -6,6 +6,7 @@ import usePlayingState from "./BuildOrderPlayingStateHook";
 import {IBuildOrder, IBuildOrderStep} from "./types";
 import {getBuildOrder} from "./BuildOrderList";
 import { useParams } from 'react-router-dom';
+import SpeedControls from "./SpeedControls";
 
 export const stepKinds: {[id:string]:string} = {
  "create": "Create Villager",
@@ -143,9 +144,9 @@ function BuildOrder() {
     return <div>Loading</div>;
   }
 
-  const changeGameTime = (time:number) => {
+  const changeGameTime = (time:number, pause= true) => {
     setGameTime(time);
-    updateGameTime(time);
+    updateGameTime(time, pause);
   }
 
   const onNewBuildOrderState = (newBuildOrder:IBuildOrder) => {
@@ -154,7 +155,7 @@ function BuildOrder() {
   };
   const steps = buildOrder.steps.map((step, index) => {
     return <div className="buildorder-step-wrap" key={index}>
-      <BuildOrderStep step={step} setGameTime={updateGameTime}/>
+      <BuildOrderStep step={step} setGameTime={changeGameTime}/>
     </div>;
   });
   const showTracker = timeAlreadyPlayed || playing;
@@ -168,6 +169,7 @@ function BuildOrder() {
                          playing={playing}
                          gameTimeChange={setGameTime}
                          onNewBuildOrderState={onNewBuildOrderState}/>:null}
+      {playing?<SpeedControls gameTime={gameTime} setGameTime={changeGameTime}/>:null}
     </div>
   );
 }
