@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faBackward, faForward} from "@fortawesome/free-solid-svg-icons";
 import {useLongPress} from "./hooks";

@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import BuildOrderStep, {getStepDuration} from "./BuildOrderStep";
 import BuildOrderTracker from "./BuildOrderTracker";
 import BuildOrderHeader from "./BuildOrderHeader";
@@ -129,10 +129,27 @@ export const mergeSubsteps: (steps: IBuildOrderStep[]) => IBuildOrderStep[] = (b
   return newSteps;
 }
 
+const requestWakeLock = (wakeLockRef:any) => {
+  if ('wakeLock' in window.navigator) {
+    try {
+      // @ts-ignore
+      window.navigator.wakeLock.request('screen').then((wakeLock:any) => {
+        wakeLockRef.current = wakeLock;
+      });
+    } catch (err) {
+    }
+  }
+}
+
+const releaseWakeLock = (wakeLockRef:any) => {
+  wakeLockRef.current && wakeLockRef.current.release();
+}
+
 function BuildOrder() {
   const [startTime, playing, timeAlreadyPlayed, togglePlaying, updateGameTime] = usePlayingState();
   const [gameTime, setGameTime] = useState(0);
   const [buildOrder, setBuildOrder] = useState<IBuildOrder|null>(null);
+  const wakeLockRef = useRef<any>();
   const {id} = useParams();
   useEffect(() => {
     const build = getBuildOrder(id);
@@ -140,6 +157,17 @@ function BuildOrder() {
     build.steps = mergeSubsteps(build.steps);
     setBuildOrder(build)
   }, [id]);
+  useEffect(() => {
+    if(playing){
+      requestWakeLock(wakeLockRef);
+    }else{
+      releaseWakeLock(wakeLockRef);
+    }
+    return () => {
+      releaseWakeLock(wakeLockRef);
+    }
+  }, [playing, wakeLockRef]);
+
   if(!buildOrder){
     return <div>Loading</div>;
   }

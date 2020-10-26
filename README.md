@@ -1,4 +1,4 @@
-#AoE2 Profile: Builds
+# AoE2 Profile: Builds
 
 This app allows you to create, manage and follow AoE2 build orders on your phone.
 It has currently only been tested on chrome for android and is not meant to be used in a desktop environment.
