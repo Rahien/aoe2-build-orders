@@ -145,6 +145,15 @@ const releaseWakeLock = (wakeLockRef:any) => {
   wakeLockRef.current && wakeLockRef.current.release();
 }
 
+const computeEndTime:(buildOrder:IBuildOrder) => number = (buildOrder) => {
+  try{
+    const endTime =  buildOrder.steps[buildOrder.steps.length - 1].endTime || 0;
+    return endTime;
+  }catch (e){
+    return 0;
+  }
+}
+
 function BuildOrder() {
   const [startTime, playing, timeAlreadyPlayed, togglePlaying, updateGameTime] = usePlayingState();
   const [gameTime, setGameTime] = useState(0);
@@ -172,9 +181,16 @@ function BuildOrder() {
     return <div>Loading</div>;
   }
 
-  const changeGameTime = (time:number, pause= true) => {
+  const changeGameTime = (time:number, pause= true, withUpdate = true) => {
+    const endTime = computeEndTime(buildOrder)
+    time = Math.min(endTime, Math.max(time, 0));
     setGameTime(time);
-    updateGameTime(time, pause);
+    if(time === endTime){
+      togglePlaying(gameTime, false);
+    }
+    if(withUpdate){
+      updateGameTime(time, pause);
+    }
   }
 
   const onNewBuildOrderState = (newBuildOrder:IBuildOrder) => {
@@ -195,7 +211,7 @@ function BuildOrder() {
       {showTracker?<BuildOrderTracker buildOrder={buildOrder} startTime={startTime}
                          elapsedTime={timeAlreadyPlayed}
                          playing={playing}
-                         gameTimeChange={setGameTime}
+                         gameTimeChange={(time) => changeGameTime(time, false, false)}
                          onNewBuildOrderState={onNewBuildOrderState}/>:null}
       {playing?<SpeedControls gameTime={gameTime} setGameTime={changeGameTime}/>:null}
     </div>
