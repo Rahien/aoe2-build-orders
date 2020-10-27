@@ -42,10 +42,12 @@ function EditBuildOrder() {
   const loadFromFile = () => {
     setLoadingFromFile(true);
   };
-  const onUpload = (build:IBuildOrder|null) => {
+  const onUpload = (newBuild:IBuildOrder|null) => {
     setLoadingFromFile(false);
-    if(build){
-      setBuildOrder(id, build);
+    if(newBuild){
+      newBuild.name = build.name;
+      setBuildOrder(id, newBuild);
+      history.go(0);
     }
   };
 

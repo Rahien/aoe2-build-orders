@@ -1,5 +1,8 @@
 import React, {useState} from "react";
 import {IBuildOrder} from "./types";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faFileUpload} from "@fortawesome/free-solid-svg-icons";
+import {useClickOutside} from "./hooks";
 
 interface IUploadBuildOrderProps {
   onUpload: (file:IBuildOrder|null) => void
@@ -7,6 +10,10 @@ interface IUploadBuildOrderProps {
 
 const UploadBuildOrder:React.FC<IUploadBuildOrderProps> = ({onUpload}) => {
   const [files, setFiles] = useState<FileList|null>(null);
+  let fileLabel = files?.item(0)?.name || "No file chosen...";
+  const modalRef = useClickOutside(() => {
+    onUpload(null);
+  })
   function handleUpload() {
     if(!files){
       return onUpload(null);
@@ -36,14 +43,22 @@ const UploadBuildOrder:React.FC<IUploadBuildOrderProps> = ({onUpload}) => {
 
 
   return (
-    <div className="upload-build-order">
-      <label>
-        Upload file:
-        <input type="file" onChange={(e) => setFiles(e.currentTarget.files)}/>
+  <div className="upload-build-order-wrap">
+    <div className="upload-build-order" ref={modalRef}>
+      <h2>Upload Build Order</h2>
+      <label className="file-name">{fileLabel}</label>
+      <input id="build-order-file" className="file-upload" type="file" onChange={(e) => setFiles(e.currentTarget.files)}/>
+      <label htmlFor="build-order-file" className="file-upload-label">
+        <FontAwesomeIcon icon={faFileUpload}/>
+        <span>Choose a file</span>
       </label>
-      <button onClick={handleUpload}>Submit</button>
-      <button onClick={cancelUpload}>Cancel</button>
+      <div className="controls">
+        <button onClick={handleUpload}>Submit</button>
+        <button onClick={cancelUpload}>Cancel</button>
+      </div>
     </div>
+  </div>
+
 );
 }
 

@@ -748,3 +748,102 @@ body {
     left: 10px;
   }
 }
+.upload-build-order-wrap {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.8);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+.upload-build-order {
+  width: calc(100vw - 40px);
+  background: #333;
+  border: 5px outset #222;
+  box-sizing: border-box;
+  padding: 1em 2em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  border-right-color: #666;
+  border-bottom-color: #666;
+  padding-bottom: 0;
+  input.file-upload {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+  }
+
+  h2 {
+    margin-top: 0;
+
+  }
+  .controls {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1em;
+    width: calc(100% + 4rem);
+    flex-direction: column;
+  }
+
+  .controls button {
+    background: black;
+    color: white;
+    border: outset 3px #222;
+    padding: 1em 2em;
+    font-weight: bold;
+    outline: none;
+    font-size: 0.8em;
+  }
+
+  h2 {
+    font-size: 2em;
+    margin-bottom: 0.5em;
+    background: black;
+    top: -1rem;
+    position: relative;
+    width: calc(100% + 4rem);
+    padding: 1em;
+    box-sizing: border-box;
+  }
+  label.file-name {
+    margin-bottom: 1.5em;
+  }
+  label.file-upload-label {
+    padding: 1em;
+    font-weight: bold;
+    border: outset 5px #222;
+    font-size: 1em;
+    margin-bottom: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #000;
+  }
+
+  label.file-upload-label svg {
+    margin-right: 1em;
+    font-size: 1.3em;
+  }
+  .controls button {
+    margin-bottom: 0.5em;
+    width: 100%;
+    box-sizing: border-box;
+    display: block;
+    border: none;
+    font-size: 1em;
+    padding: 1.5em;
+    cursor: pointer;
+  }
+
+}
