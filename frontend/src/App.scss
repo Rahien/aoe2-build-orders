@@ -299,8 +299,10 @@ body {
       color: #666;
     }
     .sub-steps {
-      border-top: dashed #666 4px;
+      border-top: dashed #666 1px;
       margin-top: 1em;
+      width: calc(100% + 2rem);
+      margin-left: -1rem;
     }
     .step-info {
       display: flex;
@@ -364,10 +366,13 @@ body {
   flex-shrink: 0;
   position: relative;
   label {
+    background: black;
+    padding: 0 0.3em;
+    border-radius: 5px;
+    bottom: -5px;
+    right: -8px;
     color: white;
     position: absolute;
-    bottom: 0;
-    right: 0;
   }
   .icon-text {
     display: none;

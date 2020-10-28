@@ -53,7 +53,8 @@ export const defaultBuildOrders:{[id:string]: IBuildOrder} = {
         kind:"move",
         from: "boar",
         target: "boar",
-        targetText: "2"
+        targetText: "2",
+        duringPrevious: true
       },
       {
         kind: "create",
@@ -99,30 +100,34 @@ export const defaultBuildOrders:{[id:string]: IBuildOrder} = {
         techs: ['doublebitaxe', 'horsecollar']
       },
       {
-        kind: "build",
-        build: "stable",
-        from: "builder"
-      },
-      {
-        kind:"move",
-        from: "sheep",
-        target: "farm",
-        number: 4
-      },
-      {
         kind:"create",
         target: "farm",
         number: 8
       },
       {
-        kind:"build",
+        kind: "build",
+        build: "stable",
         from: "builder",
-        build: "range"
+        duringPrevious: true
       },
       {
         kind:"build",
         from: "builder",
-        build: "blacksmith"
+        build: "range",
+        duringPrevious: true
+      },
+      {
+        kind:"build",
+        from: "builder",
+        build: "blacksmith",
+        duringPrevious: true
+      },
+      {
+        kind:"move",
+        from: "sheep",
+        target: "farm",
+        number: 4,
+        duringPrevious: true
       },
       {
         kind:"create",
@@ -195,7 +200,8 @@ export const defaultBuildOrders:{[id:string]: IBuildOrder} = {
         kind:"move",
         from: "boar",
         target: "boar",
-        targetText: "2"
+        targetText: "2",
+        duringPrevious: true
       },
       {
         kind: "create",
@@ -209,7 +215,8 @@ export const defaultBuildOrders:{[id:string]: IBuildOrder} = {
       {
         kind: "move",
         from: "boar",
-        target: "farm"
+        target: "farm",
+        duringPrevious: true
       },
       {
         kind: "create",
@@ -246,33 +253,36 @@ export const defaultBuildOrders:{[id:string]: IBuildOrder} = {
         techs: ['doublebitaxe', 'horsecollar']
       },
       {
-        kind: "build",
-        from: "berries",
-        build: "range",
-        buildAmount: 2,
-        number: 2,
-        target: "gold"
-      },
-      {
-        kind: "build",
-        from: "builder",
-        build: "blacksmith"
-      },
-      {
         kind:"create",
         target: "gold",
         number: 3
       },
       {
-        kind: "move",
+        kind: "build",
         from: "berries",
-        target: "farm",
-        number: 2
+        build: "range",
+        buildAmount: 2,
+        number: 2,
+        target: "gold",
+        duringPrevious: true
+      },
+      {
+        kind: "build",
+        from: "builder",
+        build: "blacksmith",
+        duringPrevious: true
       },
       {
         kind:"create",
         target: "farm",
         number: 10
+      },
+      {
+        kind: "move",
+        from: "berries",
+        target: "farm",
+        number: 2,
+        duringPrevious: true
       },
       {
         kind:"wheelbarrow",
@@ -336,7 +346,8 @@ export const defaultBuildOrders:{[id:string]: IBuildOrder} = {
         kind:"move",
         from: "boar",
         target: "boar",
-        targetText: "2"
+        targetText: "2",
+        duringPrevious: true
       },
       {
         kind: "create",
@@ -391,14 +402,20 @@ export const defaultBuildOrders:{[id:string]: IBuildOrder} = {
         kind: "age2"
       },
       {
+        kind: "create",
+        target: "wood"
+      },
+      {
         kind: "research",
-        techs: ['doublebitaxe', 'manatarmsupgrade']
+        techs: ['doublebitaxe', 'manatarmsupgrade'],
+        duringPrevious: true
       },
       {
         kind: "move",
         target: "wood",
         from: "sheep",
-        number: 3
+        number: 3,
+        duringPrevious: true
       },
       {
         kind: "build",
@@ -406,7 +423,8 @@ export const defaultBuildOrders:{[id:string]: IBuildOrder} = {
         build: "range",
         buildAmount: 2,
         number: 2,
-        target: "gold"
+        target: "gold",
+        duringPrevious: true
       },
       {
         kind: "build",
@@ -418,11 +436,8 @@ export const defaultBuildOrders:{[id:string]: IBuildOrder} = {
       {
         kind: "build",
         from: "builder",
-        build: "blacksmith"
-      },
-      {
-        kind: "create",
-        target: "wood"
+        build: "blacksmith",
+        duringPrevious: true
       },
       {
         kind:"create",
@@ -433,7 +448,8 @@ export const defaultBuildOrders:{[id:string]: IBuildOrder} = {
         kind: "move",
         from: "berries",
         target: "farm",
-        number: 3
+        number: 3,
+        duringPrevious: true
       },
       {
         kind:"create",
@@ -502,7 +518,8 @@ export const defaultBuildOrders:{[id:string]: IBuildOrder} = {
         kind:"move",
         from: "boar",
         target: "boar",
-        targetText: "2"
+        targetText: "2",
+        duringPrevious: true
       },
       {
         kind: "create",
@@ -516,7 +533,8 @@ export const defaultBuildOrders:{[id:string]: IBuildOrder} = {
       {
         kind: "build",
         build: "barracks",
-        target: "builder"
+        target: "builder",
+        duringPrevious: true
       },
       {
         kind: "build",
@@ -528,7 +546,8 @@ export const defaultBuildOrders:{[id:string]: IBuildOrder} = {
       {
         kind: "move",
         from: "gold",
-        target: "wood"
+        target: "wood",
+        duringPrevious: true
       },
       {
         kind: "create",
@@ -539,7 +558,8 @@ export const defaultBuildOrders:{[id:string]: IBuildOrder} = {
         kind: "move",
         target: "farm",
         from: "sheep",
-        number: 3
+        number: 3,
+        duringPrevious: true
       },
       {
         kind: "loom"
@@ -560,8 +580,14 @@ export const defaultBuildOrders:{[id:string]: IBuildOrder} = {
         kind: "age2"
       },
       {
+        kind: "create",
+        target: "gold",
+        number: 2
+      },
+      {
         kind: "research",
-        techs: ['doublebitaxe', 'manatarmsupgrade']
+        techs: ['doublebitaxe', 'manatarmsupgrade'],
+        duringPrevious: true
       },
       {
         kind: "build",
@@ -569,7 +595,8 @@ export const defaultBuildOrders:{[id:string]: IBuildOrder} = {
         build: "range",
         buildAmount: 2,
         number: 2,
-        target: "gold"
+        target: "gold",
+        duringPrevious: true
       },
       {
         kind: "build",
@@ -581,23 +608,20 @@ export const defaultBuildOrders:{[id:string]: IBuildOrder} = {
       {
         kind: "build",
         from: "builder",
-        build: "blacksmith"
-      },
-      {
-        kind: "create",
-        target: "gold",
-        number: 2
-      },
-      {
-        kind:"move",
-        target: "farms",
-        number: 2,
-        from: "berries"
+        build: "blacksmith",
+        duringPrevious: true
       },
       {
         kind:"create",
         target: "farm",
         number: 11
+      },
+      {
+        kind:"move",
+        target: "farms",
+        number: 2,
+        from: "berries",
+        duringPrevious: true
       },
       {
         kind:"wheelbarrow",
@@ -661,7 +685,8 @@ export const defaultBuildOrders:{[id:string]: IBuildOrder} = {
         kind:"move",
         from: "boar",
         target: "boar",
-        targetText: "2"
+        targetText: "2",
+        duringPrevious: true
       },
       {
         kind: "create",
@@ -676,7 +701,8 @@ export const defaultBuildOrders:{[id:string]: IBuildOrder} = {
         kind: "move",
         number: 2,
         from: "boar",
-        target: "farm"
+        target: "farm",
+        duringPrevious: true
       },
       {
         kind: "create",
@@ -709,19 +735,21 @@ export const defaultBuildOrders:{[id:string]: IBuildOrder} = {
         duringPrevious: true
       },
       {
-        kind: "build",
-        from: "builder",
-        build: "blacksmith"
-      },
-      {
-        kind: "build",
-        from: "builder",
-        build: "stable"
-      },
-      {
         kind: "create",
         number: 2,
         target: "gold"
+      },
+      {
+        kind: "build",
+        from: "builder",
+        build: "blacksmith",
+        duringPrevious: true
+      },
+      {
+        kind: "build",
+        from: "builder",
+        build: "stable",
+        duringPrevious: true
       },
       {
         kind: "age3"
