@@ -12,7 +12,14 @@ export interface IBuildOrderStep {
   techs?: string[],
   duringPrevious?: boolean,
   subSteps?: IBuildOrderStep[],
-  femaleVillager?: boolean
+  femaleVillager?: boolean,
+  resourceChanges?:IResourceChange[]
+}
+
+export interface IResourceChange {
+  target: number,
+  direction: "up"|"down",
+  resource: string
 }
 
 export interface ISortableBuildOrderStep extends IBuildOrderStep {

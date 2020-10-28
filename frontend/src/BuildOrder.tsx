@@ -3,7 +3,7 @@ import BuildOrderStep, {getStepDuration} from "./BuildOrderStep";
 import BuildOrderTracker from "./BuildOrderTracker";
 import BuildOrderHeader from "./BuildOrderHeader";
 import usePlayingState from "./BuildOrderPlayingStateHook";
-import {IBuildOrder, IBuildOrderStep} from "./types";
+import {IBuildOrder, IBuildOrderStep, IResourceChange} from "./types";
 import {getBuildOrder} from "./BuildOrderList";
 import { useParams } from 'react-router-dom';
 import SpeedControls from "./SpeedControls";
@@ -114,6 +114,45 @@ export const computeEndTimes = (buildOrderSteps:IBuildOrderStep[]) => {
   });
 }
 
+export const computeResourceChanges = (buildOrderSteps:IBuildOrderStep[]) => {
+  const resources:{[id:string]: number} = {food: 0, wood: 0, gold: 0, stone: 0};
+  const resourcesToTrack = Object.keys(resources);
+  buildOrderSteps.forEach((step) => {
+    const number = step.number || 1;
+    step.resourceChanges = [] as IResourceChange[];
+    let from = step.from;
+    if(from && ["boar", "sheep", "berries", "farm"].indexOf(from) >= 0){
+      from = "food";
+    }
+    let to = step.target;
+    if(to && ["boar", "secondboar", "sheep", "berries", "farm"].indexOf(to) >= 0){
+      to = "food";
+    }
+    if(from === to){
+      return;
+    }
+    if (from && resourcesToTrack.indexOf(from) >= 0) {
+      let newResource = (resources[from] || 0) - number;
+      resources[from] = newResource
+      step.resourceChanges.push({
+        resource: from,
+        target: newResource,
+        direction: "down"
+      });
+
+    }
+    if(to && resourcesToTrack.indexOf(to) >= 0){
+      let newResourceTo = (resources[to] || 0) + number;
+      resources[to] = newResourceTo
+      step.resourceChanges.push({
+        resource: to,
+        target: newResourceTo,
+        direction: "up"
+      });
+    }
+  });
+}
+
 export const mergeSubsteps: (steps: IBuildOrderStep[]) => IBuildOrderStep[] = (buildOrderSteps) => {
   const newSteps:IBuildOrderStep[] = [];
   let previousStep:(IBuildOrderStep|null) = null;
@@ -147,8 +186,7 @@ const releaseWakeLock = (wakeLockRef:any) => {
 
 const computeEndTime:(buildOrder:IBuildOrder) => number = (buildOrder) => {
   try{
-    const endTime =  buildOrder.steps[buildOrder.steps.length - 1].endTime || 0;
-    return endTime;
+    return buildOrder.steps[buildOrder.steps.length - 1].endTime || 0;
   }catch (e){
     return 0;
   }

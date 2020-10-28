@@ -6,7 +6,12 @@ import UploadBuildOrder from "./UploadBuildOrder";
 import {IBuildOrder, IBuildOrderStep, ISortableBuildOrder, ISortableBuildOrderStep} from "./types";
 import {getBuildOrder, setBuildOrder} from "./BuildOrderList";
 import BuildOrderIconSelect from "./BuildOrderIconSelect";
-import {addResourcesUpToCurrentStep, computeEndTimes, shuffleVillagerGenders} from "./BuildOrder";
+import {
+  addResourcesUpToCurrentStep,
+  computeEndTimes,
+  computeResourceChanges,
+  shuffleVillagerGenders
+} from "./BuildOrder";
 import { v4 as uuidv4 } from 'uuid';
 import { ReactSortable } from "react-sortablejs";
 import BuildOrderStepEdit from "./BuildOrderStepEdit";
@@ -34,6 +39,7 @@ function EditBuildOrder() {
   const updateBuild = (build:ISortableBuildOrder, shuffle:boolean = false) => {
     addResourcesUpToCurrentStep(build, 0);
     computeEndTimes(build.steps);
+    computeResourceChanges(build.steps);
     if(shuffle){
       shuffleVillagerGenders(build.steps);
     }

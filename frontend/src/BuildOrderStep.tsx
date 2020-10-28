@@ -1,6 +1,6 @@
 import React from 'react';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import { faCaretRight } from '@fortawesome/free-solid-svg-icons'
+import { faCaretRight,faLongArrowAltDown,faLongArrowAltUp } from '@fortawesome/free-solid-svg-icons'
 import {StepRenderer, IBuildOrderStep} from "./types";
 import BuildOrderIcon from "./StepIcon";
 
@@ -63,6 +63,24 @@ export interface IBuildOrderStepProps {
   setGameTime?: (time:number) => void
 }
 
+const resourceChanges = function(step:IBuildOrderStep){
+  const resourceChanges = step.resourceChanges;
+  if(!resourceChanges || resourceChanges.length === 0){
+    return null;
+  }
+  const changes = resourceChanges.map((change, index) => {
+    const icon = change.direction === "up"? faLongArrowAltUp:faLongArrowAltDown;
+    return <div className="change" key={index}>
+      <FontAwesomeIcon icon={icon}/>
+      <span className="number">{change.target}</span>
+      <BuildOrderIcon scale={20} icon={change.resource}/>
+    </div>
+  });
+  return <label className="resource-changes">
+    {changes}
+  </label>;
+}
+
 const BuildOrderStep:React.FC<IBuildOrderStepProps> = ({step, setGameTime}) => {
   const stepInfo = (kindMapping[step.kind] || kindMapping['default'])(step);
   const endTime = step.endTime || 0;
@@ -90,6 +108,7 @@ const BuildOrderStep:React.FC<IBuildOrderStepProps> = ({step, setGameTime}) => {
     </div>
     {subSteps}
     <label className="end-time">[{endTimeMinutes}:{endTimeSeconds}]</label>
+    {resourceChanges(step)}
   </div>;
 }
 
