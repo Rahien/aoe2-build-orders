@@ -18,7 +18,8 @@ const kindMapping: {[id:string]: StepRenderer} = {
   },
   "move": (step) => {
     const number = step.number ? <span className="number">x {step.number}</span> : null;
-    const from = step.from?<BuildOrderIcon icon={step.from}/>:null;
+    const fromIcon = step.from === "villager" && step.femaleVillager?"villagerf":step.from;
+    const from = step.from && step.from !== "nothing"?<BuildOrderIcon icon={fromIcon}/>:null;
     return <>
       {from}
       {number}
@@ -48,10 +49,8 @@ const kindMapping: {[id:string]: StepRenderer} = {
     </>
   },
   "default": (step) => {
-    const from = step.from ? `${step.from} -> `:null;
-    const target = step.target ? <BuildOrderIcon icon={step.target} text={step.targetText}/> : null;
     return <>
-      <BuildOrderIcon icon={step.kind}/> {step.number} {from}{target}
+      <BuildOrderIcon icon={step.kind}/>
     </>;
   }
 }
@@ -135,4 +134,8 @@ export const getStepDuration = (step:IBuildOrderStep) => {
     return 75;
   }
   return 0;
+}
+
+export const stepCanProduce = (step:IBuildOrderStep) => {
+  return ['create', 'move', 'build'].indexOf(step.kind) >= 0;
 }

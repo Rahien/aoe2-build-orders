@@ -39,7 +39,7 @@ const getCompletion:(buildOrderSteps: IBuildOrderStep[], timeSinceStart:number) 
   let currentStepPercentage = 0;
   buildOrderSteps.forEach((step) => {
     const duration = getStepDuration(step);
-    if(timeDifferenceLeft > duration){
+    if(timeDifferenceLeft >= duration && uncompletedSteps.length === 0){
       timeDifferenceLeft = Math.round(timeDifferenceLeft - duration);
       completedSteps.push(step);
     }else if(timeDifferenceLeft > 0){
