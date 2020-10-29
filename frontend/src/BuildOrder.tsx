@@ -3,10 +3,11 @@ import BuildOrderStep, {getStepDuration} from "./BuildOrderStep";
 import BuildOrderTracker from "./BuildOrderTracker";
 import BuildOrderHeader from "./BuildOrderHeader";
 import usePlayingState from "./BuildOrderPlayingStateHook";
-import {IBuildOrder, IBuildOrderStep, IResourceChange} from "./types";
+import {IBuildOrder, IBuildOrderStep, IResourceChange, ISortableBuildOrderStep} from "./types";
 import {getBuildOrder} from "./BuildOrderList";
 import { useParams } from 'react-router-dom';
 import SpeedControls from "./SpeedControls";
+import {v4} from "uuid";
 
 export const stepKinds: {[id:string]:string} = {
  "create": "Create Villager",
@@ -166,6 +167,24 @@ export const mergeSubsteps: (steps: IBuildOrderStep[]) => IBuildOrderStep[] = (b
     }
   });
   return newSteps;
+}
+
+export const unfoldSubsteps: (steps: IBuildOrderStep[]) => ISortableBuildOrderStep[] = (buildOrderSteps) => {
+  const newSteps:IBuildOrderStep[] = [];
+  buildOrderSteps.forEach((step) => {
+    newSteps.push(step);
+    if(step.subSteps) {
+      step.subSteps.forEach((substep) => {
+        newSteps.push(substep);
+      });
+    }
+    delete step.subSteps;
+  });
+  const sortableSteps:ISortableBuildOrderStep[] = newSteps.map((step:any) => {
+    step.id = v4();
+    return step as ISortableBuildOrderStep;
+  });
+  return sortableSteps;
 }
 
 const requestWakeLock = (wakeLockRef:any) => {

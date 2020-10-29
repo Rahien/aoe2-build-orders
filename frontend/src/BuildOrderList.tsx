@@ -5,7 +5,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faEllipsisH, faPencilAlt, faPlus} from "@fortawesome/free-solid-svg-icons";
 import { useHistory } from "react-router-dom";
 import { v4 as uuidv4 } from 'uuid';
-import {computeEndTimes, computeResourceChanges, shuffleVillagerGenders} from "./BuildOrder";
+import {computeEndTimes, computeResourceChanges, shuffleVillagerGenders, unfoldSubsteps} from "./BuildOrder";
 
 import {defaultBuildOrders} from "./defaultBuildOrders";
 import {useClickOutside} from "./hooks";
@@ -23,6 +23,7 @@ ensureBuildOrders();
 export function getBuildOrder(id:string){
   const buildOrders = getBuildOrders();
   const build = JSON.parse(JSON.stringify(buildOrders[id]));
+  build.steps = unfoldSubsteps(build.steps);
   computeEndTimes(build.steps);
   computeResourceChanges(build.steps);
   shuffleVillagerGenders(build.steps);

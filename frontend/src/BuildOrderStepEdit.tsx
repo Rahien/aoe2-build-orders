@@ -151,6 +151,7 @@ const BuildOrderStepEdit:React.FC<IBuildOrderStepEditProps> = ({step, onEdit, on
   const [editing, setEditing] = useState(false);
   const doneEditing = (newStep:ISortableBuildOrderStep) => {
     setEditing(false);
+    debugger
     onEdit(newStep)
   };
   const showEdit:React.ReactElement = <EditBuildOrderStep step={step} onEdit={doneEditing} onRemove={onRemove}/>;
