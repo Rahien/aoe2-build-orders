@@ -30,7 +30,7 @@ function computeTrackerPosition(completion: ICompletion):[number,boolean] {
   const currentStepElement = topLevelSteps[completion.completedSteps.length];
   const currentStepHeight = currentStepElement?currentStepElement.scrollHeight:0;
   offset += (completion.currentStepPercentage * currentStepHeight);
-  const changed = currentPosition !== offset;
+  const changed = Math.abs(currentPosition - offset) >= 1;
   return [offset, changed];
 }
 const gameSpeed = 5/3;

@@ -110,6 +110,47 @@ export const shuffleVillagerGenders: (steps: IBuildOrderStep[]) => void = (steps
   });
 }
 
+const getCurrentStepIndex = (buildOrder:IBuildOrder, currentTime:number) => {
+  let currentIndex = -1;
+  debugger
+  buildOrder.steps.forEach((step, index) => {
+    if((step.endTime || 0) <= currentTime){
+      currentIndex = index;
+    }
+  });
+  return currentIndex + 1;
+};
+
+export const getNextRelevantMoment = (buildOrder:IBuildOrder, currentTime: number) => {
+  let currentIndex = getCurrentStepIndex(buildOrder, currentTime);
+  if(currentIndex < 0){
+    currentIndex = 0;
+  }
+  let currentStep = buildOrder.steps[currentIndex];
+  if(!currentStep){
+    currentStep = buildOrder.steps[buildOrder.steps.length -1];
+  }
+  return ( currentStep.endTime || 0 )+ 0.01;
+}
+
+export const getPreviousRelevantMoment = (buildOrder:IBuildOrder, currentTime: number) => {
+  let currentIndex = getCurrentStepIndex(buildOrder, currentTime);
+  if(currentIndex <= 0){
+    return 0;
+  }
+  let currentStep = buildOrder.steps[currentIndex - 1];
+  let duration = getStepDuration(currentStep);
+  while(duration === 0 && currentIndex > 0){
+    currentIndex -= 1;
+    currentStep = buildOrder.steps[currentIndex - 1];
+    duration = (currentStep && getStepDuration(currentStep)) || 0;
+  }
+  if(!currentStep){
+    return 0;
+  }
+  return ( currentStep.endTime || 0 )- duration;
+}
+
 export const computeEndTimes = (buildOrderSteps:IBuildOrderStep[]) => {
   let time = 0;
   buildOrderSteps.forEach((step) => {
@@ -283,6 +324,7 @@ function BuildOrder() {
                          gameTimeChange={(time) => changeGameTime(time, false, false)}
                          onNewBuildOrderState={onNewBuildOrderState}/>:null}
       <SpeedControls gameTime={gameTime}
+                     buildOrder={buildOrder}
                      playing={playing}
                      togglePlaying={() => togglePlaying(gameTime)}
                      setGameTime={changeGameTime}/>
