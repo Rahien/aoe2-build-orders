@@ -1,15 +1,20 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faBackward, faForward} from "@fortawesome/free-solid-svg-icons";
-import {useLongPress} from "./hooks";
+import {faBackward, faForward, faPause, faPlay} from "@fortawesome/free-solid-svg-icons";
+import {useLongPress, useSetting} from "./hooks";
+import CountDown from "./CountDown";
 
 interface ISpeedControlsProps {
+  playing: boolean,
+  togglePlaying: () => void,
   gameTime:number,
   setGameTime: (time:number, pause?:boolean) => void
 }
 
-const SpeedControls:React.FC<ISpeedControlsProps> = ({gameTime, setGameTime}) => {
+const SpeedControls:React.FC<ISpeedControlsProps> = ({playing, togglePlaying, gameTime, setGameTime}) => {
   const step = 5;
+  const [showCountDown, setShowCountDown] = useState(false);
+  const countDownFrom = useSetting<number>("countDown", 3);
   const handleRewind = (times:number) => {
     setGameTime(gameTime - step*times, false);
   }
@@ -22,6 +27,18 @@ const SpeedControls:React.FC<ISpeedControlsProps> = ({gameTime, setGameTime}) =>
       handler(times);
     };
   }
+  const clickPlayPause = () => {
+    if(playing){
+      togglePlaying();
+      setShowCountDown(false);
+    }else if(gameTime < 0.5 && countDownFrom > 0){
+      setShowCountDown(true);
+    }else{
+      togglePlaying();
+    }
+  };
+  const playPauseIcon = playing?faPause:faPlay;
+
   const defaultOptions = {
     shouldPreventDefault: true,
     delay: 300,
@@ -29,14 +46,28 @@ const SpeedControls:React.FC<ISpeedControlsProps> = ({gameTime, setGameTime}) =>
   const longPressEventForward = useLongPress(buildStepHandler(handleFastForward), buildStepHandler(handleFastForward), defaultOptions);
   const longPressEventBackward = useLongPress(buildStepHandler(handleRewind), buildStepHandler(handleRewind), defaultOptions);
 
-  return <>
+  return <div className="play-controls">
     <div className="speedcontrol-button back" {...longPressEventBackward}>
       <FontAwesomeIcon icon={faBackward}/>
+    </div>
+    <div className="play-pause-control" onClick={clickPlayPause}>
+      <FontAwesomeIcon icon={playPauseIcon}/>
     </div>
     <div className="speedcontrol-button forward" {...longPressEventForward}>
       <FontAwesomeIcon icon={faForward}/>
     </div>
-  </>
+    {showCountDown?<CountDown
+      from={countDownFrom}
+      onDone={() => {
+        togglePlaying();
+        setShowCountDown(false);
+      }}
+      onClick={() => {
+        togglePlaying();
+        setShowCountDown(false);
+      }}
+    />: null}
+  </div>
 }
 
 export default SpeedControls;

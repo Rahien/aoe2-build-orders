@@ -9,6 +9,7 @@ import { useParams } from 'react-router-dom';
 import SpeedControls from "./SpeedControls";
 import {v4} from "uuid";
 import {useSetting} from "./hooks";
+import Footer from "./Footer";
 
 export const stepKinds: {[id:string]:string} = {
  "create": "Create Villager",
@@ -274,15 +275,19 @@ function BuildOrder() {
   const showTracker = timeAlreadyPlayed || playing;
   return (
     <div className={`buildOrder ${showPerVillagerMarks?"per-villager-marks":""}`}>
-      <BuildOrderHeader playing={playing} togglePlaying={() => togglePlaying(gameTime)}
-                        buildOrder={buildOrder} gameTime={gameTime} setGameTime={changeGameTime}/>
+      <BuildOrderHeader buildOrder={buildOrder} gameTime={gameTime} setGameTime={changeGameTime}/>
       {steps}
       {showTracker?<BuildOrderTracker buildOrder={buildOrder} startTime={startTime}
                          elapsedTime={timeAlreadyPlayed}
                          playing={playing}
                          gameTimeChange={(time) => changeGameTime(time, false, false)}
                          onNewBuildOrderState={onNewBuildOrderState}/>:null}
-      {playing?<SpeedControls gameTime={gameTime} setGameTime={changeGameTime}/>:null}
+      <SpeedControls gameTime={gameTime}
+                     playing={playing}
+                     togglePlaying={() => togglePlaying(gameTime)}
+                     setGameTime={changeGameTime}/>
+
+      <Footer/>
     </div>
   );
 }
