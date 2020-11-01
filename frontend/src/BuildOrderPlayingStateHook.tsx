@@ -25,7 +25,7 @@ const usePlayingState:(() => [(Date|null),boolean,number,(gameTime:number, playi
     setTimeAlreadyPlayed(gameTime);
     if(pause){
       setStartTime(null);
-    }else{
+    }else if(startTime){
       setStartTime(new Date());
     }
 

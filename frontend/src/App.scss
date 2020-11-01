@@ -68,7 +68,7 @@ body {
 }
 .buildOrder {
   padding-top: 106px;
-  padding-bottom: 89px;
+  padding-bottom: 86px;
 }
 .flex {
   display: flex;
@@ -679,13 +679,11 @@ body {
   }
 }
 .play-controls {
-  border-top: solid 3px #222;
   z-index: 10;
   position: fixed;
   bottom: 0px;
   right: 0px;
   width: 100vw;
-  background: black;
   display: flex;
   justify-content: space-between;
   padding: 5px;

@@ -19,8 +19,9 @@ interface ICompletion {
   currentStepPercentage: number
 }
 
-const computeTrackerPosition = (completion: ICompletion) => {
+function computeTrackerPosition(completion: ICompletion):[number,boolean] {
   let offset = 106;
+  const currentPosition = parseFloat(window.getComputedStyle(document.querySelectorAll(".buildorder-tracker")[0]).getPropertyValue("top"));
   const topLevelSteps = document.querySelectorAll(".buildOrder > .buildorder-step-wrap");
   completion.completedSteps.forEach((step, index) => {
     const elementHeight = topLevelSteps[index].scrollHeight;
@@ -29,7 +30,8 @@ const computeTrackerPosition = (completion: ICompletion) => {
   const currentStepElement = topLevelSteps[completion.completedSteps.length];
   const currentStepHeight = currentStepElement?currentStepElement.scrollHeight:0;
   offset += (completion.currentStepPercentage * currentStepHeight);
-  return offset;
+  const changed = currentPosition !== offset;
+  return [offset, changed];
 }
 const gameSpeed = 5/3;
 const getCompletion:(buildOrderSteps: IBuildOrderStep[], timeSinceStart:number) => ICompletion = (buildOrderSteps, timeSinceStart) => {
@@ -78,9 +80,10 @@ const BuildOrderTracker:React.FC<IBuildOrderTrackerProps> = ({buildOrder, startT
       const timeSinceStart = getTimeSinceStart(startTime, elapsedTime);
       gameTimeChange(timeSinceStart);
       const completion = getCompletion(buildOrder.steps, timeSinceStart);
-      setTrackerPosition(computeTrackerPosition(completion));
+      const [newPosition, changed] = computeTrackerPosition(completion);
+      setTrackerPosition(newPosition);
       handleBuildOrderStateChange(buildOrder, completion, onNewBuildOrderState);
-      if(startTime){
+      if(changed){
         const tracker = document.getElementsByClassName("buildorder-tracker")[0];
         tracker && tracker.scrollIntoView({behavior: "smooth", block: "center"});
       }
