@@ -79,3 +79,9 @@ const preventDefault = (event:Event) => {
     event.preventDefault();
   }
 };
+
+export function useSetting<T>(settingName:string, defaultValue:T):T{
+  const value = JSON.parse(window.localStorage.getItem('settings') || "{}")[settingName];
+  const [state] = useState(typeof value === "undefined"? defaultValue: value);
+  return state;
+}

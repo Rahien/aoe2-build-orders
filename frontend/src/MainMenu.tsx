@@ -1,5 +1,5 @@
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faSync} from "@fortawesome/free-solid-svg-icons";
+import {faSync, faCog} from "@fortawesome/free-solid-svg-icons";
 import React from "react";
 import { useHistory } from "react-router-dom";
 import {defaultBuildOrders} from "./defaultBuildOrders";
@@ -18,6 +18,12 @@ interface IMainMenuProps {
 const MainMenu:React.FC<IMainMenuProps> = () => {
   const history = useHistory();
   return <div className="menu">
+    <div className="menu-item" onClick={() => {
+      history.push('/settings');
+    }}>
+      <FontAwesomeIcon icon={faCog}/>
+      <label>Settings</label>
+    </div>
     <div className="menu-item" onClick={() => {
       handleRestoreDefaults();
       history.go(0);

@@ -8,6 +8,7 @@ import {getBuildOrder} from "./BuildOrderList";
 import { useParams } from 'react-router-dom';
 import SpeedControls from "./SpeedControls";
 import {v4} from "uuid";
+import {useSetting} from "./hooks";
 
 export const stepKinds: {[id:string]:string} = {
  "create": "Create Villager",
@@ -226,6 +227,7 @@ function BuildOrder() {
   const [gameTime, setGameTime] = useState(0);
   const [buildOrder, setBuildOrder] = useState<IBuildOrder|null>(null);
   const wakeLockRef = useRef<any>();
+  const showPerVillagerMarks = useSetting<boolean>("markingPerVil", true);
   const {id} = useParams();
   useEffect(() => {
     const build = getBuildOrder(id);
@@ -271,7 +273,7 @@ function BuildOrder() {
   });
   const showTracker = timeAlreadyPlayed || playing;
   return (
-    <div className="buildOrder">
+    <div className={`buildOrder ${showPerVillagerMarks?"per-villager-marks":""}`}>
       <BuildOrderHeader playing={playing} togglePlaying={() => togglePlaying(gameTime)}
                         buildOrder={buildOrder} gameTime={gameTime} setGameTime={changeGameTime}/>
       {steps}

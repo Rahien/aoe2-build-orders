@@ -5,7 +5,7 @@ import {faPause, faPlay, faEllipsisH} from "@fortawesome/free-solid-svg-icons";
 import {IBuildOrder} from "./types";
 import GameTimeClock from "./GameTimeClock";
 import BuildOrderMenu from "./BuildOrderMenu";
-import {useClickOutside} from "./hooks";
+import {useClickOutside, useSetting} from "./hooks";
 import CountDown from "./CountDown";
 interface IBuildOrderHeaderProps {
   playing: boolean,
@@ -17,6 +17,7 @@ interface IBuildOrderHeaderProps {
 const BuildOrderHeader:React.FC<IBuildOrderHeaderProps> = ({playing, togglePlaying, buildOrder, gameTime, setGameTime}) => {
   const [showMenu, setShowMenu] = useState(false);
   const [showCountDown, setShowCountDown] = useState(false);
+  const countDownFrom = useSetting<number>("countDown", 3);
   const menuRef = useClickOutside(() => {
     setShowMenu(false);
   })
@@ -34,7 +35,7 @@ const BuildOrderHeader:React.FC<IBuildOrderHeaderProps> = ({playing, togglePlayi
     if(playing){
       togglePlaying();
       setShowCountDown(false);
-    }else if(gameTime < 0.5){
+    }else if(gameTime < 0.5 && countDownFrom > 0){
       setShowCountDown(true);
     }else{
       togglePlaying();
@@ -69,7 +70,7 @@ const BuildOrderHeader:React.FC<IBuildOrderHeaderProps> = ({playing, togglePlayi
       </div>
     </div>
     {showCountDown?<CountDown
-      from={3}
+      from={countDownFrom}
       onDone={() => {
         togglePlaying();
         setShowCountDown(false);

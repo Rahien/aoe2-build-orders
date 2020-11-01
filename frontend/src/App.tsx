@@ -9,6 +9,7 @@ import {
 import BuildOrderList from "./BuildOrderList";
 import BMC from "./BuyMeACoffee";
 import EditBuildOrder from "./EditBuildOrder";
+import Settings from "./Settings";
 
 function App() {
   return (
@@ -23,6 +24,9 @@ function App() {
             </Route>
             <Route path="/edit-build/:id">
               <EditBuildOrder/>
+            </Route>
+            <Route path="/settings">
+              <Settings/>
             </Route>
             <Route path="/">
               <BuildOrderList/>

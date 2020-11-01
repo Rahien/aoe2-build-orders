@@ -46,7 +46,7 @@ const stringProperty: (hide:boolean, property: string, state: [(string | undefin
 
 const booleanProperty: (hide:boolean, property: string, state: [(boolean | undefined), React.Dispatch<React.SetStateAction<boolean | undefined>>]) => JSX.Element | null = (hide, property, state) => {
   return hide? null:
-    <div className={`property text ${property}`}>
+    <div className={`property boolean ${property}`}>
       <label>{property}</label>
       <Switch onChange={() => state[1](!state[0])} checked={!!state[0]} />
     </div>;
