@@ -29,14 +29,13 @@ const kindMapping: {[id:string]: StepRenderer} = {
   },
   "build": (step) => {
     const target = step.target ? <BuildOrderIcon icon={step.target} text={step.targetText}/> : null;
-    const moveAmount = step.number?<span className="number">{` x ${step.number}`}</span>:null;
+    const createAmount = step.number?<span className="number">{` x ${step.number}`}</span>:null;
     const fromIcon = step.from === "villager" && step.femaleVillager?"villagerf":step.from;
-    const from = step.from && step.from !== "nothing"?<><BuildOrderIcon icon={fromIcon}/><FontAwesomeIcon icon={faCaretRight}/></>:null;
+    const from = step.from && step.from !== "nothing"?<><BuildOrderIcon icon={fromIcon}/>{createAmount}<FontAwesomeIcon icon={faCaretRight}/></>:null;
     return <>
       {from}
       <BuildOrderIcon icon={step.build || "house"} text={step.buildAmount}/>
       {target && <FontAwesomeIcon icon={faCaretRight}/>}
-      {moveAmount}
       {target}
     </>
   },
@@ -78,6 +77,18 @@ const resourceChanges = function(step:IBuildOrderStep){
   </label>;
 }
 
+const computeStepMarks = function(step:IBuildOrderStep){
+  if(!stepCanProduceVils(step)){
+    return;
+  }
+  const marks = [];
+  const vilCount = step.number || 1;
+  while(marks.length <= vilCount){
+    marks.push(<div className="step-marker" key={marks.length}></div>)
+  }
+  return <div className="step-marks">{marks}</div>;
+}
+
 const BuildOrderStep:React.FC<IBuildOrderStepProps> = ({step, setGameTime}) => {
   const stepInfo = (kindMapping[step.kind] || kindMapping['default'])(step);
   const endTime = step.endTime || 0;
@@ -99,6 +110,8 @@ const BuildOrderStep:React.FC<IBuildOrderStepProps> = ({step, setGameTime}) => {
     subSteps = <div className="sub-steps">{subSteps}</div>;
   }
 
+  const stepMarks = computeStepMarks(step);
+
   return <div className={className} onClick={handleClick}>
     <div className="step-info">
       {stepInfo}
@@ -106,6 +119,7 @@ const BuildOrderStep:React.FC<IBuildOrderStepProps> = ({step, setGameTime}) => {
     {subSteps}
     <label className="end-time">[{endTimeMinutes}:{endTimeSeconds}]</label>
     {resourceChanges(step)}
+    {stepMarks}
   </div>;
 }
 
@@ -138,4 +152,8 @@ export const getStepDuration = (step:IBuildOrderStep) => {
 
 export const stepCanProduce = (step:IBuildOrderStep) => {
   return ['create', 'move', 'build'].indexOf(step.kind) >= 0;
+}
+
+export const stepCanProduceVils = (step:IBuildOrderStep) => {
+  return ['create', 'build'].indexOf(step.kind) >= 0;
 }

@@ -11,7 +11,7 @@ interface BuildOrderIconSelectProps {
 
 const BuildOrderIconSelect:React.FC<BuildOrderIconSelectProps> = ({icon, text, allowText, onIconSelect}) => {
   if(!icon){
-    icon = "villager";
+    icon = "nothing";
   }
   const classes = `edit-buildorderstep-icon`;
   const [selecting, setSelecting] = useState(false);

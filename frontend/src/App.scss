@@ -226,6 +226,10 @@ body {
     background: black;
     margin-right: 10px;
     padding: 0.2em;
+    white-space: nowrap;
+    max-width: calc(100vw - 110px);
+    text-overflow: ellipsis;
+    overflow: hidden;
   }
 
   .resources {
@@ -874,4 +878,34 @@ label.resource-changes {
       margin-left: 0.2em;
     }
   }
+}
+
+
+.step-marks {
+  position: absolute;
+  top: -0.25rem;
+  left: 0;
+  height: calc(100% + 0.5rem);
+  width: 6px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  .step-marker {
+    height: 6px;
+    margin-top: 3px;
+    width: 100%;
+    background: #333;
+    border-radius: 0 200px 200px 0;
+  }
+  .step-marker:first-child {
+    height: 0;
+  }
+
+  .step-marker:last-child {
+    height: 0;
+  }
+}
+
+.sub-steps .step-marks {
+  display: none;
 }
