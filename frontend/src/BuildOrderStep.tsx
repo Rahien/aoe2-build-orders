@@ -1,7 +1,7 @@
 import React from 'react';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import { faCaretRight,faLongArrowAltDown,faLongArrowAltUp } from '@fortawesome/free-solid-svg-icons'
-import {StepRenderer, IBuildOrderStep} from "./types";
+import {StepRenderer, IBuildOrderStep, StepStringRenderer} from "./types";
 import BuildOrderIcon from "./StepIcon";
 
 
@@ -55,6 +55,117 @@ const kindMapping: {[id:string]: StepRenderer} = {
       <BuildOrderIcon icon={step.kind}/>
     </>;
   }
+}
+
+function randomFromArray<T>(list:T[]):T {
+  return list[Math.floor(Math.random()*list.length)];
+}
+
+function replaceVariablesInText(text:string, variables:any): string{
+  let result = text;
+  Object.keys(variables).forEach((key) => {
+    result = result.split(`$${key}`).join(variables[key]);
+  });
+  result = result.split("move it to builder").join("make it a builder");
+  result = result.split("move them to builder").join("make them builders");
+  result = result.split("Move one villager from boar to boar").join("lure the second boar");
+  return result;
+}
+
+const kindMessageMapping: {[id:string]: StepStringRenderer} = {
+  "create": (step) => {
+    let message;
+    if(step.number && step.number > 1){
+      const taskNtoResource = randomFromArray(["The next $number villagers should go to $target", "Send the next $number villagers to $target"]);
+      message = replaceVariablesInText(taskNtoResource, {target: step.target, number: step.number});
+    }else{
+      const task1toResource = randomFromArray(["The next villager should go to $target", "Send the next villager to $target"]);
+      message = replaceVariablesInText(task1toResource, {target: step.target});
+    }
+    return message;
+  },
+  "move": (step) => {
+    let message;
+    if(step.number && step.number > 1){
+      const taskNtoResource = randomFromArray(["Move $number villagers from $from to $target"]);
+      message = replaceVariablesInText(taskNtoResource, {
+        target: step.target,
+        from: step.from,
+        number: step.number
+      });
+    }else{
+      const task1toResource = randomFromArray(["Move one villager from $from to $target"]);
+      message = replaceVariablesInText(task1toResource, {
+        from: step.from,
+        target: step.target
+      });
+    }
+    return message;
+  },
+  "build": (step) => {
+    let message;
+    if(step.from && ["villager", "villagerf"].indexOf(step.from) >= 0){
+      message = "the next villager should build";
+    }else if(step.from && ["nothing", "builder"].indexOf(step.from) < 0){
+      message = "order one villager from $from to build";
+    }else if(step.number && step.number > 1) {
+      message = "$number villagers should build";
+    }else {
+      message = "order a villager to build";
+    }
+    if(step.buildAmount && step.buildAmount > 1){
+      message = `${message} ${step.buildAmount}`
+    } else {
+      message = `${message} $anOrA`;
+    }
+    if(step.buildAmount && step.buildAmount > 1){
+      message = `${message} $builds`
+    }else{
+      message = `${message} $build`
+    }
+    if(step.target && step.target !== "nothing"){
+      message = `${message}. Then move to $target`;
+    }
+    return replaceVariablesInText(message, {
+      from: step.from,
+      target: step.target,
+      number: step.number,
+      anOrA: "aoeiuy".indexOf(step.build?.charAt(0) || "z") > 0?"an":"a",
+      build: step.build || "house"
+    });
+  },
+  "research": (step) => {
+    return `research ${(step.techs || []).join(",")}`;
+  },
+  "wheelbarrow": (step) => {
+    return `research wheelbarrow`;
+  },
+  "age2": (step) => {
+    return `go up to feudal age`;
+  },
+  "age3": (step) => {
+    return `go up to castle age`;
+  },
+  "loom": (step) => {
+    return `research loom`;
+  },"default": (step) => {
+    return 'next step';
+  }
+}
+
+export function getMessageForStep(step:IBuildOrderStep):string{
+  let renderer = kindMessageMapping[step.kind];
+  if(!renderer){
+    renderer = kindMessageMapping["default"];
+  }
+  let message = renderer(step);
+  if(step.subSteps && step.subSteps.length > 0){
+    message += "\n. Meanwhile, ";
+    step.subSteps.forEach((substep) => {
+      message += getMessageForStep(substep) +",\n";
+    })
+  }
+  return message;
 }
 
 export interface IBuildOrderStepProps {

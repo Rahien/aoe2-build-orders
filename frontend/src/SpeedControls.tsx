@@ -24,6 +24,7 @@ const SpeedControls:React.FC<ISpeedControlsProps> = ({playing, buildOrder, toggl
   const handleRewind = (times:number) => {
     let targetTime = gameTime - step*times;
     if(!playing){
+      window.speechSynthesis && window.speechSynthesis.cancel();
       targetTime = getPreviousRelevantMoment(buildOrder, gameTime);
     }
     setGameTime(targetTime, false);
@@ -31,6 +32,7 @@ const SpeedControls:React.FC<ISpeedControlsProps> = ({playing, buildOrder, toggl
   const handleFastForward = (times:number) => {
     let targetTime = gameTime + step*times;
     if(!playing){
+      window.speechSynthesis && window.speechSynthesis.cancel();
       targetTime = getNextRelevantMoment(buildOrder, gameTime);
     }
     setGameTime(targetTime, false);

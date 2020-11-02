@@ -37,6 +37,10 @@ const Settings:React.FC = () => {
       <label>Marking per Villager</label>
       <Switch onChange={() => updateSetting("markingPerVil", !settings.markingPerVil)} checked={!!(settings.markingPerVil == null?true:settings.markingPerVil)} />
     </div>
+    <div className={`property boolean`}>
+      <label>Read Steps Out Loud</label>
+      <Switch onChange={() => updateSetting("readStepsOutLoud", !settings.readStepsOutLoud)} checked={!!(settings.readStepsOutLoud == null?true:settings.readStepsOutLoud)} />
+    </div>
     <button className="cancel" onClick={cancelSettings}>
       <FontAwesomeIcon icon={faTimes}/>
       <span>Cancel</span>

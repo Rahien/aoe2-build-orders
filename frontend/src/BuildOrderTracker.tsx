@@ -2,7 +2,9 @@ import React, {useEffect, useState} from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faChevronLeft, faChevronRight} from "@fortawesome/free-solid-svg-icons";
 import {IBuildOrder, IBuildOrderStep} from "./types";
-import {getStepDuration} from "./BuildOrderStep";
+import {getMessageForStep, getStepDuration} from "./BuildOrderStep";
+import {useSetting} from "./hooks";
+const speech = window.speechSynthesis;
 
 interface IBuildOrderTrackerProps {
   buildOrder: IBuildOrder,
@@ -64,26 +66,73 @@ const getTimeSinceStart: (startTime: (Date | null), elapsedTime: number) => numb
   return timeSinceStart;
 }
 
+const onNewStep = (buildOrder:IBuildOrder, settings:{[id:string]: any}) => {
+  speakNewStepsOutLoud(buildOrder, settings);
+}
+
+const speakNewStepsOutLoud = (buildOrder:IBuildOrder, settings:{[id:string]: any}) => {
+  const readStepOutLoud = settings.readStepsOutLoud;
+  if(!readStepOutLoud){
+    return;
+  }
+  let zeroTimeStepsToDoFirst:IBuildOrderStep[] = [];
+  let seenCurrentStep = false;
+  const currentStep = buildOrder.currentStep;
+  if(!currentStep){
+    return;
+  }
+  buildOrder.steps.forEach((step) => {
+    if(step === currentStep){
+      seenCurrentStep = true;
+    }
+    if(seenCurrentStep){
+      return;
+    }
+    const duration = getStepDuration(step);
+    if(duration > 0){
+      zeroTimeStepsToDoFirst = [];
+    }else{
+      zeroTimeStepsToDoFirst.push(step);
+    }
+
+  });
+  let message = "";
+  if(zeroTimeStepsToDoFirst.length > 0){
+    zeroTimeStepsToDoFirst.forEach((step) => {
+      message += `${getMessageForStep(step)},\n`
+    });
+    message += ", Then, ";
+  }
+  const utterance = new SpeechSynthesisUtterance(message + getMessageForStep(currentStep));
+  utterance.lang = 'en-GB';
+  speech.speak(utterance);
+}
+
 const handleBuildOrderStateChange = (currentBuildOrder:IBuildOrder, completion: ICompletion,
+                                     settings:{[id:string]: any},
                                      onNewBuildOrderState: (buildOrder: IBuildOrder) => void) => {
   const {uncompletedSteps, currentStepPercentage} = completion;
   const newBuildOrder = Object.assign({}, currentBuildOrder);
   newBuildOrder.currentStep = uncompletedSteps[0];
   newBuildOrder.currentStepPercentage = currentStepPercentage;
+  if(newBuildOrder.currentStep !== currentBuildOrder.currentStep){
+    onNewStep(newBuildOrder, settings);
+  }
   onNewBuildOrderState(newBuildOrder);
 };
 
 const BuildOrderTracker:React.FC<IBuildOrderTrackerProps> = ({buildOrder, startTime, elapsedTime, playing, onNewBuildOrderState, gameTimeChange}) => {
   const [trackerPosition, setTrackerPosition] = useState(0);
+  const readStepsOutLoud = useSetting<boolean>("readStepsOutLoud", true)
   useEffect(() => {
     const timeout = window.setTimeout(() => {
       const timeSinceStart = getTimeSinceStart(startTime, elapsedTime);
       gameTimeChange(timeSinceStart);
       const completion = getCompletion(buildOrder.steps, timeSinceStart);
       const [newPosition, changed] = computeTrackerPosition(completion);
-      setTrackerPosition(newPosition);
-      handleBuildOrderStateChange(buildOrder, completion, onNewBuildOrderState);
+      handleBuildOrderStateChange(buildOrder, completion, {readStepsOutLoud: readStepsOutLoud}, onNewBuildOrderState);
       if(changed){
+        setTrackerPosition(newPosition);
         const tracker = document.getElementsByClassName("buildorder-tracker")[0];
         tracker && tracker.scrollIntoView({behavior: "smooth", block: "center"});
       }

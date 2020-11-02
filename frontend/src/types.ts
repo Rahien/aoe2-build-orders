@@ -47,4 +47,5 @@ export interface ISortableBuildOrder extends IBuildOrder {
 }
 
 export type StepRenderer = ((step:IBuildOrderStep) => React.ReactNode);
+export type StepStringRenderer = ((step:IBuildOrderStep) => string);
 

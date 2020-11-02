@@ -112,7 +112,6 @@ export const shuffleVillagerGenders: (steps: IBuildOrderStep[]) => void = (steps
 
 const getCurrentStepIndex = (buildOrder:IBuildOrder, currentTime:number) => {
   let currentIndex = -1;
-  debugger
   buildOrder.steps.forEach((step, index) => {
     if((step.endTime || 0) <= currentTime){
       currentIndex = index;
@@ -241,14 +240,14 @@ export const unfoldSubsteps: (steps: IBuildOrderStep[]) => ISortableBuildOrderSt
 }
 
 const requestWakeLock = (wakeLockRef:any) => {
-  if ('wakeLock' in window.navigator) {
-    try {
+  try{
+    if ('wakeLock' in window.navigator) {
       // @ts-ignore
       window.navigator.wakeLock.request('screen').then((wakeLock:any) => {
         wakeLockRef.current = wakeLock;
       });
-    } catch (err) {
     }
+  } catch (err) {
   }
 }
 
