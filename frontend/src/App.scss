@@ -498,6 +498,9 @@ body {
   transform: scale(0.9);
 }
 
+span.bmc-btn-text {
+  user-select: none;
+}
 .bmc-btn {
   color: #fff;
   background-color: #000000 !important;
