@@ -1,6 +1,9 @@
 .App {
   text-align: center;
 }
+* {
+  user-select: none;
+}
 
 body {
   background: #222;
@@ -45,6 +48,7 @@ body {
   color: white;
   text-align: center;
   padding: 0.5em 1em;
+  user-select: none;
 }
 
 .game-content-useage-notice a {
