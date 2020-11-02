@@ -28,10 +28,13 @@ const kindMapping: {[id:string]: StepRenderer} = {
     </>
   },
   "build": (step) => {
-    const target = step.target ? <BuildOrderIcon icon={step.target} text={step.targetText}/> : null;
-    const createAmount = step.number?<span className="number">{` x ${step.number}`}</span>:null;
+    let target = step.target ? <BuildOrderIcon icon={step.target} text={step.targetText}/> : null;
+    const createAmount = step.number && step.number > 1?<span className="number">{` x ${step.number}`}</span>:null;
     const fromIcon = step.from === "villager" && step.femaleVillager?"villagerf":step.from;
     const from = step.from && step.from !== "nothing"?<><BuildOrderIcon icon={fromIcon}/>{createAmount}<FontAwesomeIcon icon={faCaretRight}/></>:null;
+    if((!step.from || step.from === "nothing") && step.target && step.number){
+      target = <>{target}{createAmount}</>
+    }
     return <>
       {from}
       <BuildOrderIcon icon={step.build || "house"} text={step.buildAmount}/>
@@ -79,6 +82,9 @@ const resourceChanges = function(step:IBuildOrderStep){
 
 const computeStepMarks = function(step:IBuildOrderStep){
   if(!stepCanProduceVils(step)){
+    return;
+  }
+  if(step.kind === "build" && ["villager", "villagerf"].indexOf(step.from || "") < 0){
     return;
   }
   const marks = [];

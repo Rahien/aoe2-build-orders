@@ -278,11 +278,7 @@ function BuildOrder() {
     setBuildOrder(build)
   }, [id]);
   useEffect(() => {
-    if(playing){
-      requestWakeLock(wakeLockRef);
-    }else{
-      releaseWakeLock(wakeLockRef);
-    }
+    requestWakeLock(wakeLockRef);
     return () => {
       releaseWakeLock(wakeLockRef);
     }

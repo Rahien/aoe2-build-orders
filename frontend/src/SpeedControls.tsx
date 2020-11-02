@@ -59,15 +59,19 @@ const SpeedControls:React.FC<ISpeedControlsProps> = ({playing, buildOrder, toggl
   };
   const longPressEventForward = useLongPress(buildStepHandler(handleFastForward), buildStepHandler(handleFastForward), defaultOptions);
   const longPressEventBackward = useLongPress(buildStepHandler(handleRewind), buildStepHandler(handleRewind), defaultOptions);
-
+  const disableContextMenu = (event:React.MouseEvent) => {
+    event.preventDefault();
+    event.stopPropagation();
+    return false;
+  }
   return <div className="play-controls">
-    <div className="speedcontrol-button back" {...longPressEventBackward}>
+    <div className="speedcontrol-button back" {...longPressEventBackward} onContextMenu={disableContextMenu}>
       <FontAwesomeIcon icon={playing?faBackward:faFastBackward}/>
     </div>
-    <div className="play-pause-control" onClick={clickPlayPause}>
+    <div className="play-pause-control" onClick={clickPlayPause} onContextMenu={disableContextMenu}>
       <FontAwesomeIcon icon={playPauseIcon}/>
     </div>
-    <div className="speedcontrol-button forward" {...longPressEventForward}>
+    <div className="speedcontrol-button forward" {...longPressEventForward} onContextMenu={disableContextMenu}>
       <FontAwesomeIcon icon={playing?faForward:faFastForward}/>
     </div>
     {showCountDown?<CountDown
