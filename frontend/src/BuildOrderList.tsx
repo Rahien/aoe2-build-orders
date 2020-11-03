@@ -2,14 +2,12 @@ import {IBuildOrder} from "./types";
 import React, {useState} from "react";
 import BuildOrderIcon from "./StepIcon";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faEllipsisH, faPencilAlt, faPlus} from "@fortawesome/free-solid-svg-icons";
+import {faCog, faPencilAlt, faPlus} from "@fortawesome/free-solid-svg-icons";
 import { useHistory } from "react-router-dom";
 import { v4 as uuidv4 } from 'uuid';
 import {computeEndTimes, computeResourceChanges, shuffleVillagerGenders, unfoldSubsteps} from "./BuildOrder";
 
 import {defaultBuildOrders} from "./defaultBuildOrders";
-import {useClickOutside} from "./hooks";
-import MainMenu from "./MainMenu";
 
 const ensureBuildOrders = () => {
   const availableBuildOrders = getBuildOrders();
@@ -76,10 +74,6 @@ function BuildOrderList() {
     history.push(`/build/${build.id}`);
   }
   const [buildOrders] = useState(getBuildOrders());
-  const [showMenu, setShowMenu] = useState(false);
-  const menuRef = useClickOutside(() => {
-    setShowMenu(false);
-  })
 
   const list = Object.values(buildOrders).map((build) => {
     return <div key={build.id} className="buildorder list-item" onClick={() => goToBuild(build)}>
@@ -98,11 +92,8 @@ function BuildOrderList() {
     <div className="buildorder-list">
       <h1>
         <span>Build Orders</span>
-        <div className="menu" ref={menuRef} onClick={() => setShowMenu(!showMenu)}>
-          <FontAwesomeIcon icon={faEllipsisH}/>
-          {showMenu?
-            <MainMenu hideMenu={(() => setShowMenu(false))}/>
-            :null}
+        <div className="menu" onClick={() => history.push('/settings')}>
+          <FontAwesomeIcon icon={faCog}/>
         </div>
       </h1>
       {list}

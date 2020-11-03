@@ -1,8 +1,10 @@
 import React, {useState} from "react";
-import {faTimes, faCheck} from "@fortawesome/free-solid-svg-icons";
+import {faTimes, faCheck, faSync} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import { useHistory } from "react-router-dom";
 import Switch from "react-switch";
+import {defaultBuildOrders} from "./defaultBuildOrders";
+import {getBuildOrders} from "./BuildOrderList";
 
 
 const Settings:React.FC = () => {
@@ -22,8 +24,20 @@ const Settings:React.FC = () => {
     setSettings(newSettings);
   }
 
+  const handleRestoreDefaults = () => {
+    const buildOrders = getBuildOrders();
+    Object.assign(buildOrders, defaultBuildOrders);
+    localStorage.setItem('buildOrders', JSON.stringify(buildOrders));
+    history.push('/');
+  }
+
+
   return <div className="settings">
     <h1>Settings</h1>
+
+    <div className="version">
+      v.1.0.0
+    </div>
 
     <div className={`property number`}>
       <label>Countdown from</label>
@@ -41,14 +55,19 @@ const Settings:React.FC = () => {
       <label>Read Steps Out Loud</label>
       <Switch onChange={() => updateSetting("readStepsOutLoud", !settings.readStepsOutLoud)} checked={!!(settings.readStepsOutLoud == null?true:settings.readStepsOutLoud)} />
     </div>
-    <button className="cancel" onClick={cancelSettings}>
-      <FontAwesomeIcon icon={faTimes}/>
-      <span>Cancel</span>
+    <button onClick={handleRestoreDefaults}>
+      <FontAwesomeIcon icon={faSync}/>
+      <span>Restore Default Builds</span>
     </button>
     <button onClick={saveSettings}>
       <FontAwesomeIcon icon={faCheck}/>
       <span>Save</span>
     </button>
+    <button className="cancel" onClick={cancelSettings}>
+      <FontAwesomeIcon icon={faTimes}/>
+      <span>Cancel</span>
+    </button>
+
   </div>;
 }
 

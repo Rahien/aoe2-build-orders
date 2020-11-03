@@ -129,3 +129,9 @@ Some icons count as resources and will be taken into account for resource comput
 - **wood:** `wood` or `tree`
 - **gold:** `gold`
 - **stone:** `stone`
+
+## Offline Capabilities
+Once the application is installed on the home screen, it can run in offline mode. However, that means that it will only show updated versions of the app once the application has been closed completely and restarted.
+All of your builds are stored on your device itself (very small files, don't worry). If you want to share your builds, you can export them and share the exported files.
+
+If you want to make sure your app has been updated, go to settings and check whether the version number increased.
