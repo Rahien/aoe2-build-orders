@@ -61,10 +61,37 @@ function randomFromArray<T>(list:T[]):T {
   return list[Math.floor(Math.random()*list.length)];
 }
 
+const specialSpeachTexts:{[id:string]:string} = {
+  'villagerf': "villager",
+  'age2': "feudal age",
+  'mango': "mangonel",
+  'unique': "unique unit",
+  'manatarmsupgrade': "man at arms",
+  'doublebitaxe': "double-bit axe",
+  'manatarms': "man at arms",
+  'eaglescout': "eagle",
+  'age3': "castle age",
+  'horsecollar': "horse collar",
+  'miningcamp': "mining camp",
+  'siegeworkshop': "siege workshop",
+  'tc': "town center",
+  'lumbercamp': "lumber camp",
+  'demo': "demolition ship",
+  'ca': "cavalry archer"
+}
+function getIconText(icon:string):string {
+  const special = specialSpeachTexts[icon];
+  if(special){
+    return special;
+  }
+  return icon;
+}
+
 function replaceVariablesInText(text:string, variables:any): string{
   let result = text;
   Object.keys(variables).forEach((key) => {
-    result = result.split(`$${key}`).join(variables[key]);
+    const valueText = getIconText(variables[key]);
+    result = result.split(`$${key}`).join(valueText);
   });
   result = result.split("move it to builder").join("make it a builder");
   result = result.split("move them to builder").join("make them builders");
@@ -107,11 +134,15 @@ const kindMessageMapping: {[id:string]: StepStringRenderer} = {
     if(step.from && ["villager", "villagerf"].indexOf(step.from) >= 0){
       message = "the next villager should build";
     }else if(step.from && ["nothing", "builder"].indexOf(step.from) < 0){
-      message = "order one villager from $from to build";
+      if(step.number && step.number > 1){
+        message = "order $number villagers from $from to build";
+      }else{
+        message = "order one villager from $from to build";
+      }
     }else if(step.number && step.number > 1) {
       message = "$number villagers should build";
     }else {
-      message = "order a villager to build";
+      message = "build";
     }
     if(step.buildAmount && step.buildAmount > 1){
       message = `${message} ${step.buildAmount}`
@@ -135,7 +166,7 @@ const kindMessageMapping: {[id:string]: StepStringRenderer} = {
     });
   },
   "research": (step) => {
-    return `research ${(step.techs || []).join(",")}`;
+    return `research ${(step.techs || []).map(getIconText).join(",")}`;
   },
   "wheelbarrow": (step) => {
     return `research wheelbarrow`;

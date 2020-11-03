@@ -245,6 +245,8 @@ const requestWakeLock = (wakeLockRef:any) => {
       // @ts-ignore
       window.navigator.wakeLock.request('screen').then((wakeLock:any) => {
         wakeLockRef.current = wakeLock;
+      }).catch(() => {
+        // maybe next time
       });
     }
   } catch (err) {
