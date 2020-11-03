@@ -983,3 +983,13 @@ label.resource-changes {
     margin-left: 0;
   }
 }
+.research-list {
+  width: 100%;
+  align-items: center;
+}
+
+.research-list .tech {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
