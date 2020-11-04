@@ -74,8 +74,10 @@ function BuildOrderList() {
     history.push(`/build/${build.id}`);
   }
   const [buildOrders] = useState(getBuildOrders());
-
-  const list = Object.values(buildOrders).map((build) => {
+  const sortedBuildOrders = Object.values(buildOrders).sort((buildA, buildB) => {
+    return buildA.name < buildB.name?-1:1;
+  });
+  const list = sortedBuildOrders.map((build) => {
     return <div key={build.id} className="buildorder list-item" onClick={() => goToBuild(build)}>
       <BuildOrderIcon icon={build.icon}/>
       <label>{build.name}</label>

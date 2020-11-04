@@ -769,5 +769,516 @@ export const defaultBuildOrders:{[id:string]: IBuildOrder} = {
       },
 
     ]
+  },
+  "6": {
+    name: "22 pop M@A > Towers",
+    id: "6",
+    icon: "tower",
+    steps: [
+      {
+        kind: "build",
+        build: "house",
+        buildAmount: 2,
+        from: "nothing",
+        number: 3,
+        target: "sheep"
+      },
+      {
+        kind: "create",
+        number: 3,
+        target: "sheep"
+      },
+      {
+        kind: "create",
+        target: "wood",
+        number: 4
+      },
+      {
+        kind: "create",
+        target: "boar",
+        number: 1
+      },
+      {
+        kind: "build",
+        from: "villager",
+        build: "house",
+        buildAmount: 2,
+        target: "berries"
+      },
+      {
+        kind: "build",
+        from: "villager",
+        build: "mill",
+        target: "berries"
+      },
+      {
+        kind: "create",
+        target: "berries",
+      },
+      {
+        kind:"move",
+        from: "boar",
+        target: "boar",
+        targetText: "2",
+        duringPrevious: true
+      },
+      {
+        kind: "create",
+        target: "berries",
+        number: 2
+      },
+      {
+        kind: "create",
+        target: "sheep",
+        number: 3
+      },
+      {
+        kind: "build",
+        from: "villager",
+        build: "barracks",
+        target: "sheep"
+      },
+      {
+        kind: "build",
+        build: "militia",
+        from: "nothing",
+        buildAmount: 3,
+        duringPrevious: true
+      },
+
+      {
+        kind: "build",
+        from: "villager",
+        build: "house",
+        target: "gold"
+      },
+      {
+        kind: "create",
+        target: "gold"
+      },
+      {
+        kind: "loom"
+      },
+      {
+        kind: "age2"
+      },
+      {
+        kind:"move",
+        from: "sheep",
+        target: "stone",
+        number: 5,
+        duringPrevious: true
+      },
+      {
+        kind:"move",
+        from: "sheep",
+        target: "tower",
+        number: 3,
+        duringPrevious: true
+      },
+      {
+        kind:"move",
+        from: "gold",
+        target: "tower",
+        number: 2,
+        duringPrevious: true
+      },
+      {
+        kind: "research",
+        techs: ['doublebitaxe', 'manatarmsupgrade']
+      }
+    ]
+  },
+  "7": {
+    name: "26+2 pop Arena FC",
+    id: "7",
+    icon: "castle",
+    steps: [
+      {
+        kind: "build",
+        build: "house",
+        buildAmount: 2,
+        from: "nothing",
+        number: 3,
+        target: "sheep"
+      },
+      {
+        kind: "create",
+        number: 3,
+        target: "sheep"
+      },
+      {
+        kind: "create",
+        target: "wood",
+        number: 4
+      },
+      {
+        kind: "create",
+        target: "boar",
+        number: 1
+      },
+      {
+        kind: "build",
+        from: "villager",
+        build: "house",
+        buildAmount: 2,
+        target: "berries"
+      },
+      {
+        kind: "build",
+        from: "villager",
+        build: "mill",
+        target: "berries"
+      },
+      {
+        kind: "create",
+        target: "berries",
+      },
+      {
+        kind:"move",
+        from: "boar",
+        target: "boar",
+        targetText: "2",
+        duringPrevious: true
+      },
+      {
+        kind: "create",
+        target: "berries",
+        number: 2
+      },
+      {
+        kind: "create",
+        target: "boar",
+        number: 3
+      },
+      {
+        kind: "move",
+        target: "farm",
+        from: "boar",
+        number: 2,
+        duringPrevious: true
+      },
+      {
+        kind: "create",
+        target: "wood",
+        number: 4
+      },
+      {
+        kind: "move",
+        target: "farm",
+        from: "boar",
+        number: 3,
+        duringPrevious: true
+      },
+      {
+        kind: "build",
+        build: "house",
+        duringPrevious: true
+      },
+      {
+        kind: "build",
+        from: "villager",
+        build: "house",
+        target: "gold"
+      },
+      {
+        kind: "create",
+        number: 2,
+        target: "gold"
+      },
+      {
+        kind: "age2"
+      },
+      {
+        kind:"create",
+        target: "farm",
+        number: 2
+      },
+      {
+        kind:"build",
+        build: "market",
+        duringPrevious: true
+      },
+      {
+        kind:"build",
+        build: "blacksmith",
+        duringPrevious: true
+      },
+      {
+        kind: "age3"
+      }
+    ]
+  },
+  "8": {
+    name: "27+2 pop FC - Boom",
+    id: "8",
+    icon: "tc",
+    steps: [
+      {
+        kind: "build",
+        build: "house",
+        buildAmount: 2,
+        from: "nothing",
+        number: 3,
+        target: "sheep"
+      },
+      {
+        kind: "create",
+        number: 3,
+        target: "sheep"
+      },
+      {
+        kind: "create",
+        target: "wood",
+        number: 4
+      },
+      {
+        kind: "create",
+        target: "boar",
+        number: 1
+      },
+      {
+        kind: "build",
+        from: "villager",
+        build: "house",
+        buildAmount: 2,
+        target: "berries"
+      },
+      {
+        kind: "build",
+        from: "villager",
+        build: "mill",
+        target: "berries"
+      },
+      {
+        kind: "create",
+        target: "berries",
+      },
+      {
+        kind:"move",
+        from: "boar",
+        target: "boar",
+        targetText: "2",
+        duringPrevious: true
+      },
+      {
+        kind: "create",
+        target: "berries",
+        number: 2
+      },
+      {
+        kind: "create",
+        target: "boar",
+        number: 2
+      },
+      {
+        kind: "move",
+        target: "farm",
+        from: "boar",
+        number: 2,
+        duringPrevious: true
+      },
+      {
+        kind: "create",
+        target: "wood",
+        number: 5
+      },
+      {
+        kind: "build",
+        build: "house",
+        duringPrevious: true
+      },
+      {
+        kind: "create",
+        number: 3,
+        target: "gold"
+      },
+      {
+        kind: "build",
+        build: "house",
+        duringPrevious: true
+      },
+      {
+        kind: "age2"
+      },
+      {
+        kind: "move",
+        from: "sheep",
+        target: "farm",
+        number: 6,
+        duringPrevious: true
+      },
+      {
+        kind:"create",
+        target: "wood",
+        number: 2
+      },
+      {
+        kind:"build",
+        build: "market",
+        duringPrevious: true
+      },
+      {
+        kind:"build",
+        build: "blacksmith",
+        duringPrevious: true
+      },
+      {
+        kind: "age3"
+      },
+      {
+        kind: "move",
+        from: "berries",
+        target: "wood",
+        number: 3,
+        duringPrevious: true
+      },
+      {
+        kind: "create",
+        target: "farm",
+        number: 20
+      },
+      {
+        kind: "build",
+        build: "tc",
+        buildAmount: 2,
+        duringPrevious: true
+      },
+    ]
+  },
+  "9": {
+    name: "28+2 pop FC - Unique Unit",
+    id: "9",
+    icon: "unique",
+    steps: [
+      {
+        kind: "build",
+        build: "house",
+        buildAmount: 2,
+        from: "nothing",
+        number: 3,
+        target: "sheep"
+      },
+      {
+        kind: "create",
+        number: 3,
+        target: "sheep"
+      },
+      {
+        kind: "create",
+        target: "wood",
+        number: 4
+      },
+      {
+        kind: "create",
+        target: "boar",
+        number: 1
+      },
+      {
+        kind: "build",
+        from: "villager",
+        build: "house",
+        buildAmount: 2,
+        target: "berries"
+      },
+      {
+        kind: "build",
+        from: "villager",
+        build: "mill",
+        target: "berries"
+      },
+      {
+        kind: "create",
+        target: "berries",
+      },
+      {
+        kind:"move",
+        from: "boar",
+        target: "boar",
+        targetText: "2",
+        duringPrevious: true
+      },
+      {
+        kind: "create",
+        target: "berries",
+        number: 2
+      },
+      {
+        kind: "create",
+        target: "boar",
+        number: 2
+      },
+      {
+        kind: "move",
+        target: "farm",
+        from: "boar",
+        number: 2,
+        duringPrevious: true
+      },
+      {
+        kind: "create",
+        target: "wood",
+        number: 5
+      },
+      {
+        kind: "build",
+        build: "house",
+        duringPrevious: true
+      },
+      {
+        kind: "create",
+        number: 3,
+        target: "gold"
+      },
+      {
+        kind: "build",
+        build: "house",
+        duringPrevious: true
+      },
+      {
+        kind: "create",
+        number: 2,
+        target: "stone"
+      },
+      {
+        kind: "age2"
+      },
+      {
+        kind: "move",
+        from: "sheep",
+        target: "farm",
+        number: 5,
+        duringPrevious: true
+      },
+      {
+        kind: "move",
+        from: "sheep",
+        target: "stone",
+        number: 2,
+        duringPrevious: true
+      },
+      {
+        kind:"create",
+        target: "stone",
+        number: 2
+      },
+      {
+        kind:"build",
+        build: "market",
+        duringPrevious: true
+      },
+      {
+        kind:"build",
+        build: "blacksmith",
+        duringPrevious: true
+      },
+      {
+        kind: "age3"
+      },
+      {
+        kind: "build",
+        build: "castle"
+      }
+    ]
   }
 };
