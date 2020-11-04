@@ -6,7 +6,6 @@ import Switch from "react-switch";
 import {defaultBuildOrders} from "./defaultBuildOrders";
 import {getBuildOrders} from "./BuildOrderList";
 
-
 const Settings:React.FC = () => {
   const history = useHistory();
   const [settings, setSettings] = useState(JSON.parse(window.localStorage.getItem('settings') || "{}"));
@@ -36,7 +35,7 @@ const Settings:React.FC = () => {
     <h1>Settings</h1>
 
     <div className="version">
-      v.1.0.0
+      {process.env.REACT_APP_NAME} v.{process.env.REACT_APP_VERSION}
     </div>
 
     <div className={`property number`}>

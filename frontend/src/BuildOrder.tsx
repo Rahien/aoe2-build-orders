@@ -18,6 +18,7 @@ export const stepKinds: {[id:string]:string} = {
  "move": "Move",
  "research": "Research",
  "wheelbarrow": "Wheelbarrow",
+ "note": "Note",
  "age2": "Feudal Age",
  "age3": "Castle Age"
 }

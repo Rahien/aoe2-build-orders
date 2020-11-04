@@ -13,7 +13,8 @@ export interface IBuildOrderStep {
   duringPrevious?: boolean,
   subSteps?: IBuildOrderStep[],
   femaleVillager?: boolean,
-  resourceChanges?:IResourceChange[]
+  resourceChanges?:IResourceChange[],
+  note?: string
 }
 
 export interface IResourceChange {

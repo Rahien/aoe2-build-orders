@@ -50,6 +50,9 @@ const kindMapping: {[id:string]: StepRenderer} = {
       {techs}
     </>
   },
+  "note": (step) => {
+    return <div className="note">{step.note}</div>
+  },
   "default": (step) => {
     return <>
       <BuildOrderIcon icon={step.kind}/>
@@ -179,7 +182,11 @@ const kindMessageMapping: {[id:string]: StepStringRenderer} = {
   },
   "loom": (step) => {
     return `research loom`;
-  },"default": (step) => {
+  },
+  "note": (step) => {
+    return step.note || "missing note";
+  },
+  "default": (step) => {
     return 'next step';
   }
 }

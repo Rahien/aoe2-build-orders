@@ -93,6 +93,7 @@ const EditBuildOrderStep: React.FC<IEditBuildOrderStepProps> = ({step, onEdit, o
   const duringPreviousState = useState(step.duringPrevious);
   const buildState = useState(step.build);
   const buildAmountState = useState(step.buildAmount);
+  const noteState = useState(step.note);
   const [techs, setTechs] = useState(step.techs);
   const doneEditing = () => {
     const newStep = Object.assign(
@@ -107,11 +108,20 @@ const EditBuildOrderStep: React.FC<IEditBuildOrderStepProps> = ({step, onEdit, o
         duringPrevious: duringPreviousState[0],
         build: buildState[0],
         buildAmount: buildAmountState[0],
+        note: noteState[0],
         techs: techs
       }
     );
     onEdit(newStep);
   };
+  if(kind === "note"){
+    return <div className="buildorder-step-edit">
+      {stringProperty(false, "note", noteState)}
+      <button className="remove" onClick={onRemove}><span>Remove</span><FontAwesomeIcon icon={faTrash}/></button>
+      <button onClick={doneEditing}><span>Done</span><FontAwesomeIcon icon={faCheck}/></button>
+    </div>
+  }
+
   const hideFrom = ['age2','age3','loom','create','research'].indexOf(kind) >= 0;
   const hideNumber = ['age2','age3','loom','research'].indexOf(kind) >= 0;
   const hideTarget = ['age2','age3','loom','research'].indexOf(kind) >= 0;
