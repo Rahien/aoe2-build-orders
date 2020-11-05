@@ -32,7 +32,7 @@ const numberProperty: (hide:boolean, property: string, state: [(number | undefin
   return hide? null:
     <div className={`property number ${property}`}>
       <label>{property}</label>
-      <input type="number" min={0} step={1} value={state[0] || 0} onChange={(e) => state[1](parseInt(e.target.value))}/>
+      <input type="number" min={0} step={1} value={state[0]} onChange={(e) => state[1](parseInt(e.target.value))}/>
     </div>;
 }
 const stringProperty: (hide:boolean, property: string, state: [(string | undefined), React.Dispatch<React.SetStateAction<string | undefined>>]) => JSX.Element | null = (hide, property, state) => {
