@@ -125,7 +125,7 @@ the values for `build`, `from`, `target`, `icon` and `techs` are names of icons.
 
 Some icons count as resources and will be taken into account for resource computation:
 - **villager:** `villager` or `villagerf`
-- **food:** `food` or `sheep` or `berries` or `boar`
+- **food:** `food` or `sheep` or `berries` or `boar` or `deer` or `fish`
 - **wood:** `wood` or `tree`
 - **gold:** `gold`
 - **stone:** `stone`

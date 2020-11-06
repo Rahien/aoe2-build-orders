@@ -70,6 +70,11 @@ const specialSpeachTexts:{[id:string]:string} = {
   'mango': "mangonel",
   'unique': "unique unit",
   'manatarmsupgrade': "man at arms",
+  'pikemanupgrade': "pikeman",
+  'crossbowupgrade': "crossbow",
+  'elite skirmisherupgrade': "elite skirmisher",
+  'eagel warriorupgrade': 'eagle warrior',
+  'age4': 'imperial age',
   'doublebitaxe': "double-bit axe",
   'manatarms': "man at arms",
   'eaglescout': "eagle",
@@ -82,6 +87,10 @@ const specialSpeachTexts:{[id:string]:string} = {
   'demo': "demolition ship",
   'ca': "cavalry archer"
 }
+
+export const foodIcons = ['sheep', 'berries', 'farm', 'boar', 'secondboar', 'food', 'mill', 'deer', 'fish'];
+export const woodIcons = ['wood', 'tree', 'lumbercamp'];
+
 function getIconText(icon:string):string {
   const special = specialSpeachTexts[icon];
   if(special){

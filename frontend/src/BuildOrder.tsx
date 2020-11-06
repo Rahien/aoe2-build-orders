@@ -1,5 +1,5 @@
 import React, {useEffect, useRef, useState} from 'react';
-import BuildOrderStep, {getStepDuration, stepCanProduce} from "./BuildOrderStep";
+import BuildOrderStep, {foodIcons, getStepDuration, stepCanProduce, woodIcons} from "./BuildOrderStep";
 import BuildOrderTracker from "./BuildOrderTracker";
 import BuildOrderHeader from "./BuildOrderHeader";
 import usePlayingState from "./BuildOrderPlayingStateHook";
@@ -31,10 +31,10 @@ const addResourcesFromStep = (buildOrder:IBuildOrder, step:IBuildOrderStep, perc
   const checkResources = stepCanProduce(step);
   if(checkResources && step.target){
     const number = Math.floor((step.number || 1) * percentageComplete);
-    if(['sheep', 'berries', 'farm', 'boar', 'food', 'mill'].indexOf(step.target) >= 0){
+    if(foodIcons.indexOf(step.target) >= 0){
       buildOrder.currentFood = (buildOrder.currentFood || 0) + number;
     }
-    if(['wood', 'tree', 'lumbercamp'].indexOf(step.target) >= 0){
+    if(woodIcons.indexOf(step.target) >= 0){
       buildOrder.currentWood = (buildOrder.currentWood || 0) + number;
     }
     if(step.target === "gold"){
@@ -46,10 +46,10 @@ const addResourcesFromStep = (buildOrder:IBuildOrder, step:IBuildOrderStep, perc
   }
   if(checkResources && step.from){
     const number = Math.floor((step.number || 1) * percentageComplete);
-    if(['sheep', 'berries', 'farm', 'boar', 'food', 'mill'].indexOf(step.from) >= 0){
+    if(foodIcons.indexOf(step.from) >= 0){
       buildOrder.currentFood = (buildOrder.currentFood || 0) - number;
     }
-    if(['wood', 'tree', 'lumbercamp'].indexOf(step.from) >= 0){
+    if(woodIcons.indexOf(step.from) >= 0){
       buildOrder.currentWood = (buildOrder.currentWood || 0) - number;
     }
     if(step.from === "gold"){
@@ -170,17 +170,17 @@ export const computeResourceChanges = (buildOrderSteps:IBuildOrderStep[]) => {
       return;
     }
     let from = step.from;
-    if(from && ["boar", "sheep", "berries", "farm"].indexOf(from) >= 0){
+    if(from && foodIcons.indexOf(from) >= 0){
       from = "food";
     }
-    if(from && ["lumbercamp", "tree"].indexOf(from) >= 0){
+    if(from && woodIcons.indexOf(from) >= 0){
       from = "wood";
     }
     let to = step.target;
-    if(to && ["boar", "secondboar", "sheep", "berries", "farm"].indexOf(to) >= 0){
+    if(to && foodIcons.indexOf(to) >= 0){
       to = "food";
     }
-    if(to && ["lumbercamp", "tree"].indexOf(to) >= 0){
+    if(to && woodIcons.indexOf(to) >= 0){
       to = "wood";
     }
     if(from === to){

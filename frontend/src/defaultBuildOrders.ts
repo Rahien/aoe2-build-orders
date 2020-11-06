@@ -637,7 +637,7 @@ export const defaultBuildOrders:{[id:string]: IBuildOrder} = {
     ]
   },
   "5":{
-    name: "28 + 2 pop FC Knights",
+    name: "28+2 pop FC Knights",
     id: "5",
     icon: "knight",
     steps: [

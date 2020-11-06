@@ -37,7 +37,7 @@ const iconPositions = [
   'wheelbarrow',
   'doublebitaxe',
   'manatarms',
-  'eaglescout',
+  'light cav',
   'age3',
   'horsecollar',
   'market',
@@ -67,6 +67,26 @@ const iconPositions = [
   'spear',
   'ca',
   'tower',
+  'chemistry',
+  'fletching',
+  'pikeman',
+  'deer',
+  'pikemanupgrade',
+  'forging',
+  'crossbowupgrade',
+  'bodkin',
+  'crossbow',
+  'scale barding',
+  'scale mail',
+  'padded armor',
+  'elite skirmisherupgrade',
+  'elite skirmisher',
+  'fish',
+  'age4',
+  'silver crown',
+  'eagle warriorupgrade',
+  'gold crown',
+  'eagle warrior',
   'nothing'
 ];
 
@@ -75,6 +95,14 @@ const BuildOrderIcon:React.FC<IBuildOrderIconProps> = ({icon, scale, text}) => {
   if(!icon){
     icon = "villager";
   }
+  const classes = `buildorderstep-icon ${icon}`;
+  scale = scale || 50;
+  let position = iconPositions.findIndex((currentIcon) => {
+    return currentIcon === (icon||"").toLowerCase();
+  });
+  if(position < 0){
+    icon = "nothing";
+  }
   if(icon === "nothing"){
     return <div className="buildorderstep-icon nothing">
       <span className="icon-text"></span>
@@ -82,14 +110,6 @@ const BuildOrderIcon:React.FC<IBuildOrderIconProps> = ({icon, scale, text}) => {
     </div>;
   }
 
-  const classes = `buildorderstep-icon ${icon}`;
-  scale = scale || 50;
-  let position = iconPositions.findIndex((currentIcon) => {
-    return currentIcon === (icon||"").toLowerCase();
-  });
-  if(position < 0){
-    position = 0;
-  }
   const positionX = Math.floor(position % 20);
   const positionY = Math.floor(position / 20);
   const style = {
