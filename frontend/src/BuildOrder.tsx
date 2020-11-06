@@ -20,7 +20,9 @@ export const stepKinds: {[id:string]:string} = {
  "wheelbarrow": "Wheelbarrow",
  "note": "Note",
  "age2": "Feudal Age",
- "age3": "Castle Age"
+ "age3": "Castle Age",
+ "age4": "Imperial Age"
+
 }
 
 const addResourcesFromStep = (buildOrder:IBuildOrder, step:IBuildOrderStep, percentageComplete: number = 1) => {

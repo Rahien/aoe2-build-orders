@@ -189,6 +189,9 @@ const kindMessageMapping: {[id:string]: StepStringRenderer} = {
   "age3": (step) => {
     return `go up to castle age`;
   },
+  "age4": (step) => {
+    return `go up to imperial age`;
+  },
   "loom": (step) => {
     return `research loom`;
   },
@@ -310,6 +313,23 @@ export const getStepDuration = (step:IBuildOrderStep) => {
   }
   if(step.kind === "wheelbarrow"){
     return 75;
+  }
+  if(step.kind === "research"){
+    let sum = 0;
+    (step.techs || []).forEach((tech) => {
+      if(tech === "age2"){
+        sum += 130;
+      } else if(tech === "age3"){
+        sum += 160;
+      } else if(tech === "age4"){
+        sum += 190;
+      } else if(tech === "wheelbarrow"){
+        sum += 75;
+      } else if(tech === "loom"){
+        sum += 25;
+      }
+    });
+    return sum;
   }
   return 0;
 }

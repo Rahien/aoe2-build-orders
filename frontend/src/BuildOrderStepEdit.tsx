@@ -122,9 +122,9 @@ const EditBuildOrderStep: React.FC<IEditBuildOrderStepProps> = ({step, onEdit, o
     </div>
   }
 
-  const hideFrom = ['age2','age3','loom','create','research'].indexOf(kind) >= 0;
-  const hideNumber = ['age2','age3','loom','research'].indexOf(kind) >= 0;
-  const hideTarget = ['age2','age3','loom','research'].indexOf(kind) >= 0;
+  const hideFrom = ['age2','age3','age4', 'loom','create','research'].indexOf(kind) >= 0;
+  const hideNumber = ['age2','age3','age4', 'loom','research'].indexOf(kind) >= 0;
+  const hideTarget = ['age2','age3','age4', 'loom','research'].indexOf(kind) >= 0;
   const hideBuild = ['build'].indexOf(kind) < 0;
   const from = iconProperty(hideFrom, "from", fromState);
   const fromNumber = numberProperty(hideNumber, 'number', fromNumberState);
