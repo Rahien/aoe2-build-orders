@@ -167,6 +167,17 @@ body {
   .buildorderstep-icon {
     margin-right: 0;
   }
+  .flex {
+    align-items: flex-start;
+    label {
+      margin-bottom: 0.5em;
+      margin-top: 0.5em;
+      display: block;
+      font-size: 0.8em;
+      width: auto;
+    }
+  }
+
 }
 .select-icon-wrap {
   position: fixed;

@@ -28,7 +28,7 @@ const kindMapping: {[id:string]: StepRenderer} = {
     </>
   },
   "build": (step) => {
-    let target = step.target ? <BuildOrderIcon icon={step.target} text={step.targetText}/> : null;
+    let target = step.target && step.target !== "nothing"? <BuildOrderIcon icon={step.target} text={step.targetText}/> : null;
     const createAmount = step.number && step.number > 1?<span className="number">{` x ${step.number}`}</span>:null;
     const fromIcon = step.from === "villager" && step.femaleVillager?"villagerf":step.from;
     const from = step.from && step.from !== "nothing"?<><BuildOrderIcon icon={fromIcon}/>{createAmount}<FontAwesomeIcon icon={faCaretRight}/></>:null;

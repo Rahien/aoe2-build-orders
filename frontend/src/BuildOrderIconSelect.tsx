@@ -2,6 +2,84 @@ import React, { useState} from "react";
 import BuildOrderIcon, {iconNames} from "./StepIcon";
 import {useClickOutside} from "./hooks";
 
+const resourceIcons = [
+  'food',
+  'wood',
+  'gold',
+  'stone',
+  'sheep',
+  'boar',
+  'berries',
+  'farm',
+  'tree',
+  'population'
+];
+
+const unitIcons = [
+  'villager',
+  'villagerf',
+  'militia',
+  'spear',
+  'manatarms',
+  'eagle',
+  'skirmisher',
+  'archer',
+  'ca',
+  'scout',
+  'knight',
+  'camel',
+  'lancer',
+  'elephant',
+  'ram',
+  'mango',
+  'scorpion',
+  'unique',
+  'fishingship',
+  'galley',
+  'fireship',
+  'demo',
+  'monk'
+];
+
+const buildingIcons = [
+  'builder',
+  'house',
+  'mill',
+  'lumbercamp',
+  'miningcamp',
+  'barracks',
+  'range',
+  'stable',
+  'dock',
+  'market',
+  'blacksmith',
+  'siegeworkshop',
+  'krepost',
+  'monastery',
+  'castle',
+  'tc',
+  'university',
+  'tower'
+];
+
+const researchIcons = [
+  'loom',
+  'doublebitaxe',
+  'horsecollar',
+  'wheelbarrow',
+  'manatarmsupgrade',
+  'ballistics',
+  'age2',
+  'age3',
+];
+
+const otherIcons = iconNames.filter((name) => {
+  return resourceIcons.indexOf(name) < 0 &&
+    unitIcons.indexOf(name) < 0 &&
+    buildingIcons.indexOf(name) < 0 &&
+    researchIcons.indexOf(name) < 0;
+});
+
 interface BuildOrderIconSelectProps {
   icon?:string,
   allowText?: boolean,
@@ -19,14 +97,20 @@ const BuildOrderIconSelect:React.FC<BuildOrderIconSelectProps> = ({icon, text, a
   const menuRef = useClickOutside(() => {
     setSelecting(false);
   })
-  const options = iconNames.map((option) => {
-    return <div key={option} className="icon-option" onClick={() => {
-      onIconSelect(option);
-      setSelecting(false);
-    }}>
-      <BuildOrderIcon icon={option}/>
-    </div>
-  });
+  function makeOptionList(name:string, icons:string[]){
+    const options = icons.map((option) => {
+      return <div key={option} className="icon-option" onClick={() => {
+        onIconSelect(option);
+        setSelecting(false);
+      }}>
+        <BuildOrderIcon icon={option}/>
+      </div>
+    });
+    return <div className="icon-select-group">
+      <label>{name}</label>
+      {options}
+    </div> ;
+  }
   let selectIcon = null;
   if(selecting){
     selectIcon = <div className="select-icon-wrap">
@@ -38,7 +122,17 @@ const BuildOrderIconSelect:React.FC<BuildOrderIconSelectProps> = ({icon, text, a
                  onIconSelect(icon, newText);
                }
              }}/>:null}
-      {options}
+       <div className="flex">
+         <div className="left">
+           {makeOptionList('Resources', resourceIcons)}
+           {makeOptionList('Units', unitIcons)}
+         </div>
+         <div className="right">
+           {makeOptionList('Buildings', buildingIcons)}
+           {makeOptionList('Research', researchIcons)}
+           {makeOptionList('Other', otherIcons)}
+         </div>
+       </div>
      </div>
     </div>
   }
