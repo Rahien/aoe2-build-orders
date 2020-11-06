@@ -10,6 +10,7 @@ export interface IBuildOrderStep {
   targetText?: string,
   endTime?: number,
   techs?: string[],
+  age?:string,
   duringPrevious?: boolean,
   subSteps?: IBuildOrderStep[],
   femaleVillager?: boolean,

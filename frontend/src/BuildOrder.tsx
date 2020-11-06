@@ -156,9 +156,23 @@ export const getPreviousRelevantMoment = (buildOrder:IBuildOrder, currentTime: n
 
 export const computeEndTimes = (buildOrderSteps:IBuildOrderStep[]) => {
   let time = 0;
+  let age = "age1";
   buildOrderSteps.forEach((step) => {
+    step.age = age;
     time += getStepDuration(step);
     step.endTime = time;
+    if(step.kind === "age2" ||
+      (step.kind === "research" && (step.techs || []).indexOf("age2") >= 0)){
+      age = "age2";
+    }
+    if(step.kind === "age3" ||
+      (step.kind === "research" && (step.techs || []).indexOf("age3") >= 0)){
+      age = "age3";
+    }
+    if(step.kind === "age4" ||
+      (step.kind === "research" && (step.techs || []).indexOf("age4") >= 0)){
+      age = "age4";
+    }
   });
 }
 

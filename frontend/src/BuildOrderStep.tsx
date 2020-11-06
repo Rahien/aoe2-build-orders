@@ -3,6 +3,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import { faCaretRight,faLongArrowAltDown,faLongArrowAltUp } from '@fortawesome/free-solid-svg-icons'
 import {StepRenderer, IBuildOrderStep, StepStringRenderer} from "./types";
 import BuildOrderIcon from "./StepIcon";
+import {speedBonuses} from "./Settings";
 
 
 const kindMapping: {[id:string]: StepRenderer} = {
@@ -293,6 +294,22 @@ const BuildOrderStep:React.FC<IBuildOrderStepProps> = ({step, setGameTime}) => {
 export default BuildOrderStep;
 
 export const getStepDuration = (step:IBuildOrderStep) => {
+  let bonus = 1;
+  if(speedBonuses.persianBonus){
+  debugger;
+    const age = step.age;
+    if(age === "age2"){
+      bonus = 1.1;
+    } else if (age === "age3"){
+      bonus = 1.15;
+    } else if (age === "age4"){
+      bonus = 1.2;
+    }
+  }
+  return getStepDurationWithoutPersianBonus(step) / bonus;
+}
+
+const getStepDurationWithoutPersianBonus = (step:IBuildOrderStep) => {
   if(step.kind === "move"){
     return 0;
   }
@@ -306,10 +323,13 @@ export const getStepDuration = (step:IBuildOrderStep) => {
     return 25;
   }
   if(step.kind === "age2"){
-    return 130;
+    return 130 * (speedBonuses.malayBonus?3/5:1);
   }
   if(step.kind === "age3"){
-    return 160;
+    return 160 * (speedBonuses.malayBonus?3/5:1);
+  }
+  if(step.kind === "age4"){
+    return 190 * (speedBonuses.malayBonus?3/5:1);
   }
   if(step.kind === "wheelbarrow"){
     return 75;
@@ -318,11 +338,11 @@ export const getStepDuration = (step:IBuildOrderStep) => {
     let sum = 0;
     (step.techs || []).forEach((tech) => {
       if(tech === "age2"){
-        sum += 130;
+        sum += 130 * (speedBonuses.malayBonus?3/5:1);
       } else if(tech === "age3"){
-        sum += 160;
+        sum += 160 * (speedBonuses.malayBonus?3/5:1);
       } else if(tech === "age4"){
-        sum += 190;
+        sum += 190 * (speedBonuses.malayBonus?3/5:1);
       } else if(tech === "wheelbarrow"){
         sum += 75;
       } else if(tech === "loom"){

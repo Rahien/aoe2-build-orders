@@ -6,6 +6,12 @@ import Switch from "react-switch";
 import {defaultBuildOrders} from "./defaultBuildOrders";
 import {getBuildOrders} from "./BuildOrderList";
 
+export const speedBonuses = {
+  malayBonus: !!JSON.parse(window.localStorage.getItem("settings") || "{}").malayTC,
+  persianBonus: !!JSON.parse(window.localStorage.getItem("settings") || "{}").persianTC,
+  gameSpeed: JSON.parse(window.localStorage.getItem("settings") || "{}").gameSpeed || 5/3,
+}
+
 const Settings:React.FC = () => {
   const history = useHistory();
   const [settings, setSettings] = useState(JSON.parse(window.localStorage.getItem('settings') || "{}"));
@@ -53,6 +59,22 @@ const Settings:React.FC = () => {
     <div className={`property boolean`}>
       <label>Read Steps Out Loud</label>
       <Switch onChange={() => updateSetting("readStepsOutLoud", !settings.readStepsOutLoud)} checked={!!(settings.readStepsOutLoud == null?true:settings.readStepsOutLoud)} />
+    </div>
+    <div className={`property boolean`}>
+      <label>Malay TC</label>
+      <Switch onChange={() => {
+        const newValue = !settings.malayTC;
+        updateSetting("malayTC", newValue);
+        speedBonuses.malayBonus = newValue;
+      }} checked={!!(settings.malayTC == null?false:settings.malayTC)} />
+    </div>
+    <div className={`property boolean`}>
+      <label>Persian TC</label>
+      <Switch onChange={() => {
+        const newValue = !settings.persianTC;
+        updateSetting("persianTC", newValue);
+        speedBonuses.persianBonus = newValue;
+      }} checked={!!(settings.persianTC == null?false:settings.persianTC)} />
     </div>
     <button onClick={handleRestoreDefaults}>
       <FontAwesomeIcon icon={faSync}/>

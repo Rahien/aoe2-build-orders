@@ -1,6 +1,6 @@
 import {IBuildOrder} from "./types";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faDownload, faBars, faSync, faClone, faTrash} from "@fortawesome/free-solid-svg-icons";
+import {faDownload, faCog, faBars, faSync, faClone, faTrash} from "@fortawesome/free-solid-svg-icons";
 import React from "react";
 import {faPencilAlt} from "@fortawesome/free-solid-svg-icons/faPencilAlt";
 import { useHistory } from "react-router-dom";
@@ -70,6 +70,13 @@ const BuildOrderMenu:React.FC<IBuildOrderMenuProps> = ({build, restartBuild, hid
     }}>
       <FontAwesomeIcon icon={faDownload}/>
       <label>Download</label>
+    </div>
+    <div className="menu-item" onClick={() => {
+      history.push('/settings');
+      hideMenu();
+    }}>
+      <FontAwesomeIcon icon={faCog}/>
+      <label>Settings</label>
     </div>
     <div className="menu-item" onClick={() => {
       deleteBuildOrder(build.id);
