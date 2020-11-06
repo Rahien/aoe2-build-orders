@@ -1280,5 +1280,379 @@ export const defaultBuildOrders:{[id:string]: IBuildOrder} = {
         build: "castle"
       }
     ]
+  },
+  "10": {
+    name: "18 pop Mongol Scouts",
+    id: "10",
+    icon: "scout",
+    steps: [
+      {
+        kind: "build",
+        build: "house",
+        buildAmount: 2,
+        from: "nothing",
+        number: 3,
+        target: "sheep"
+      },
+      {
+        kind: "create",
+        number: 3,
+        target: "sheep"
+      },
+      {
+        kind: "create",
+        target: "wood",
+        number: 3
+      },
+      {
+        kind: "create",
+        target: "boar",
+        number: 1
+      },
+      {
+        kind: "build",
+        from: "villager",
+        build: "house",
+        buildAmount: 2,
+        target: "berries"
+      },
+      {
+        kind: "build",
+        from: "villager",
+        build: "mill",
+        target: "berries"
+      },
+      {
+        kind: "create",
+        target: "berries",
+        number: 2
+      },
+      {
+        kind: "create",
+        target: "boar",
+        number: 3
+      },
+      {
+        kind: "note",
+        note: "Push deer 🦌",
+        duringPrevious: true
+      },
+      {
+        kind: "move",
+        from: "sheep",
+        target: "wood",
+        number: 5
+      },
+      {
+        kind: "age2"
+      },
+      {
+        kind: "build",
+        build: "barracks",
+        duringPrevious: true
+      },
+      {
+        kind:"create",
+        target: "farm",
+        number: 10
+      },
+      {
+        kind: "build",
+        build: "stable",
+        duringPrevious: true
+      },
+      {
+        kind: "note",
+        note: "Attack ASAP",
+        duringPrevious: true
+      }
+    ]
+  },
+  "11": {
+    name: "22 pop Scouts > Castle",
+    id: "11",
+    icon: "scout",
+    steps: [
+      {
+        kind: "build",
+        build: "house",
+        buildAmount: 2,
+        from: "nothing",
+        number: 3,
+        target: "sheep"
+      },
+      {
+        kind: "create",
+        number: 3,
+        target: "sheep"
+      },
+      {
+        kind: "create",
+        target: "wood",
+        number: 3
+      },
+      {
+        kind: "create",
+        target: "boar"
+      },
+      {
+        kind: "create",
+        target: "sheep"
+      },
+      {
+        kind: "build",
+        from: "villager",
+        build: "house",
+        buildAmount: 2,
+        target: "berries"
+      },
+      {
+        kind: "build",
+        from: "villager",
+        build: "mill",
+        target: "berries"
+      },
+      {
+        kind: "create",
+        target: "berries",
+      },
+      {
+        kind:"move",
+        from: "boar",
+        target: "boar",
+        targetText: "2",
+        duringPrevious: true
+      },
+      {
+        kind: "create",
+        target: "berries"
+      },
+      {
+        kind: "create",
+        target: "boar",
+        number: 2
+      },
+      {
+        kind: "create",
+        target: "wood",
+        number: 4
+      },
+      {
+        kind: "loom"
+      },
+      {
+        kind:"move",
+        from: "sheep",
+        target: "wood",
+        number: 3
+      },
+      {
+        kind:"move",
+        from: "boar",
+        target: "farm",
+        number: 2
+      },
+      {
+        kind: "age2"
+      },
+      {
+        kind: "build",
+        build: "barracks",
+        from: "sheep",
+        target: "builder",
+        duringPrevious: true
+      },
+      {
+        kind: "research",
+        techs: ['doublebitaxe', 'horsecollar']
+      },
+      {
+        kind:"create",
+        target: "farm",
+        number: 6
+      },
+      {
+        kind: "build",
+        build: "stable",
+        from: "builder",
+        duringPrevious: true
+      },
+      {
+        kind:"build",
+        from: "builder",
+        build: "blacksmith",
+        duringPrevious: true
+      },
+      {
+        kind:"move",
+        from: "sheep",
+        target: "farm",
+        number: 4,
+        duringPrevious: true
+      },
+      {
+        kind:"create",
+        target: "gold",
+        number: 5
+      },
+      {
+        kind:"create",
+        target: "farm",
+        number: 2
+      },
+      {
+        kind: "wheelbarrow"
+      },
+      {
+        kind: "age3"
+      }
+    ]
+  },
+  "12": {
+    name: "22 pop Scouts > Archers",
+    id: "12",
+    icon: "scout",
+    steps: [
+      {
+        kind: "build",
+        build: "house",
+        buildAmount: 2,
+        from: "nothing",
+        number: 3,
+        target: "sheep"
+      },
+      {
+        kind: "create",
+        number: 3,
+        target: "sheep"
+      },
+      {
+        kind: "create",
+        target: "wood",
+        number: 3
+      },
+      {
+        kind: "create",
+        target: "boar"
+      },
+      {
+        kind: "create",
+        target: "sheep"
+      },
+      {
+        kind: "build",
+        from: "villager",
+        build: "house",
+        buildAmount: 2,
+        target: "berries"
+      },
+      {
+        kind: "build",
+        from: "villager",
+        build: "mill",
+        target: "berries"
+      },
+      {
+        kind: "create",
+        target: "berries",
+      },
+      {
+        kind:"move",
+        from: "boar",
+        target: "boar",
+        targetText: "2",
+        duringPrevious: true
+      },
+      {
+        kind: "create",
+        target: "berries"
+      },
+      {
+        kind: "create",
+        target: "boar",
+        number: 2
+      },
+      {
+        kind: "create",
+        target: "wood",
+        number: 4
+      },
+      {
+        kind: "loom"
+      },
+      {
+        kind:"move",
+        from: "sheep",
+        target: "wood",
+        number: 3
+      },
+      {
+        kind:"move",
+        from: "boar",
+        target: "farm",
+        number: 2
+      },
+      {
+        kind: "age2"
+      },
+      {
+        kind: "build",
+        build: "barracks",
+        from: "sheep",
+        target: "builder",
+        duringPrevious: true
+      },
+      {
+        kind: "research",
+        techs: ['doublebitaxe', 'horsecollar']
+      },
+      {
+        kind:"create",
+        target: "farm",
+        number: 6
+      },
+      {
+        kind: "build",
+        build: "stable",
+        from: "builder",
+        duringPrevious: true
+      },
+      {
+        kind:"move",
+        from: "sheep",
+        target: "farm",
+        number: 4,
+        duringPrevious: true
+      },
+      {
+        kind:"create",
+        target: "gold",
+        number: 10
+      },
+      {
+        kind:"build",
+        from: "builder",
+        build: "blacksmith",
+        duringPrevious: true
+      },
+      {
+        kind:"build",
+        from: "builder",
+        build: "range",
+        buildAmount: 2,
+        duringPrevious: true
+      },
+      {
+        kind:"create",
+        target: "farm",
+        number: 4
+      },
+      {
+        kind: "wheelbarrow"
+      },
+      {
+        kind: "age3"
+      }
+    ]
   }
 };

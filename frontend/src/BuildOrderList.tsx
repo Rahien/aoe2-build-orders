@@ -10,9 +10,20 @@ import {computeEndTimes, computeResourceChanges, shuffleVillagerGenders, unfoldS
 import {defaultBuildOrders} from "./defaultBuildOrders";
 
 const ensureBuildOrders = () => {
-  const availableBuildOrders = getBuildOrders();
+  let availableBuildOrders = getBuildOrders();
   if(!availableBuildOrders || Object.keys(availableBuildOrders).length === 0){
     localStorage.setItem('buildOrders', JSON.stringify(defaultBuildOrders));
+    availableBuildOrders = defaultBuildOrders;
+  }
+  let addedBuild = false;
+  Object.keys(defaultBuildOrders).forEach((defaultBuildOrderId) => {
+    if(!availableBuildOrders[defaultBuildOrderId]){
+      availableBuildOrders[defaultBuildOrderId] = defaultBuildOrders[defaultBuildOrderId];
+      addedBuild = true;
+    }
+  });
+  if(addedBuild){
+    localStorage.setItem('buildOrders', JSON.stringify(availableBuildOrders));
   }
 }
 
