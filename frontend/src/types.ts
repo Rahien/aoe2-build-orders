@@ -41,7 +41,8 @@ export interface IBuildOrder {
   currentWood?: number,
   currentGold?: number,
   currentStone?: number,
-  currentMilitaryPop?: number
+  currentMilitaryPop?: number,
+  attribution?: string
 }
 
 export interface ISortableBuildOrder extends IBuildOrder {

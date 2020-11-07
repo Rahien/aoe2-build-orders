@@ -412,21 +412,35 @@ body {
   justify-content: center;
   font-weight: 500;
   padding: 0.5em;
-  height: 1.7em;
   .control {
     margin-left: 1em;
     font-size: 1em;
   }
   label {
-    width: 80vw;
     overflow: hidden;
     text-overflow: ellipsis;
+  }
+  .label-wrap {
+    display: flex;
+    flex-direction: column;
+    width: 80vw;
+    box-sizing: border-box;
+    flex-shrink: 1;
+  }
+
+  label.attribution {
+    font-size: 0.6em;
+    text-align: center;
+    margin-top: 0.5em;
+    color: #999;
   }
 }
 
 .buildorder.list-item .buildorderstep-icon {
   margin-right: 1em;
-  transform: scale(0.6);
+  width: 34px;
+  height: 34px;
+  background-size: 2000%;
 }
 
 .buildorder-list {

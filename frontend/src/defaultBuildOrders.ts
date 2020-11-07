@@ -3,6 +3,7 @@ import {IBuildOrder} from "./types";
 export const defaultBuildOrders:{[id:string]: IBuildOrder} = {
   "1": {
     name: "22 pop Scouts > Skirms",
+    attribution: "Cicero",
     id: "1",
     icon: "scout",
     steps: [
@@ -154,6 +155,7 @@ export const defaultBuildOrders:{[id:string]: IBuildOrder} = {
   },
   "2": {
     name: "23 pop Archers",
+    attribution: "Cicero",
     id: "2",
     icon: "archer",
     steps: [
@@ -299,6 +301,7 @@ export const defaultBuildOrders:{[id:string]: IBuildOrder} = {
   },
   "3": {
     name: "22 pop M@A > Archers",
+    attribution: "Cicero",
     id: "3",
     icon: "manatarms",
     steps: [
@@ -471,6 +474,7 @@ export const defaultBuildOrders:{[id:string]: IBuildOrder} = {
   },
   "4": {
     name: "28 pop Drush > Archers",
+    attribution: "Cicero",
     id: "4",
     icon: "militia",
     steps: [
@@ -638,6 +642,7 @@ export const defaultBuildOrders:{[id:string]: IBuildOrder} = {
   },
   "5":{
     name: "28+2 pop FC Knights",
+    attribution: "Cicero",
     id: "5",
     icon: "knight",
     steps: [
@@ -772,6 +777,7 @@ export const defaultBuildOrders:{[id:string]: IBuildOrder} = {
   },
   "6": {
     name: "22 pop M@A > Towers",
+    attribution: "Cicero",
     id: "6",
     icon: "tower",
     steps: [
@@ -891,6 +897,7 @@ export const defaultBuildOrders:{[id:string]: IBuildOrder} = {
   },
   "7": {
     name: "26+2 pop Arena FC",
+    attribution: "Cicero",
     id: "7",
     icon: "castle",
     steps: [
@@ -1011,6 +1018,7 @@ export const defaultBuildOrders:{[id:string]: IBuildOrder} = {
   },
   "8": {
     name: "27+2 pop FC - Boom",
+    attribution: "Cicero",
     id: "8",
     icon: "tc",
     steps: [
@@ -1148,6 +1156,7 @@ export const defaultBuildOrders:{[id:string]: IBuildOrder} = {
   },
   "9": {
     name: "28+2 pop FC - Unique Unit",
+    attribution: "Cicero",
     id: "9",
     icon: "unique",
     steps: [
@@ -1283,6 +1292,7 @@ export const defaultBuildOrders:{[id:string]: IBuildOrder} = {
   },
   "10": {
     name: "18 pop Mongol Scouts",
+    attribution: "Cicero",
     id: "10",
     icon: "scout",
     steps: [
@@ -1313,7 +1323,6 @@ export const defaultBuildOrders:{[id:string]: IBuildOrder} = {
         kind: "build",
         from: "villager",
         build: "house",
-        buildAmount: 2,
         target: "berries"
       },
       {
@@ -1352,6 +1361,11 @@ export const defaultBuildOrders:{[id:string]: IBuildOrder} = {
         duringPrevious: true
       },
       {
+        kind: "build",
+        build: "house",
+        duringPrevious: true
+      },
+      {
         kind:"create",
         target: "farm",
         number: 10
@@ -1370,6 +1384,7 @@ export const defaultBuildOrders:{[id:string]: IBuildOrder} = {
   },
   "11": {
     name: "22 pop Scouts > Castle",
+    attribution: "Cicero",
     id: "11",
     icon: "scout",
     steps: [
@@ -1510,6 +1525,7 @@ export const defaultBuildOrders:{[id:string]: IBuildOrder} = {
   },
   "12": {
     name: "22 pop Scouts > Archers",
+    attribution: "Cicero",
     id: "12",
     icon: "scout",
     steps: [
@@ -1652,6 +1668,528 @@ export const defaultBuildOrders:{[id:string]: IBuildOrder} = {
       },
       {
         kind: "age3"
+      }
+    ]
+  },
+  "13": {
+    name: "28 pop drush > FC (archers)",
+    attribution: "Cicero",
+    id: "13",
+    icon: "castle",
+    steps: [
+      {
+        kind: "build",
+        build: "house",
+        buildAmount: 2,
+        from: "nothing",
+        number: 3,
+        target: "sheep"
+      },
+      {
+        kind: "create",
+        number: 3,
+        target: "sheep"
+      },
+      {
+        kind: "create",
+        target: "wood",
+        number: 4
+      },
+      {
+        kind: "create",
+        target: "boar",
+        number: 2
+      },
+      {
+        kind: "build",
+        from: "villager",
+        build: "house",
+        buildAmount: 2,
+        target: "berries"
+      },
+      {
+        kind: "build",
+        from: "villager",
+        build: "mill",
+        target: "berries"
+      },
+      {
+        kind: "create",
+        target: "berries",
+        number: 2
+      },
+      {
+        kind:"move",
+        from: "boar",
+        target: "boar",
+        targetText: "2",
+        duringPrevious: true
+      },
+      {
+        kind: "build",
+        from: "villager",
+        build: "barracks",
+        target: "gold",
+        targetText: "10"
+      },
+      {
+        kind: "create",
+        target: "wood",
+        number: 3
+      },
+      {
+        kind: "move",
+        from: "gold",
+        target: "wood",
+        note: "after collecting 10 gold, move the gold villager to wood",
+        duringPrevious: true
+      },
+      {
+        kind: "create",
+        target: "berries",
+        number: 2
+      },
+      {
+        kind: "create",
+        target: "sheep",
+        number: 6
+      },
+      {
+        kind: "move",
+        from: "sheep",
+        target: "farm",
+        duringPrevious: true
+      },
+      {
+        kind: "loom"
+      },
+      {
+        kind:"move",
+        from: "sheep",
+        target: "gold",
+        number: 4
+      },
+      {
+        kind: "age2"
+      },
+      {
+        kind:"create",
+        target: "gold",
+        number: 2
+      },
+      {
+        kind: "build",
+        build: "range",
+        duringPrevious: true
+      },
+      {
+        kind: "build",
+        build: "blacksmith",
+        duringPrevious: true
+      },
+      {
+        kind: "age3"
+      },
+      {
+        kind: "move",
+        from: "sheep",
+        target: "gold",
+        number: 2,
+        duringPrevious: true
+      },
+      {
+        kind: "move",
+        from: "berries",
+        target: "wood",
+        number: 4,
+        duringPrevious: true
+      },
+      {
+        kind: "move",
+        from: "berries",
+        target: "farm",
+        number: 2,
+        duringPrevious: true
+      },
+      {
+        kind: "build",
+        build: "range",
+        duringPrevious: true
+      },
+      {
+        kind: "research",
+        techs: ['fletching'],
+        duringPrevious: true
+      }
+    ]
+  },
+  "14": {
+    name: "Lithuanian 3 minute drush",
+    attribution: "Hera",
+    id: "14",
+    icon: "militia",
+    steps: [
+      {
+        kind: "build",
+        build: "house",
+        from: "nothing",
+        number: 2,
+        target: "tree"
+      },
+      {
+        kind: "build",
+        build: "barracks",
+        from: "nothing",
+        target: "sheep"
+      },
+      {
+        kind: "create",
+        number: 5,
+        target: "sheep"
+      },
+      {
+        kind: "note",
+        note: "force drop off wood",
+        duringPrevious: true
+      },
+      {
+        kind: "build",
+        build: "house",
+        duringPrevious: true
+      },
+      {
+        kind: "build",
+        build: "militia",
+        buildAmount: 2,
+        duringPrevious: true
+      },
+      {
+        kind: "create",
+        target: "tree",
+        number: 2
+      },
+      {
+        kind: "build",
+        build: "house",
+        duringPrevious: true
+      },
+      {
+        kind: "build",
+        build: "lumbercamp",
+        duringPrevious: true
+      }
+    ]
+  },
+  "15": {
+    name: "16 pop Khmer Scouts",
+    attribution: "HumzaCrumza",
+    id: "15",
+    icon: "scout",
+    steps: [
+      {
+        kind: "build",
+        build: "house",
+        buildAmount: 2,
+        from: "nothing",
+        number: 3,
+        target: "sheep"
+      },
+      {
+        kind: "create",
+        number: 3,
+        target: "sheep"
+      },
+      {
+        kind: "create",
+        target: "boar",
+        number: 2
+      },
+      {
+        kind: "create",
+        target: "sheep",
+        number: 4
+      },
+      {
+        kind:"move",
+        from: "boar",
+        target: "boar",
+        targetText: "2",
+        duringPrevious: true
+      },
+      {
+        kind:"note",
+        note: "push 2 deer",
+        duringPrevious: true
+      },
+      {
+        kind: "create",
+        number: 4,
+        target: "sheep"
+      },
+      {
+        kind: "loom"
+      },
+      {
+        kind:"move",
+        from: "sheep",
+        target: "wood",
+        number: 8
+      },
+      {
+        kind: "age2"
+      },
+      {
+        kind: "create",
+        target: "wood",
+        number: 2
+      },
+      {
+        kind: "research",
+        techs: ['doublebitaxe'],
+        duringPrevious: true
+      },
+      {
+        kind: "build",
+        build: "stable",
+        duringPrevious: true
+      },
+      {
+        kind: "build",
+        build: "scout",
+        buildAmount: 2,
+        duringPrevious: true
+      },
+      {
+        kind: "build",
+        from: "sheep",
+        build: "mill",
+        target: "berries",
+        number: 5,
+        duringPrevious: true
+      },
+      {
+        kind:"create",
+        target: "farm",
+        number: 11
+      },
+      {
+        kind: "research",
+        techs: ['horsecollar'],
+        duringPrevious: true
+      },
+      {
+        kind: "move",
+        from: "sheep",
+        target: "farm",
+        number: 2,
+        duringPrevious: true
+      },
+      {
+        kind: "move",
+        from: "berries",
+        target: "farm",
+        number: 5,
+        duringPrevious: true
+      },
+      {
+        kind: "build",
+        build: "stable",
+        from: "builder",
+        duringPrevious: true
+      },
+      {
+        kind:"build",
+        from: "builder",
+        build: "range",
+        duringPrevious: true
+      },
+      {
+        kind:"create",
+        target: "gold",
+        number: 5
+      },
+      {
+        kind:"wheelbarrow"
+      },
+      {
+        kind:"build",
+        build: "blacksmith",
+        duringPrevious: true
+      },
+      {
+        kind: "age3"
+      }
+    ]
+  },
+  "16": {
+    name: "28 pop Malay Elephants",
+    attribution: "Survivalist",
+    id: "16",
+    icon: "elephant",
+    steps: [
+      {
+        kind: "build",
+        build: "house",
+        buildAmount: 2,
+        from: "nothing",
+        number: 3,
+        target: "sheep"
+      },
+      {
+        kind: "create",
+        number: 3,
+        target: "sheep"
+      },
+      {
+        kind: "create",
+        target: "wood",
+        number: 3
+      },
+      {
+        kind: "create",
+        target: "boar"
+      },
+      {
+        kind: "build",
+        from: "villager",
+        build: "house",
+        buildAmount: 2,
+        target: "berries"
+      },
+      {
+        kind: "build",
+        from: "villager",
+        build: "mill",
+        target: "berries"
+      },
+      {
+        kind: "create",
+        target: "berries",
+      },
+      {
+        kind: "create",
+        target: "wood"
+      },
+      {
+        kind:"create",
+        target: "boar",
+        targetText: "2"
+      },
+      {
+        kind: "create",
+        target: "berries",
+        number: 2
+      },
+      {
+        kind: "create",
+        target: "wood",
+        number: 4
+      },
+      {
+        kind:"move",
+        from: "sheep",
+        target: "farm",
+        number: 2,
+        duringPrevious: true
+      },
+      {
+        kind: "create",
+        number: 2,
+        target: "gold"
+      },
+      {
+        kind: "create",
+        target: "sheep",
+        number: 4
+      },
+      {
+        kind: "move",
+        from: "sheep",
+        target: "farm",
+        number: 5
+      },
+      {
+        kind: "loom"
+      },
+      {
+        kind:"move",
+        from: "sheep",
+        target: "wood",
+        number: 5
+      },
+      {
+        kind: "age2"
+      },
+      {
+        kind: "build",
+        build: "barracks",
+        from: "sheep",
+        target: "builder",
+        duringPrevious: true
+      },
+      {
+        kind:"create",
+        target: "tree",
+        number: 3
+      },
+      {
+        kind: "research",
+        techs: ['doublebitaxe'],
+        duringPrevious: true
+      },
+      {
+        kind: "build",
+        build: "stable",
+        duringPrevious: true
+      },
+      {
+        kind:"build",
+        build: "blacksmith",
+        duringPrevious: true
+      },
+      {
+        kind: "age3"
+      },
+      {
+        kind: "move",
+        from: "wood",
+        target: "farm",
+        number: 8,
+        duringPrevious: true
+      },
+      {
+        kind: "move",
+        from: "berries",
+        target: "gold",
+        number: 4,
+        duringPrevious: true
+      },
+      {
+        kind: "move",
+        from: "berries",
+        target: "wood",
+        number: 1,
+        duringPrevious: true
+      },
+      {
+        kind: "create",
+        target: "wood"
+      },
+      {
+        kind: "build",
+        build: "elephant",
+        buildAmount: 12,
+        duringPrevious: true
+      },
+      {
+        kind: "create",
+        number: 3,
+        target: "farm"
+      },
+      {
+        kind: "note",
+        note: "research bow saw and gold mining",
+        duringPrevious: true
       }
     ]
   }

@@ -90,8 +90,11 @@ function BuildOrderList() {
   });
   const list = sortedBuildOrders.map((build) => {
     return <div key={build.id} className="buildorder list-item" onClick={() => goToBuild(build)}>
-      <BuildOrderIcon icon={build.icon}/>
-      <label>{build.name}</label>
+      <BuildOrderIcon icon={build.icon} scale={34}/>
+      <div className="label-wrap">
+        <label>{build.name}</label>
+        {build.attribution?<label className="attribution">{build.attribution}</label>:null}
+      </div>
       <div className="control" onClick={(event) => {
         history.push(`/edit-build/${build.id}`);
         event.preventDefault();

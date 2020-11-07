@@ -22,6 +22,7 @@ const handleDuplicate = (build:IBuildOrder) => {
   const newBuild = JSON.parse(JSON.stringify(build));
   newBuild.id = id;
   newBuild.name = newBuild.name + " (copy)";
+  delete newBuild.attribution;
   setBuildOrder(id, newBuild);
   return id;
 }
