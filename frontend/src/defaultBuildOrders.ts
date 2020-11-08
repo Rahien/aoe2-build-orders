@@ -2192,5 +2192,181 @@ export const defaultBuildOrders:{[id:string]: IBuildOrder} = {
         duringPrevious: true
       }
     ]
+  },
+  "17": {
+    name: "28 pop drush > FC (knights)",
+    attribution: "Morley Games",
+    id: "17",
+    icon: "knight",
+    steps: [
+      {
+        kind: "build",
+        build: "house",
+        buildAmount: 2,
+        from: "nothing",
+        number: 3,
+        target: "sheep"
+      },
+      {
+        kind: "create",
+        number: 3,
+        target: "sheep"
+      },
+      {
+        kind: "create",
+        target: "wood",
+        number: 4
+      },
+      {
+        kind: "create",
+        target: "boar",
+      },
+      {
+        kind: "build",
+        from: "villager",
+        build: "house",
+        buildAmount: 2,
+        target: "berries"
+      },
+      {
+        kind: "build",
+        from: "villager",
+        build: "mill",
+        target: "berries"
+      },
+      {
+        kind: "create",
+        target: "berries",
+      },
+      {
+        kind:"move",
+        from: "boar",
+        target: "boar",
+        targetText: "2",
+        duringPrevious: true
+      },
+      {
+        kind: "build",
+        from: "villager",
+        build: "barracks",
+        target: "gold",
+        targetText: "10"
+      },
+      {
+        kind: "create",
+        target: "farm"
+      },
+      {
+        kind: "build",
+        build: "barracks",
+        duringPrevious: true
+      },
+      {
+        kind: "build",
+        build: "house",
+        duringPrevious: true
+      },
+      {
+        kind: "create",
+        target: "wood",
+        number: 4
+      },
+      {
+        kind: "move",
+        from: "gold",
+        target: "wood",
+        note: "after collecting 10 gold, move the gold villager to wood",
+        duringPrevious: true
+      },
+      {
+        kind: "create",
+        target: "berries",
+        number: 2
+      },
+      {
+        kind: "create",
+        target: "sheep",
+        number: 5
+      },
+      {
+        kind: "loom"
+      },
+      {
+        kind:"move",
+        from: "sheep",
+        target: "gold",
+        number: 4
+      },
+      {
+        kind: "age2"
+      },
+      {
+        kind: "move",
+        from: "sheep",
+        target: "farm",
+        number: 9,
+        duringPrevious: true
+      },
+      {
+        kind:"create",
+        target: "gold",
+        number: 2
+      },
+      {
+        kind: "build",
+        build: "stable",
+        number: 2,
+        duringPrevious: true
+      },
+      {
+        kind: "build",
+        build: "blacksmith",
+        duringPrevious: true
+      },
+      {
+        kind: "age3"
+      },
+      {
+        kind: "build",
+        build: "stable",
+        duringPrevious: true
+      },
+      {
+        kind: "note",
+        note: "research bloodlines and blacksmith upgrades",
+        duringPrevious: true
+      },
+      {
+        kind: "move",
+        from: "sheep",
+        target: "gold",
+        number: 2,
+        duringPrevious: true
+      },
+      {
+        kind: "create",
+        target: "farm",
+        number: 2
+      },
+      {
+        kind: "research",
+        techs: ['doublebitaxe'],
+        duringPrevious: true
+      },
+      {
+        kind: "move",
+        from: "berries",
+        target: "farm",
+        number: 4,
+        duringPrevious: true
+      },
+      {
+        kind: "move",
+        from: "berries",
+        target: "gold",
+        number: 2,
+        duringPrevious: true
+      }
+    ]
   }
 };
