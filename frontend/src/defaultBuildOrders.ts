@@ -1881,7 +1881,7 @@ export const defaultBuildOrders:{[id:string]: IBuildOrder} = {
     ]
   },
   "15": {
-    name: "16 pop Khmer Scouts",
+    name: "17 pop Khmer Scouts",
     attribution: "HumzaCrumza",
     id: "15",
     icon: "scout",
