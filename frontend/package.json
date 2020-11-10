@@ -1,6 +1,6 @@
 {
   "name": "aoe2-build-orders",
-  "version": "1.4.3",
+  "version": "1.4.4",
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.32",
