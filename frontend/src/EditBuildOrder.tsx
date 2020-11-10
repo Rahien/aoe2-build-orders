@@ -90,14 +90,13 @@ function EditBuildOrder() {
     updateBuild(newBuild);
   };
 
-  const steps = <ReactSortable delay={350} list={build.steps} setList={reorderSteps}>
+  const steps = <ReactSortable delay={1000} list={build.steps} setList={reorderSteps}>
     {build.steps.map((step, index) => {
       return <BuildOrderStepEdit key={step.id} step={step}
                                  onEdit={getStepUpdateHandler(index)}
                                  onRemove={() => removeStep(index)}/>
     })}
   </ReactSortable>
-
 
   return (
     <>

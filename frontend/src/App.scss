@@ -1,8 +1,20 @@
+@font-face {
+  font-family: 'Cookie';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Cookie-Regular'), url(https://fonts.gstatic.com/s/cookie/v12/syky-y18lb0tSbf9kgqS1NDNpg.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
 .App {
   text-align: center;
 }
 * {
   user-select: none;
+}
+input {
+  -webkit-user-select: text;
+  user-select: text;
 }
 
 body {
@@ -242,6 +254,15 @@ body {
     border: ridge #333 3px;
     width: 70px;
     text-align: center;
+    white-space: nowrap;
+    span {
+      padding: 0;
+      margin: 0;
+    }
+    input {
+      margin: 0;
+      padding: 0;
+    }
   }
 
   .resources .buildorderstep-icon {border: ridge 3px #333;}
@@ -547,6 +568,8 @@ span.bmc-btn-text {
   box-sizing: border-box !important;
   margin: 0.5em 1em;
   min-height: 2em;
+  width: fit-content;
+  align-self: center;
 }
 
 .bmc-btn:hover, .bmc-btn:active, .bmc-btn:focus {
