@@ -16,6 +16,13 @@ function App() {
     <div className="App">
       <header className="App-header">
       </header>
+      <div className="new-content-loaded" id="new-content-loaded" onClick={() => {
+        const element = document.getElementById("new-content-loaded");
+        element && element.setAttribute("style", "display: none;");
+      }}>
+        <p>An update is available! </p>
+        <p>Close the app and restart to apply the upgrade</p>
+      </div>
       <div className="App-body">
         <Router>
           <Switch>

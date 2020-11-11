@@ -1,4 +1,5 @@
 import React from "react";
+import icons from "./assets/icons.jpg";
 
 export interface IBuildOrderIconProps {
   icon?: string,
@@ -113,6 +114,7 @@ const BuildOrderIcon:React.FC<IBuildOrderIconProps> = ({icon, scale, text}) => {
   const positionX = Math.floor(position % 20);
   const positionY = Math.floor(position / 20);
   const style = {
+    backgroundImage: `url(${icons})`,
     backgroundPositionY: `${positionY * -scale}px`,
     backgroundPositionX: `${positionX * -scale}px`
   }

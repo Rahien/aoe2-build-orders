@@ -69,7 +69,6 @@ body {
 }
 
 .buildorderstep-icon {
-  background-image: url('/icons.jpg');
   color: transparent;
 }
 
@@ -1047,4 +1046,25 @@ label.resource-changes {
   font-size: 0.8em;
   text-align: right;
   padding: 10px;
+}
+
+.new-content-loaded {
+  font-size: 0.8em;
+  padding: 1em;
+  top: 0;
+  background: #ffb307;
+  font-weight: normal;
+  width: 100vw;
+  display: none;
+  p {
+    margin: 0;
+  }
+  p:first-child{
+    font-weight: bold;
+    font-size: 1.2em;
+    margin-bottom: 0.5em;
+  }
+  p:last-child {
+    font-style: italic;
+  }
 }
