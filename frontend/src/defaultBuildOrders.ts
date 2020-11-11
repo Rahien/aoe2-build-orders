@@ -2368,5 +2368,599 @@ export const defaultBuildOrders:{[id:string]: IBuildOrder} = {
         duringPrevious: true
       }
     ]
+  },
+  "18": {
+    name: "31+2+2 pop Fast Imp",
+    attribution: "Cicero",
+    id: "18",
+    icon: "age4",
+    steps: [
+      {
+        kind: "build",
+        build: "house",
+        buildAmount: 2,
+        from: "nothing",
+        number: 3,
+        target: "sheep"
+      },
+      {
+        kind: "create",
+        number: 3,
+        target: "sheep"
+      },
+      {
+        kind: "create",
+        target: "wood",
+        number: 4
+      },
+      {
+        kind: "create",
+        target: "boar",
+      },
+      {
+        kind: "build",
+        from: "villager",
+        build: "house",
+        buildAmount: 2,
+        target: "berries"
+      },
+      {
+        kind: "build",
+        from: "villager",
+        build: "mill",
+        target: "berries"
+      },
+      {
+        kind: "create",
+        target: "berries",
+      },
+      {
+        kind:"move",
+        from: "boar",
+        target: "boar",
+        targetText: "2",
+        duringPrevious: true
+      },
+      {
+        kind: "create",
+        number: 5,
+        target: "wood"
+      },
+      {
+        kind: "create",
+        number: 5,
+        target: "sheep"
+      },
+      {
+        kind: "move",
+        number: 12,
+        target: "farm",
+        from: "sheep"
+      },
+      {
+        kind: "create",
+        target: "gold",
+        number: 6
+      },
+      {
+        kind: "loom"
+      },
+      {
+        kind: "age2"
+      },
+      {
+        kind:"create",
+        target: "gold",
+        number: 2
+      },
+      {
+        kind: "build",
+        build: "market",
+        duringPrevious: true
+      },
+      {
+        kind: "build",
+        build: "blacksmith",
+        duringPrevious: true
+      },
+      {
+        kind: "age3"
+      },
+      {
+        kind: "research",
+        techs: ["doublebitaxe"],
+        duringPrevious: true
+      },
+      {
+        kind: "create",
+        target: "food",
+        number: 2
+      },
+      {
+        kind: "build",
+        build: "monastery",
+        duringPrevious: true
+      },
+      {
+        kind: "build",
+        build: "siegeworkshop",
+        duringPrevious: true
+      }
+    ]
+  },
+  "19": {
+    name: "28+2+2 pop Byzantine Fast Imp",
+    attribution: "Cicero",
+    id: "19",
+    icon: "age4",
+    steps: [
+      {
+        kind: "build",
+        build: "house",
+        buildAmount: 2,
+        from: "nothing",
+        number: 3,
+        target: "sheep"
+      },
+      {
+        kind: "create",
+        number: 3,
+        target: "sheep"
+      },
+      {
+        kind: "create",
+        target: "wood",
+        number: 4
+      },
+      {
+        kind: "create",
+        target: "boar",
+      },
+      {
+        kind: "build",
+        from: "villager",
+        build: "house",
+        buildAmount: 2,
+        target: "berries"
+      },
+      {
+        kind: "build",
+        from: "villager",
+        build: "mill",
+        target: "berries"
+      },
+      {
+        kind: "create",
+        target: "berries",
+        number: 2
+      },
+      {
+        kind:"move",
+        from: "boar",
+        target: "boar",
+        targetText: "2",
+        duringPrevious: true
+      },
+      {
+        kind: "create",
+        number: 5,
+        target: "wood"
+      },
+      {
+        kind: "create",
+        number: 3,
+        target: "sheep"
+      },
+      {
+        kind: "move",
+        number: 10,
+        target: "farm",
+        from: "sheep"
+      },
+      {
+        kind: "create",
+        target: "gold",
+        number: 4
+      },
+      {
+        kind: "loom"
+      },
+      {
+        kind: "age2"
+      },
+      {
+        kind:"create",
+        target: "gold",
+        number: 2
+      },
+      {
+        kind: "build",
+        build: "market",
+        duringPrevious: true
+      },
+      {
+        kind: "build",
+        build: "blacksmith",
+        duringPrevious: true
+      },
+      {
+        kind: "age3"
+      },
+      {
+        kind: "research",
+        techs: ["doublebitaxe"],
+        duringPrevious: true
+      },
+      {
+        kind: "create",
+        target: "food",
+        number: 2
+      },
+      {
+        kind: "build",
+        build: "monastery",
+        duringPrevious: true
+      },
+      {
+        kind: "build",
+        build: "siegeworkshop",
+        duringPrevious: true
+      }
+    ]
+  },
+  "20": {
+    name: "26 pop Fire Galleys",
+    attribution: "Cicero",
+    id: "20",
+    icon: "fireship",
+    steps: [
+      {
+        kind: "build",
+        build: "house",
+        buildAmount: 2,
+        from: "nothing",
+        number: 3,
+        target: "sheep"
+      },
+      {
+        kind: "create",
+        number: 3,
+        target: "sheep"
+      },
+      {
+        kind: "create",
+        target: "wood",
+        number: 4
+      },
+      {
+        kind: "create",
+        target: "boar",
+      },
+      {
+        kind: "build",
+        from: "villager",
+        build: "dock",
+        target: "builder"
+      },
+      {
+        kind: "create",
+        number: 2,
+        target: "wood"
+      },
+      {
+        kind:"move",
+        from: "boar",
+        target: "boar",
+        targetText: "2",
+        duringPrevious: true
+      },
+      {
+        kind: "create",
+        number: 7,
+        target: "sheep"
+      },
+      {
+        kind: "build",
+        build: "fishingship",
+        buildAmount: 4,
+        duringPrevious: true
+      },
+      {
+        kind: "loom"
+      },
+      {
+        kind: "age2"
+      },
+      {
+        kind: "move",
+        from: "sheep",
+        number: 9,
+        target: "wood",
+        duringPrevious: true
+      },
+      {
+        kind: "move",
+        from: "sheep",
+        number: 5,
+        target: "gold",
+        duringPrevious: true
+      },
+      {
+        kind: "build",
+        build: "dock",
+        duringPrevious: true
+      },
+      {
+        kind: "research",
+        techs: ["doublebitaxe"]
+      },
+      {
+        kind:"create",
+        target: "gold",
+        number: 6
+      },
+      {
+        kind: "build",
+        build: "dock",
+        duringPrevious: true
+      },
+      {
+        kind: "create",
+        target: "berries",
+        number: 6
+      },
+      {
+        kind: "build",
+        build: "mill",
+        duringPrevious: true
+      },
+      {
+        kind: "create",
+        target: "farm",
+        number: 8
+      }
+    ]
+  },
+  "21": {
+    name: "22 pop Eagle Scouts",
+    attribution: "Cicero",
+    id: "21",
+    icon: "eagle",
+    steps: [
+      {
+        kind: "build",
+        build: "house",
+        buildAmount: 2,
+        from: "nothing",
+        number: 3,
+        target: "sheep"
+      },
+      {
+        kind: "create",
+        number: 3,
+        target: "sheep"
+      },
+      {
+        kind: "create",
+        target: "wood",
+        number: 4
+      },
+      {
+        kind: "create",
+        target: "boar",
+      },
+      {
+        kind: "build",
+        from: "villager",
+        build: "house",
+        buildAmount: 2,
+        target: "berries"
+      },
+      {
+        kind: "build",
+        from: "villager",
+        build: "mill",
+        target: "berries"
+      },
+      {
+        kind: "create",
+        number: 2,
+        target: "berries",
+      },
+      {
+        kind:"move",
+        from: "boar",
+        target: "boar",
+        targetText: "2",
+        duringPrevious: true
+      },
+      {
+        kind: "create",
+        number: 3,
+        target: "boar"
+      },
+      {
+        kind:"move",
+        from: "boar",
+        target: "farm",
+        number: 2,
+        duringPrevious: true
+      },
+      {
+        kind: "create",
+        number: 3,
+        target: "wood"
+      },
+      {
+        kind: "loom"
+      },
+      {
+        kind: "age2"
+      },
+      {
+        kind: "move",
+        from: "sheep",
+        number: 4,
+        target: "gold",
+        duringPrevious: true
+      },
+      {
+        kind: "build",
+        build: "barracks",
+        buildAmount: 2,
+        duringPrevious: true
+      },
+      {
+        kind: "research",
+        techs: ["doublebitaxe", "horsecollar"]
+      },
+      {
+        kind: "create",
+        number: 3,
+        target: "wood"
+      },
+      {
+        kind: "build",
+        build: "blacksmith",
+        duringPrevious: true
+      },
+      {
+        kind:"create",
+        target: "gold",
+        number: 6
+      },
+      {
+        kind:"create",
+        target: "farm",
+        number: 10
+      }
+    ]
+  },
+  "22": {
+    name: "22 + 2 Italian FC",
+    attribution: "Morley Games",
+    id: "22",
+    icon: "castle",
+    steps: [
+      {
+        kind: "build",
+        build: "house",
+        buildAmount: 2,
+        from: "nothing",
+        number: 3,
+        target: "sheep"
+      },
+      {
+        kind: "create",
+        number: 3,
+        target: "sheep"
+      },
+      {
+        kind: "create",
+        target: "tree",
+        number: 1
+      },
+      {
+        kind: "build",
+        from: "villager",
+        build: "house",
+        target: "berries"
+      },
+      {
+        kind: "build",
+        from: "villager",
+        build: "mill",
+        target: "berries"
+      },
+      {
+        kind: "create",
+        number: 1,
+        target: "berries",
+      },
+      {
+        kind:"create",
+        target: "boar",
+        targetText: "2"
+      },
+      {
+        kind: "create",
+        number: 2,
+        target: "tree"
+      },
+      {
+        kind: "build",
+        build: "house",
+        duringPrevious: true
+      },
+      {
+        kind:"create",
+        target: "wood",
+        number: 4
+      },
+      {
+        kind: "create",
+        number: 2,
+        target: "boar"
+      },
+      {
+        kind: "move",
+        number: 2,
+        from: "boar",
+        target: "farm",
+        duringPrevious: true
+      },
+      {
+        kind: "create",
+        number: 2,
+        target: "gold"
+      },
+      {
+        kind: "loom"
+      },
+      {
+        kind: "age2"
+      },
+      {
+        kind: "move",
+        from: "sheep",
+        number: 4,
+        target: "gold",
+        duringPrevious: true
+      },
+      {
+        kind: "create",
+        number: 2,
+        target: "wood"
+      },
+      {
+        kind: "build",
+        build: "blacksmith",
+        duringPrevious: true
+      },
+      {
+        kind: "build",
+        build: "market",
+        duringPrevious: true
+      },
+      {
+        kind: "age3"
+      },
+      {
+        kind: "research",
+        techs: ["horsecollar","doublebitaxe"],
+        duringPrevious: true
+      },
+      {
+        kind:"create",
+        target: "farm",
+        number: 20
+      },
+      {
+        kind: "build",
+        build: "tc",
+        buildAmount: 2,
+        duringPrevious: true
+      }
+    ]
   }
 };
