@@ -136,7 +136,7 @@ const BuildOrderTracker:React.FC<IBuildOrderTrackerProps> = ({buildOrder, startT
         const tracker = document.getElementsByClassName("buildorder-tracker")[0];
         tracker && tracker.scrollIntoView({behavior: "smooth", block: "center"});
       }
-    }, 200);
+    }, 350);
     return () => clearTimeout(timeout);
   } );
   const style = {
