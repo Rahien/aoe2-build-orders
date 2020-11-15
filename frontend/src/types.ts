@@ -52,3 +52,15 @@ export interface ISortableBuildOrder extends IBuildOrder {
 export type StepRenderer = ((step:IBuildOrderStep) => React.ReactNode);
 export type StepStringRenderer = ((step:IBuildOrderStep) => string);
 
+export interface BeforeInstallPromptEvent extends Event {
+
+  readonly platforms: Array<string>;
+
+  readonly userChoice: Promise<{
+    outcome: 'accepted' | 'dismissed',
+    platform: string
+  }>;
+
+  prompt(): Promise<void>;
+
+}

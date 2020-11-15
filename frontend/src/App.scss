@@ -1070,3 +1070,46 @@ label.resource-changes {
     font-style: italic;
   }
 }
+.install-app{
+  display: none;
+}
+.install-app.browser-tab {
+  position: fixed;
+  bottom: 1em;
+  background: #222;
+  width: 80%;
+  left: 10%;
+  padding: 1em;
+  box-sizing: border-box;
+  z-index: 10;
+  color: white;
+  font-size: 1.5em;
+  border: outset  #333 5px;
+  border-right-color: #666;
+  border-bottom-color: #666;
+  background: #090909;
+  font-weight: bold;
+  &.hidden {
+    display: none;
+  }
+  &.shown {
+    display: block;
+  }
+
+  svg.fa-mobile-alt {
+    margin-right: 0.7em;
+  }
+  button {
+    background: none;
+    outline: none;
+    border: none;
+    color: white;
+    font-size: 1em;
+    background: red;
+    padding: 0.5em 1em;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: none;
+  }
+}
