@@ -296,7 +296,6 @@ export default BuildOrderStep;
 export const getStepDuration = (step:IBuildOrderStep) => {
   let bonus = 1;
   if(speedBonuses.persianBonus){
-  debugger;
     const age = step.age;
     if(age === "age2"){
       bonus = 1.1;
