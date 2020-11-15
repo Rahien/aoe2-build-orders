@@ -72,7 +72,7 @@ const onNewStep = (buildOrder:IBuildOrder, settings:{[id:string]: any}) => {
 
 const speakNewStepsOutLoud = (buildOrder:IBuildOrder, settings:{[id:string]: any}) => {
   const readStepOutLoud = settings.readStepsOutLoud;
-  if(!readStepOutLoud){
+  if(!readStepOutLoud || !speech){
     return;
   }
   let zeroTimeStepsToDoFirst:IBuildOrderStep[] = [];

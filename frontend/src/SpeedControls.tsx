@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useRef, useState} from 'react';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faBackward, faForward, faFastForward, faFastBackward, faPause, faPlay} from "@fortawesome/free-solid-svg-icons";
 import {useLongPress, useSetting} from "./hooks";
@@ -9,6 +9,7 @@ import {
   getPreviousRelevantMoment,
 } from "./BuildOrder";
 
+
 interface ISpeedControlsProps {
   playing: boolean,
   buildOrder: IBuildOrder,
@@ -17,10 +18,33 @@ interface ISpeedControlsProps {
   setGameTime: (time:number, pause?:boolean) => void
 }
 
+function readCountDown(readOutLoud: boolean, countDownFrom: number, countDownTimeout: React.MutableRefObject<null|number>){
+  if(!readOutLoud || !window.speechSynthesis){
+    return;
+  }
+  if(countDownFrom <= 0){
+    const utterance = new SpeechSynthesisUtterance("Go!");
+    utterance.lang = 'en-GB';
+    window.speechSynthesis.speak(utterance);
+  }else {
+    const utterance = new SpeechSynthesisUtterance(""+countDownFrom);
+    utterance.lang = 'en-GB';
+    window.speechSynthesis.speak(utterance);
+    countDownTimeout.current = window.setTimeout(() => {
+      readCountDown(readOutLoud, countDownFrom - 1, countDownTimeout);
+    }, 1000);
+  }
+}
+
 const SpeedControls:React.FC<ISpeedControlsProps> = ({playing, buildOrder, togglePlaying, gameTime, setGameTime}) => {
   const step = 5;
   const [showCountDown, setShowCountDown] = useState(false);
   const countDownFrom = useSetting<number>("countDown", 3);
+  const readStepsOutLoud = useSetting<boolean>("readStepsOutLoud", true)
+  const countDownTimeout = useRef<number|null>(null);
+  const clearReadCountDown = () => {
+    countDownTimeout.current && clearTimeout(countDownTimeout.current);
+  };
   const handleRewind = (times:number) => {
     let targetTime = gameTime - step*times;
     if(!playing){
@@ -47,10 +71,13 @@ const SpeedControls:React.FC<ISpeedControlsProps> = ({playing, buildOrder, toggl
     if(playing){
       togglePlaying();
       setShowCountDown(false);
+      clearReadCountDown();
     }else if(gameTime < 0.5 && countDownFrom > 0){
+      readCountDown(readStepsOutLoud, countDownFrom, countDownTimeout);
       setShowCountDown(true);
     }else{
       togglePlaying();
+      readCountDown(readStepsOutLoud, 0, countDownTimeout);
     }
   };
   const playPauseIcon = playing?faPause:faPlay;
@@ -84,6 +111,7 @@ const SpeedControls:React.FC<ISpeedControlsProps> = ({playing, buildOrder, toggl
       }}
       onClick={() => {
         togglePlaying();
+        clearReadCountDown();
         setShowCountDown(false);
       }}
     />: null}
