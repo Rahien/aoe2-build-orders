@@ -1073,7 +1073,7 @@ label.resource-changes {
 .install-app{
   display: none;
 }
-.install-app.browser-tab {
+.install-app.standalone,.install-app.standalone-ios {
   position: fixed;
   bottom: 1em;
   background: #222;
