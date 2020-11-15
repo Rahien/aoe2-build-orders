@@ -1084,32 +1084,35 @@ label.resource-changes {
   z-index: 10;
   color: white;
   font-size: 1.5em;
-  border: outset  #333 5px;
+  border: outset #333 5px;
   border-right-color: #666;
   border-bottom-color: #666;
   background: #090909;
   font-weight: bold;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
   &.hidden {
     display: none;
   }
   &.shown {
-    display: block;
+    display: flex;
   }
 
   svg.fa-mobile-alt {
     margin-right: 0.7em;
   }
   button {
-    background: none;
     outline: none;
     border: none;
     color: white;
     font-size: 1em;
-    background: red;
     padding: 0.5em 1em;
     position: absolute;
     top: 0;
     right: 0;
     background: none;
+    padding-right: 0.5em;
+    font-size: 0.8em;
   }
 }
