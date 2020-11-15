@@ -134,7 +134,11 @@ const BuildOrderTracker:React.FC<IBuildOrderTrackerProps> = ({buildOrder, startT
       if(changed){
         setTrackerPosition(newPosition);
         const tracker = document.getElementsByClassName("buildorder-tracker")[0];
-        tracker && tracker.scrollIntoView({behavior: "smooth", block: "center"});
+        try{
+          tracker && tracker.scrollIntoView({behavior: "smooth", block: "center"});
+        }catch (e){
+          tracker && tracker.scrollIntoView();
+        }
       }
     }, 350);
     return () => clearTimeout(timeout);
