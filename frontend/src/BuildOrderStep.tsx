@@ -319,7 +319,7 @@ const getStepDurationWithoutPersianBonus = (step:IBuildOrderStep) => {
     return ['villager', 'villagerf'].indexOf(step.from || "") >= 0? 25:0;
   }
   if(step.kind === "loom"){
-    return 25;
+    return 25 / (speedBonuses.portugueseTechs?1.3:1);
   }
   if(step.kind === "age2"){
     return 130 * (speedBonuses.malayBonus?3/5:1);
@@ -331,7 +331,7 @@ const getStepDurationWithoutPersianBonus = (step:IBuildOrderStep) => {
     return 190 * (speedBonuses.malayBonus?3/5:1);
   }
   if(step.kind === "wheelbarrow"){
-    return 75;
+    return 75 / (speedBonuses.portugueseTechs?1.3:1);
   }
   if(step.kind === "research"){
     let sum = 0;
@@ -343,9 +343,9 @@ const getStepDurationWithoutPersianBonus = (step:IBuildOrderStep) => {
       } else if(tech === "age4"){
         sum += 190 * (speedBonuses.malayBonus?3/5:1);
       } else if(tech === "wheelbarrow"){
-        sum += 75;
+        sum += (75 / (speedBonuses.portugueseTechs?1.3:1));
       } else if(tech === "loom"){
-        sum += 25;
+        sum += (25 / (speedBonuses.portugueseTechs?1.3:1));
       }
     });
     return sum;

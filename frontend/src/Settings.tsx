@@ -9,6 +9,7 @@ import {getBuildOrders} from "./BuildOrderList";
 export const speedBonuses = {
   malayBonus: !!JSON.parse(window.localStorage.getItem("settings") || "{}").malayTC,
   persianBonus: !!JSON.parse(window.localStorage.getItem("settings") || "{}").persianTC,
+  portugueseTechs: !!JSON.parse(window.localStorage.getItem("settings") || "{}").portugueseTechs,
   gameSpeed: JSON.parse(window.localStorage.getItem("settings") || "{}").gameSpeed || 5/3,
 }
 
@@ -75,6 +76,14 @@ const Settings:React.FC = () => {
         updateSetting("persianTC", newValue);
         speedBonuses.persianBonus = newValue;
       }} checked={!!(settings.persianTC == null?false:settings.persianTC)} />
+    </div>
+    <div className={`property boolean`}>
+      <label>Portuguese Techs</label>
+      <Switch onChange={() => {
+        const newValue = !settings.portugueseTechs;
+        updateSetting("portugueseTechs", newValue);
+        speedBonuses.portugueseTechs = newValue;
+      }} checked={!!(settings.portugueseTechs == null?false:settings.portugueseTechs)} />
     </div>
     <button onClick={handleRestoreDefaults}>
       <FontAwesomeIcon icon={faSync}/>
