@@ -1,6 +1,6 @@
-import React, {useCallback, useEffect, useRef, useState} from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 
-export const useClickOutside = (onClickOutside:()=>void) => {
+export const useClickOutside = (onClickOutside: () => void) => {
   const menuRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
@@ -18,22 +18,22 @@ export const useClickOutside = (onClickOutside:()=>void) => {
   }, [menuRef, onClickOutside]);
 
   return menuRef;
-}
+};
 
 export const useLongPress = (
-  onLongPress:(times:number)=>void,
-  onClick:(times:number)=>void,
+  onLongPress: (times: number) => void,
+  onClick: (times: number) => void,
   { shouldPreventDefault = true, delay = 300 } = {}
 ) => {
   const [longPressTriggered, setLongPressTriggered] = useState(false);
-  const timeout = useRef<number|null>();
+  const timeout = useRef<number | null>();
   const target = useRef<HTMLElement>();
   const times = useRef<number>(1);
   const start = useCallback(
-    event => {
+    (event) => {
       if (shouldPreventDefault && event.target) {
         event.target.addEventListener("touchend", preventDefault, {
-          passive: false
+          passive: false,
         });
         target.current = event.target;
       }
@@ -60,28 +60,33 @@ export const useLongPress = (
   );
 
   return {
-    onMouseDown: (e:React.MouseEvent) => start(e),
-    onTouchStart: (e:React.TouchEvent) => start(e),
-    onMouseUp: (e:React.MouseEvent) => clear(e),
-    onMouseLeave: (e:React.MouseEvent) => clear(e, false),
-    onTouchEnd: (e:React.TouchEvent) => clear(e)
+    onMouseDown: (e: React.MouseEvent) => start(e),
+    onTouchStart: (e: React.TouchEvent) => start(e),
+    onMouseUp: (e: React.MouseEvent) => clear(e),
+    onMouseLeave: (e: React.MouseEvent) => clear(e, false),
+    onTouchEnd: (e: React.TouchEvent) => clear(e),
   };
 };
 
-const isTouchEvent = (event:Event) => {
+const isTouchEvent = (event: Event) => {
   return "touches" in event;
 };
 
-const preventDefault = (event:Event) => {
+const preventDefault = (event: Event) => {
   if (!isTouchEvent(event)) return;
 
-  if ((event as unknown as React.TouchEvent).touches.length < 2 && event.preventDefault) {
+  if (
+    (event as unknown as React.TouchEvent).touches.length < 2 &&
+    event.preventDefault
+  ) {
     event.preventDefault();
   }
 };
 
-export function useSetting<T>(settingName:string, defaultValue:T):T{
-  const value = JSON.parse(window.localStorage.getItem('settings') || "{}")[settingName];
-  const [state] = useState(typeof value === "undefined"? defaultValue: value);
+export function useSetting<T>(settingName: string, defaultValue: T): T {
+  const value = JSON.parse(window.localStorage.getItem("settings") || "{}")[
+    settingName
+  ];
+  const [state] = useState(typeof value === "undefined" ? defaultValue : value);
   return state;
 }

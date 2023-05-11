@@ -1,6 +1,6 @@
-import {IBuildOrder} from "./types";
+import { IBuildOrder } from "./types";
 
-export const defaultBuildOrders:{[id:string]: IBuildOrder} = {
+export const defaultBuildOrders: { [id: string]: IBuildOrder } = {
   "1": {
     name: "22 pop Scouts > Skirms",
     attribution: "Cicero",
@@ -13,145 +13,145 @@ export const defaultBuildOrders:{[id:string]: IBuildOrder} = {
         buildAmount: 2,
         from: "nothing",
         number: 3,
-        target: "sheep"
+        target: "sheep",
       },
       {
         kind: "create",
         number: 3,
-        target: "sheep"
+        target: "sheep",
       },
       {
         kind: "create",
         target: "wood",
-        number: 3
+        number: 3,
       },
       {
         kind: "create",
-        target: "boar"
+        target: "boar",
       },
       {
         kind: "create",
-        target: "sheep"
+        target: "sheep",
       },
       {
         kind: "build",
         from: "villager",
         build: "house",
         buildAmount: 2,
-        target: "berries"
+        target: "berries",
       },
       {
         kind: "build",
         from: "villager",
         build: "mill",
-        target: "berries"
+        target: "berries",
       },
       {
         kind: "create",
         target: "berries",
       },
       {
-        kind:"move",
+        kind: "move",
         from: "boar",
         target: "boar",
         targetText: "2",
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
         kind: "create",
-        target: "berries"
+        target: "berries",
       },
       {
         kind: "create",
         target: "boar",
-        number: 2
+        number: 2,
       },
       {
         kind: "create",
         target: "wood",
-        number: 4
+        number: 4,
       },
       {
-        kind: "loom"
+        kind: "loom",
       },
       {
-        kind:"move",
+        kind: "move",
         from: "sheep",
         target: "wood",
-        number: 3
+        number: 3,
       },
       {
-        kind:"move",
+        kind: "move",
         from: "boar",
         target: "farm",
-        number: 2
+        number: 2,
       },
       {
-        kind: "age2"
+        kind: "age2",
       },
       {
         kind: "build",
         build: "barracks",
         from: "sheep",
         target: "builder",
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
         kind: "research",
-        techs: ['doublebitaxe', 'horsecollar']
+        techs: ["doublebitaxe", "horsecollar"],
       },
       {
-        kind:"create",
+        kind: "create",
         target: "farm",
-        number: 8
+        number: 8,
       },
       {
         kind: "build",
         build: "stable",
         from: "builder",
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
-        kind:"build",
+        kind: "build",
         from: "builder",
         build: "range",
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
-        kind:"build",
+        kind: "build",
         from: "builder",
         build: "blacksmith",
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
-        kind:"move",
+        kind: "move",
         from: "sheep",
         target: "farm",
         number: 4,
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
-        kind:"create",
+        kind: "create",
         target: "wood",
-        number: 2
+        number: 2,
       },
       {
-        kind:"create",
+        kind: "create",
         target: "gold",
-        number: 4
+        number: 4,
       },
       {
-        kind: "wheelbarrow"
+        kind: "wheelbarrow",
       },
       {
-        kind:"create",
+        kind: "create",
         target: "farm",
-        number: 4
+        number: 4,
       },
       {
-        kind: "age3"
-      }
-    ]
+        kind: "age3",
+      },
+    ],
   },
   "2": {
     name: "23 pop Archers",
@@ -165,99 +165,99 @@ export const defaultBuildOrders:{[id:string]: IBuildOrder} = {
         buildAmount: 2,
         from: "nothing",
         number: 3,
-        target: "sheep"
+        target: "sheep",
       },
       {
         kind: "create",
         number: 3,
-        target: "sheep"
+        target: "sheep",
       },
       {
         kind: "create",
         target: "wood",
-        number: 4
+        number: 4,
       },
       {
         kind: "create",
-        target: "boar"
+        target: "boar",
       },
       {
         kind: "build",
         from: "villager",
         build: "house",
         buildAmount: 2,
-        target: "berries"
+        target: "berries",
       },
       {
         kind: "build",
         from: "villager",
         build: "mill",
-        target: "berries"
+        target: "berries",
       },
       {
         kind: "create",
         target: "berries",
       },
       {
-        kind:"move",
+        kind: "move",
         from: "boar",
         target: "boar",
         targetText: "2",
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
         kind: "create",
-        target: "berries"
+        target: "berries",
       },
       {
         kind: "create",
         target: "boar",
-        number: 2
+        number: 2,
       },
       {
         kind: "move",
         from: "boar",
         target: "farm",
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
         kind: "create",
         target: "wood",
-        number: 5
+        number: 5,
       },
       {
-        kind: "loom"
+        kind: "loom",
       },
       {
-        kind:"move",
+        kind: "move",
         from: "sheep",
         target: "wood",
-        number: 2
+        number: 2,
       },
       {
-        kind:"move",
+        kind: "move",
         from: "sheep",
         target: "gold",
-        number: 3
+        number: 3,
       },
       {
-        kind: "age2"
+        kind: "age2",
       },
       {
         kind: "build",
         build: "barracks",
         from: "wood",
         target: "builder",
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
         kind: "research",
-        techs: ['doublebitaxe', 'horsecollar']
+        techs: ["doublebitaxe", "horsecollar"],
       },
       {
-        kind:"create",
+        kind: "create",
         target: "gold",
-        number: 3
+        number: 3,
       },
       {
         kind: "build",
@@ -266,38 +266,38 @@ export const defaultBuildOrders:{[id:string]: IBuildOrder} = {
         buildAmount: 2,
         number: 2,
         target: "gold",
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
         kind: "build",
         from: "builder",
         build: "blacksmith",
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
-        kind:"create",
+        kind: "create",
         target: "farm",
-        number: 10
+        number: 10,
       },
       {
         kind: "move",
         from: "berries",
         target: "farm",
         number: 2,
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
-        kind:"wheelbarrow",
+        kind: "wheelbarrow",
       },
       {
-        kind:"create",
+        kind: "create",
         target: "farm",
-        number: 2
+        number: 2,
       },
       {
-        kind: "age3"
-      }
-    ]
+        kind: "age3",
+      },
+    ],
   },
   "3": {
     name: "22 pop M@A > Archers",
@@ -311,114 +311,114 @@ export const defaultBuildOrders:{[id:string]: IBuildOrder} = {
         buildAmount: 2,
         from: "nothing",
         number: 3,
-        target: "sheep"
+        target: "sheep",
       },
       {
         kind: "create",
         number: 3,
-        target: "sheep"
+        target: "sheep",
       },
       {
         kind: "create",
         target: "wood",
-        number: 4
+        number: 4,
       },
       {
         kind: "create",
         target: "boar",
-        number: 1
+        number: 1,
       },
       {
         kind: "build",
         from: "villager",
         build: "house",
         buildAmount: 2,
-        target: "berries"
+        target: "berries",
       },
       {
         kind: "build",
         from: "villager",
         build: "mill",
-        target: "berries"
+        target: "berries",
       },
       {
         kind: "create",
         target: "berries",
       },
       {
-        kind:"move",
+        kind: "move",
         from: "boar",
         target: "boar",
         targetText: "2",
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
         kind: "create",
         target: "berries",
-        number: 2
+        number: 2,
       },
       {
         kind: "create",
         target: "sheep",
-        number: 2
+        number: 2,
       },
       {
         kind: "build",
         from: "villager",
         build: "barracks",
-        target: "builder"
+        target: "builder",
       },
       {
         kind: "build",
         build: "militia",
         from: "nothing",
         buildAmount: 3,
-        duringPrevious: true
+        duringPrevious: true,
       },
 
       {
         kind: "build",
         from: "villager",
         build: "house",
-        target: "gold"
+        target: "gold",
       },
       {
         kind: "create",
-        target: "gold"
+        target: "gold",
       },
       {
-        kind: "loom"
+        kind: "loom",
       },
       {
-        kind:"move",
+        kind: "move",
         from: "sheep",
         target: "wood",
-        number: 4
+        number: 4,
       },
       {
-        kind:"move",
+        kind: "move",
         from: "sheep",
         target: "farm",
-        number: 2
+        number: 2,
       },
       {
-        kind: "age2"
+        kind: "age2",
       },
       {
         kind: "create",
-        target: "wood"
+        target: "wood",
       },
       {
         kind: "research",
-        techs: ['doublebitaxe', 'manatarmsupgrade'],
-        duringPrevious: true
+        techs: ["doublebitaxe", "manatarmsupgrade"],
+        duringPrevious: true,
       },
       {
         kind: "move",
         target: "wood",
         from: "sheep",
         number: 3,
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
         kind: "build",
@@ -427,50 +427,50 @@ export const defaultBuildOrders:{[id:string]: IBuildOrder} = {
         buildAmount: 2,
         number: 2,
         target: "gold",
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
         kind: "build",
         build: "archer",
         from: "range",
         buildAmount: 20,
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
         kind: "build",
         from: "builder",
         build: "blacksmith",
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
-        kind:"create",
+        kind: "create",
         target: "gold",
-        number: 4
+        number: 4,
       },
       {
         kind: "move",
         from: "berries",
         target: "farm",
         number: 3,
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
-        kind:"create",
+        kind: "create",
         target: "farm",
-        number: 10
+        number: 10,
       },
       {
-        kind:"wheelbarrow",
+        kind: "wheelbarrow",
       },
       {
-        kind:"create",
+        kind: "create",
         target: "farm",
-        number: 3
+        number: 3,
       },
       {
-        kind: "age3"
-      }
-    ]
+        kind: "age3",
+      },
+    ],
   },
   "4": {
     name: "28 pop Drush > Archers",
@@ -484,114 +484,114 @@ export const defaultBuildOrders:{[id:string]: IBuildOrder} = {
         buildAmount: 2,
         from: "nothing",
         number: 3,
-        target: "sheep"
+        target: "sheep",
       },
       {
         kind: "create",
         number: 3,
-        target: "sheep"
+        target: "sheep",
       },
       {
         kind: "create",
         target: "wood",
-        number: 4
+        number: 4,
       },
       {
         kind: "create",
         target: "boar",
-        number: 1
+        number: 1,
       },
       {
         kind: "build",
         from: "villager",
         build: "house",
         buildAmount: 2,
-        target: "berries"
+        target: "berries",
       },
       {
         kind: "build",
         from: "villager",
         build: "mill",
-        target: "berries"
+        target: "berries",
       },
       {
         kind: "create",
         target: "berries",
       },
       {
-        kind:"move",
+        kind: "move",
         from: "boar",
         target: "boar",
         targetText: "2",
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
         kind: "create",
-        target: "berries"
+        target: "berries",
       },
       {
         kind: "create",
         target: "gold",
-        targetText: "10"
+        targetText: "10",
       },
       {
         kind: "build",
         build: "barracks",
         target: "builder",
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
         kind: "build",
         build: "militia",
         from: "nothing",
         buildAmount: 3,
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
         kind: "move",
         from: "gold",
         target: "wood",
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
         kind: "create",
         target: "sheep",
-        number: 8
+        number: 8,
       },
       {
         kind: "move",
         target: "farm",
         from: "sheep",
         number: 3,
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
-        kind: "loom"
+        kind: "loom",
       },
       {
         kind: "move",
         target: "wood",
         from: "sheep",
-        number: 7
+        number: 7,
       },
       {
         kind: "move",
         target: "gold",
         from: "sheep",
-        number: 4
+        number: 4,
       },
       {
-        kind: "age2"
+        kind: "age2",
       },
       {
         kind: "create",
         target: "gold",
-        number: 2
+        number: 2,
       },
       {
         kind: "research",
-        techs: ['doublebitaxe', 'manatarmsupgrade'],
-        duringPrevious: true
+        techs: ["doublebitaxe", "manatarmsupgrade"],
+        duringPrevious: true,
       },
       {
         kind: "build",
@@ -600,47 +600,47 @@ export const defaultBuildOrders:{[id:string]: IBuildOrder} = {
         buildAmount: 2,
         number: 2,
         target: "gold",
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
         kind: "build",
         build: "archer",
         from: "range",
         buildAmount: 20,
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
         kind: "build",
         from: "builder",
         build: "blacksmith",
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
-        kind:"create",
+        kind: "create",
         target: "farm",
-        number: 11
+        number: 11,
       },
       {
-        kind:"move",
+        kind: "move",
         target: "farms",
         number: 2,
         from: "berries",
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
-        kind:"wheelbarrow",
+        kind: "wheelbarrow",
       },
       {
-        kind:"create",
+        kind: "create",
         target: "farm",
-        number: 2
+        number: 2,
       },
       {
-        kind: "age3"
-      }
-    ]
+        kind: "age3",
+      },
+    ],
   },
-  "5":{
+  "5": {
     name: "28+2 pop FC Knights",
     attribution: "Cicero",
     id: "5",
@@ -652,128 +652,127 @@ export const defaultBuildOrders:{[id:string]: IBuildOrder} = {
         buildAmount: 2,
         from: "nothing",
         number: 3,
-        target: "sheep"
+        target: "sheep",
       },
       {
         kind: "create",
         number: 3,
-        target: "sheep"
+        target: "sheep",
       },
       {
         kind: "create",
         target: "wood",
-        number: 4
+        number: 4,
       },
       {
         kind: "create",
         target: "boar",
-        number: 1
+        number: 1,
       },
       {
         kind: "build",
         from: "villager",
         build: "house",
         buildAmount: 2,
-        target: "berries"
+        target: "berries",
       },
       {
         kind: "build",
         from: "villager",
         build: "mill",
-        target: "berries"
+        target: "berries",
       },
       {
         kind: "create",
         target: "berries",
       },
       {
-        kind:"move",
+        kind: "move",
         from: "boar",
         target: "boar",
         targetText: "2",
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
         kind: "create",
-        target: "berries"
+        target: "berries",
       },
       {
         kind: "create",
         target: "boar",
-        number: 2
+        number: 2,
       },
       {
         kind: "move",
         number: 2,
         from: "boar",
         target: "farm",
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
         kind: "create",
         number: 6,
-        target: "wood"
+        target: "wood",
       },
       {
         kind: "create",
         number: 3,
-        target: "gold"
+        target: "gold",
       },
       {
-        kind: "loom"
+        kind: "loom",
       },
       {
-        kind: "age2"
+        kind: "age2",
       },
       {
         kind: "move",
         target: "farm",
         from: "sheep",
         number: 7,
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
         kind: "build",
         from: "berries",
         build: "barracks",
         target: "builder",
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
         kind: "create",
         number: 2,
-        target: "gold"
+        target: "gold",
       },
       {
         kind: "build",
         from: "builder",
         build: "blacksmith",
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
         kind: "build",
         from: "builder",
         build: "stable",
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
-        kind: "age3"
+        kind: "age3",
       },
       {
         kind: "move",
         from: "berries",
         number: 2,
         target: "farm",
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
         kind: "build",
         from: "builder",
         build: "stable",
-        duringPrevious: true
+        duringPrevious: true,
       },
-
-    ]
+    ],
   },
   "6": {
     name: "22 pop M@A > Towers",
@@ -787,113 +786,113 @@ export const defaultBuildOrders:{[id:string]: IBuildOrder} = {
         buildAmount: 2,
         from: "nothing",
         number: 3,
-        target: "sheep"
+        target: "sheep",
       },
       {
         kind: "create",
         number: 3,
-        target: "sheep"
+        target: "sheep",
       },
       {
         kind: "create",
         target: "wood",
-        number: 4
+        number: 4,
       },
       {
         kind: "create",
         target: "boar",
-        number: 1
+        number: 1,
       },
       {
         kind: "build",
         from: "villager",
         build: "house",
         buildAmount: 2,
-        target: "berries"
+        target: "berries",
       },
       {
         kind: "build",
         from: "villager",
         build: "mill",
-        target: "berries"
+        target: "berries",
       },
       {
         kind: "create",
         target: "berries",
       },
       {
-        kind:"move",
+        kind: "move",
         from: "boar",
         target: "boar",
         targetText: "2",
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
         kind: "create",
         target: "berries",
-        number: 2
+        number: 2,
       },
       {
         kind: "create",
         target: "sheep",
-        number: 3
+        number: 3,
       },
       {
         kind: "build",
         from: "villager",
         build: "barracks",
-        target: "sheep"
+        target: "sheep",
       },
       {
         kind: "build",
         build: "militia",
         from: "nothing",
         buildAmount: 3,
-        duringPrevious: true
+        duringPrevious: true,
       },
 
       {
         kind: "build",
         from: "villager",
         build: "house",
-        target: "gold"
+        target: "gold",
       },
       {
         kind: "create",
-        target: "gold"
+        target: "gold",
       },
       {
-        kind: "loom"
+        kind: "loom",
       },
       {
-        kind: "age2"
+        kind: "age2",
       },
       {
-        kind:"move",
+        kind: "move",
         from: "sheep",
         target: "stone",
         number: 5,
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
-        kind:"move",
+        kind: "move",
         from: "sheep",
         target: "tower",
         number: 3,
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
-        kind:"move",
+        kind: "move",
         from: "gold",
         target: "tower",
         number: 2,
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
         kind: "research",
-        techs: ['doublebitaxe', 'manatarmsupgrade']
-      }
-    ]
+        techs: ["doublebitaxe", "manatarmsupgrade"],
+      },
+    ],
   },
   "7": {
     name: "26+2 pop Arena FC",
@@ -907,114 +906,114 @@ export const defaultBuildOrders:{[id:string]: IBuildOrder} = {
         buildAmount: 2,
         from: "nothing",
         number: 3,
-        target: "sheep"
+        target: "sheep",
       },
       {
         kind: "create",
         number: 3,
-        target: "sheep"
+        target: "sheep",
       },
       {
         kind: "create",
         target: "wood",
-        number: 4
+        number: 4,
       },
       {
         kind: "create",
         target: "boar",
-        number: 1
+        number: 1,
       },
       {
         kind: "build",
         from: "villager",
         build: "house",
         buildAmount: 2,
-        target: "berries"
+        target: "berries",
       },
       {
         kind: "build",
         from: "villager",
         build: "mill",
-        target: "berries"
+        target: "berries",
       },
       {
         kind: "create",
         target: "berries",
       },
       {
-        kind:"move",
+        kind: "move",
         from: "boar",
         target: "boar",
         targetText: "2",
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
         kind: "create",
         target: "berries",
-        number: 2
+        number: 2,
       },
       {
         kind: "create",
         target: "boar",
-        number: 3
+        number: 3,
       },
       {
         kind: "move",
         target: "farm",
         from: "boar",
         number: 2,
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
         kind: "create",
         target: "wood",
-        number: 4
+        number: 4,
       },
       {
         kind: "move",
         target: "farm",
         from: "boar",
         number: 3,
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
         kind: "build",
         build: "house",
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
         kind: "build",
         from: "villager",
         build: "house",
-        target: "gold"
+        target: "gold",
       },
       {
         kind: "create",
         number: 2,
-        target: "gold"
+        target: "gold",
       },
       {
-        kind: "age2"
+        kind: "age2",
       },
       {
-        kind:"create",
+        kind: "create",
         target: "farm",
-        number: 2
+        number: 2,
       },
       {
-        kind:"build",
+        kind: "build",
         build: "market",
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
-        kind:"build",
+        kind: "build",
         build: "blacksmith",
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
-        kind: "age3"
-      }
-    ]
+        kind: "age3",
+      },
+    ],
   },
   "8": {
     name: "27+2 pop FC - Boom",
@@ -1028,131 +1027,131 @@ export const defaultBuildOrders:{[id:string]: IBuildOrder} = {
         buildAmount: 2,
         from: "nothing",
         number: 3,
-        target: "sheep"
+        target: "sheep",
       },
       {
         kind: "create",
         number: 3,
-        target: "sheep"
+        target: "sheep",
       },
       {
         kind: "create",
         target: "wood",
-        number: 4
+        number: 4,
       },
       {
         kind: "create",
         target: "boar",
-        number: 1
+        number: 1,
       },
       {
         kind: "build",
         from: "villager",
         build: "house",
         buildAmount: 2,
-        target: "berries"
+        target: "berries",
       },
       {
         kind: "build",
         from: "villager",
         build: "mill",
-        target: "berries"
+        target: "berries",
       },
       {
         kind: "create",
         target: "berries",
       },
       {
-        kind:"move",
+        kind: "move",
         from: "boar",
         target: "boar",
         targetText: "2",
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
         kind: "create",
         target: "berries",
-        number: 2
+        number: 2,
       },
       {
         kind: "create",
         target: "boar",
-        number: 2
+        number: 2,
       },
       {
         kind: "move",
         target: "farm",
         from: "boar",
         number: 2,
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
         kind: "create",
         target: "wood",
-        number: 5
+        number: 5,
       },
       {
         kind: "build",
         build: "house",
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
         kind: "create",
         number: 3,
-        target: "gold"
+        target: "gold",
       },
       {
         kind: "build",
         build: "house",
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
-        kind: "age2"
+        kind: "age2",
       },
       {
         kind: "move",
         from: "sheep",
         target: "farm",
         number: 6,
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
-        kind:"create",
+        kind: "create",
         target: "wood",
-        number: 2
+        number: 2,
       },
       {
-        kind:"build",
+        kind: "build",
         build: "market",
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
-        kind:"build",
+        kind: "build",
         build: "blacksmith",
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
-        kind: "age3"
+        kind: "age3",
       },
       {
         kind: "move",
         from: "berries",
         target: "wood",
         number: 3,
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
         kind: "create",
         target: "farm",
-        number: 20
+        number: 20,
       },
       {
         kind: "build",
         build: "tc",
         buildAmount: 2,
-        duringPrevious: true
+        duringPrevious: true,
       },
-    ]
+    ],
   },
   "9": {
     name: "28+2 pop FC - Unique Unit",
@@ -1166,129 +1165,129 @@ export const defaultBuildOrders:{[id:string]: IBuildOrder} = {
         buildAmount: 2,
         from: "nothing",
         number: 3,
-        target: "sheep"
+        target: "sheep",
       },
       {
         kind: "create",
         number: 3,
-        target: "sheep"
+        target: "sheep",
       },
       {
         kind: "create",
         target: "wood",
-        number: 4
+        number: 4,
       },
       {
         kind: "create",
         target: "boar",
-        number: 1
+        number: 1,
       },
       {
         kind: "build",
         from: "villager",
         build: "house",
         buildAmount: 2,
-        target: "berries"
+        target: "berries",
       },
       {
         kind: "build",
         from: "villager",
         build: "mill",
-        target: "berries"
+        target: "berries",
       },
       {
         kind: "create",
         target: "berries",
       },
       {
-        kind:"move",
+        kind: "move",
         from: "boar",
         target: "boar",
         targetText: "2",
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
         kind: "create",
         target: "berries",
-        number: 2
+        number: 2,
       },
       {
         kind: "create",
         target: "boar",
-        number: 2
+        number: 2,
       },
       {
         kind: "move",
         target: "farm",
         from: "boar",
         number: 2,
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
         kind: "create",
         target: "wood",
-        number: 5
+        number: 5,
       },
       {
         kind: "build",
         build: "house",
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
         kind: "create",
         number: 3,
-        target: "gold"
+        target: "gold",
       },
       {
         kind: "build",
         build: "house",
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
         kind: "create",
         number: 2,
-        target: "stone"
+        target: "stone",
       },
       {
-        kind: "age2"
+        kind: "age2",
       },
       {
         kind: "move",
         from: "sheep",
         target: "farm",
         number: 5,
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
         kind: "move",
         from: "sheep",
         target: "stone",
         number: 2,
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
-        kind:"create",
+        kind: "create",
         target: "stone",
-        number: 2
-      },
-      {
-        kind:"build",
-        build: "market",
-        duringPrevious: true
-      },
-      {
-        kind:"build",
-        build: "blacksmith",
-        duringPrevious: true
-      },
-      {
-        kind: "age3"
+        number: 2,
       },
       {
         kind: "build",
-        build: "castle"
-      }
-    ]
+        build: "market",
+        duringPrevious: true,
+      },
+      {
+        kind: "build",
+        build: "blacksmith",
+        duringPrevious: true,
+      },
+      {
+        kind: "age3",
+      },
+      {
+        kind: "build",
+        build: "castle",
+      },
+    ],
   },
   "10": {
     name: "18 pop Mongol Scouts",
@@ -1302,85 +1301,85 @@ export const defaultBuildOrders:{[id:string]: IBuildOrder} = {
         buildAmount: 2,
         from: "nothing",
         number: 3,
-        target: "sheep"
+        target: "sheep",
       },
       {
         kind: "create",
         number: 3,
-        target: "sheep"
+        target: "sheep",
       },
       {
         kind: "create",
         target: "wood",
-        number: 3
+        number: 3,
       },
       {
         kind: "create",
         target: "boar",
-        number: 1
+        number: 1,
       },
       {
         kind: "build",
         from: "villager",
         build: "house",
-        target: "berries"
+        target: "berries",
       },
       {
         kind: "build",
         from: "villager",
         build: "mill",
-        target: "berries"
+        target: "berries",
       },
       {
         kind: "create",
         target: "berries",
-        number: 2
+        number: 2,
       },
       {
         kind: "create",
         target: "boar",
-        number: 3
+        number: 3,
       },
       {
         kind: "note",
         note: "Push deer 🦌",
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
         kind: "move",
         from: "sheep",
         target: "wood",
-        number: 5
+        number: 5,
       },
       {
-        kind: "age2"
+        kind: "age2",
       },
       {
         kind: "build",
         build: "barracks",
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
         kind: "build",
         build: "house",
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
-        kind:"create",
+        kind: "create",
         target: "farm",
-        number: 10
+        number: 10,
       },
       {
         kind: "build",
         build: "stable",
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
         kind: "note",
         note: "Attack ASAP",
-        duringPrevious: true
-      }
-    ]
+        duringPrevious: true,
+      },
+    ],
   },
   "11": {
     name: "22 pop Scouts > Castle",
@@ -1394,134 +1393,134 @@ export const defaultBuildOrders:{[id:string]: IBuildOrder} = {
         buildAmount: 2,
         from: "nothing",
         number: 3,
-        target: "sheep"
+        target: "sheep",
       },
       {
         kind: "create",
         number: 3,
-        target: "sheep"
+        target: "sheep",
       },
       {
         kind: "create",
         target: "wood",
-        number: 3
+        number: 3,
       },
       {
         kind: "create",
-        target: "boar"
+        target: "boar",
       },
       {
         kind: "create",
-        target: "sheep"
+        target: "sheep",
       },
       {
         kind: "build",
         from: "villager",
         build: "house",
         buildAmount: 2,
-        target: "berries"
+        target: "berries",
       },
       {
         kind: "build",
         from: "villager",
         build: "mill",
-        target: "berries"
+        target: "berries",
       },
       {
         kind: "create",
         target: "berries",
       },
       {
-        kind:"move",
+        kind: "move",
         from: "boar",
         target: "boar",
         targetText: "2",
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
         kind: "create",
-        target: "berries"
+        target: "berries",
       },
       {
         kind: "create",
         target: "boar",
-        number: 2
+        number: 2,
       },
       {
         kind: "create",
         target: "wood",
-        number: 4
+        number: 4,
       },
       {
-        kind: "loom"
+        kind: "loom",
       },
       {
-        kind:"move",
+        kind: "move",
         from: "sheep",
         target: "wood",
-        number: 3
+        number: 3,
       },
       {
-        kind:"move",
+        kind: "move",
         from: "boar",
         target: "farm",
-        number: 2
+        number: 2,
       },
       {
-        kind: "age2"
+        kind: "age2",
       },
       {
         kind: "build",
         build: "barracks",
         from: "sheep",
         target: "builder",
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
         kind: "research",
-        techs: ['doublebitaxe', 'horsecollar']
+        techs: ["doublebitaxe", "horsecollar"],
       },
       {
-        kind:"create",
+        kind: "create",
         target: "farm",
-        number: 6
+        number: 6,
       },
       {
         kind: "build",
         build: "stable",
         from: "builder",
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
-        kind:"build",
+        kind: "build",
         from: "builder",
         build: "blacksmith",
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
-        kind:"move",
+        kind: "move",
         from: "sheep",
         target: "farm",
         number: 4,
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
-        kind:"create",
+        kind: "create",
         target: "gold",
-        number: 5
+        number: 5,
       },
       {
-        kind:"create",
+        kind: "create",
         target: "farm",
-        number: 2
+        number: 2,
       },
       {
-        kind: "wheelbarrow"
+        kind: "wheelbarrow",
       },
       {
-        kind: "age3"
-      }
-    ]
+        kind: "age3",
+      },
+    ],
   },
   "12": {
     name: "22 pop Scouts > Archers",
@@ -1535,141 +1534,141 @@ export const defaultBuildOrders:{[id:string]: IBuildOrder} = {
         buildAmount: 2,
         from: "nothing",
         number: 3,
-        target: "sheep"
+        target: "sheep",
       },
       {
         kind: "create",
         number: 3,
-        target: "sheep"
+        target: "sheep",
       },
       {
         kind: "create",
         target: "wood",
-        number: 3
+        number: 3,
       },
       {
         kind: "create",
-        target: "boar"
+        target: "boar",
       },
       {
         kind: "create",
-        target: "sheep"
+        target: "sheep",
       },
       {
         kind: "build",
         from: "villager",
         build: "house",
         buildAmount: 2,
-        target: "berries"
+        target: "berries",
       },
       {
         kind: "build",
         from: "villager",
         build: "mill",
-        target: "berries"
+        target: "berries",
       },
       {
         kind: "create",
         target: "berries",
       },
       {
-        kind:"move",
+        kind: "move",
         from: "boar",
         target: "boar",
         targetText: "2",
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
         kind: "create",
-        target: "berries"
+        target: "berries",
       },
       {
         kind: "create",
         target: "boar",
-        number: 2
+        number: 2,
       },
       {
         kind: "create",
         target: "wood",
-        number: 4
+        number: 4,
       },
       {
-        kind: "loom"
+        kind: "loom",
       },
       {
-        kind:"move",
+        kind: "move",
         from: "sheep",
         target: "wood",
-        number: 3
+        number: 3,
       },
       {
-        kind:"move",
+        kind: "move",
         from: "boar",
         target: "farm",
-        number: 2
+        number: 2,
       },
       {
-        kind: "age2"
+        kind: "age2",
       },
       {
         kind: "build",
         build: "barracks",
         from: "sheep",
         target: "builder",
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
         kind: "research",
-        techs: ['doublebitaxe', 'horsecollar']
+        techs: ["doublebitaxe", "horsecollar"],
       },
       {
-        kind:"create",
+        kind: "create",
         target: "farm",
-        number: 6
+        number: 6,
       },
       {
         kind: "build",
         build: "stable",
         from: "builder",
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
-        kind:"move",
+        kind: "move",
         from: "sheep",
         target: "farm",
         number: 4,
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
-        kind:"create",
+        kind: "create",
         target: "gold",
-        number: 10
+        number: 10,
       },
       {
-        kind:"build",
+        kind: "build",
         from: "builder",
         build: "blacksmith",
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
-        kind:"build",
+        kind: "build",
         from: "builder",
         build: "range",
         buildAmount: 2,
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
-        kind:"create",
+        kind: "create",
         target: "farm",
-        number: 4
+        number: 4,
       },
       {
-        kind: "wheelbarrow"
+        kind: "wheelbarrow",
       },
       {
-        kind: "age3"
-      }
-    ]
+        kind: "age3",
+      },
+    ],
   },
   "13": {
     name: "28 pop drush > FC (archers)",
@@ -1683,145 +1682,145 @@ export const defaultBuildOrders:{[id:string]: IBuildOrder} = {
         buildAmount: 2,
         from: "nothing",
         number: 3,
-        target: "sheep"
+        target: "sheep",
       },
       {
         kind: "create",
         number: 3,
-        target: "sheep"
+        target: "sheep",
       },
       {
         kind: "create",
         target: "wood",
-        number: 4
+        number: 4,
       },
       {
         kind: "create",
         target: "boar",
-        number: 2
+        number: 2,
       },
       {
         kind: "build",
         from: "villager",
         build: "house",
         buildAmount: 2,
-        target: "berries"
+        target: "berries",
       },
       {
         kind: "build",
         from: "villager",
         build: "mill",
-        target: "berries"
+        target: "berries",
       },
       {
         kind: "create",
         target: "berries",
-        number: 2
+        number: 2,
       },
       {
-        kind:"move",
+        kind: "move",
         from: "boar",
         target: "boar",
         targetText: "2",
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
         kind: "build",
         from: "villager",
         build: "barracks",
         target: "gold",
-        targetText: "10"
+        targetText: "10",
       },
       {
         kind: "create",
         target: "wood",
-        number: 3
+        number: 3,
       },
       {
         kind: "move",
         from: "gold",
         target: "wood",
         note: "after collecting 10 gold, move the gold villager to wood",
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
         kind: "create",
         target: "berries",
-        number: 2
+        number: 2,
       },
       {
         kind: "create",
         target: "sheep",
-        number: 6
+        number: 6,
       },
       {
         kind: "move",
         from: "sheep",
         target: "farm",
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
-        kind: "loom"
+        kind: "loom",
       },
       {
-        kind:"move",
+        kind: "move",
         from: "sheep",
         target: "gold",
-        number: 4
+        number: 4,
       },
       {
-        kind: "age2"
+        kind: "age2",
       },
       {
-        kind:"create",
+        kind: "create",
         target: "gold",
-        number: 2
+        number: 2,
       },
       {
         kind: "build",
         build: "range",
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
         kind: "build",
         build: "blacksmith",
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
-        kind: "age3"
+        kind: "age3",
       },
       {
         kind: "move",
         from: "sheep",
         target: "gold",
         number: 2,
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
         kind: "move",
         from: "berries",
         target: "wood",
         number: 4,
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
         kind: "move",
         from: "berries",
         target: "farm",
         number: 2,
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
         kind: "build",
         build: "range",
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
         kind: "research",
-        techs: ['fletching'],
-        duringPrevious: true
-      }
-    ]
+        techs: ["fletching"],
+        duringPrevious: true,
+      },
+    ],
   },
   "14": {
     name: "Lithuanian 3 minute drush",
@@ -1834,51 +1833,51 @@ export const defaultBuildOrders:{[id:string]: IBuildOrder} = {
         build: "house",
         from: "nothing",
         number: 2,
-        target: "tree"
+        target: "tree",
       },
       {
         kind: "build",
         build: "barracks",
         from: "nothing",
-        target: "sheep"
+        target: "sheep",
       },
       {
         kind: "create",
         number: 5,
-        target: "sheep"
+        target: "sheep",
       },
       {
         kind: "note",
         note: "force drop off wood",
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
         kind: "build",
         build: "house",
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
         kind: "build",
         build: "militia",
         buildAmount: 2,
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
         kind: "create",
         target: "tree",
-        number: 2
+        number: 2,
       },
       {
         kind: "build",
         build: "house",
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
         kind: "build",
         build: "lumbercamp",
-        duringPrevious: true
-      }
-    ]
+        duringPrevious: true,
+      },
+    ],
   },
   "15": {
     name: "17 pop Khmer Scouts",
@@ -1892,72 +1891,72 @@ export const defaultBuildOrders:{[id:string]: IBuildOrder} = {
         buildAmount: 2,
         from: "nothing",
         number: 3,
-        target: "sheep"
+        target: "sheep",
       },
       {
         kind: "create",
         number: 3,
-        target: "sheep"
+        target: "sheep",
       },
       {
         kind: "create",
         target: "boar",
-        number: 2
+        number: 2,
       },
       {
         kind: "create",
         target: "sheep",
-        number: 4
+        number: 4,
       },
       {
-        kind:"move",
+        kind: "move",
         from: "boar",
         target: "boar",
         targetText: "2",
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
-        kind:"note",
+        kind: "note",
         note: "push 2 deer",
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
         kind: "create",
         number: 4,
-        target: "sheep"
+        target: "sheep",
       },
       {
-        kind: "loom"
+        kind: "loom",
       },
       {
-        kind:"move",
+        kind: "move",
         from: "sheep",
         target: "wood",
-        number: 8
+        number: 8,
       },
       {
-        kind: "age2"
+        kind: "age2",
       },
       {
         kind: "create",
         target: "wood",
-        number: 2
+        number: 2,
       },
       {
         kind: "research",
-        techs: ['doublebitaxe'],
-        duringPrevious: true
+        techs: ["doublebitaxe"],
+        duringPrevious: true,
       },
       {
         kind: "build",
         build: "stable",
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
         kind: "build",
         build: "scout",
         buildAmount: 2,
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
         kind: "build",
@@ -1965,61 +1964,61 @@ export const defaultBuildOrders:{[id:string]: IBuildOrder} = {
         build: "mill",
         target: "berries",
         number: 5,
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
-        kind:"create",
+        kind: "create",
         target: "farm",
-        number: 11
+        number: 11,
       },
       {
         kind: "research",
-        techs: ['horsecollar'],
-        duringPrevious: true
+        techs: ["horsecollar"],
+        duringPrevious: true,
       },
       {
         kind: "move",
         from: "sheep",
         target: "farm",
         number: 2,
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
         kind: "move",
         from: "berries",
         target: "farm",
         number: 5,
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
         kind: "build",
         build: "stable",
         from: "builder",
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
-        kind:"build",
+        kind: "build",
         from: "builder",
         build: "range",
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
-        kind:"create",
+        kind: "create",
         target: "gold",
-        number: 5
+        number: 5,
       },
       {
-        kind:"wheelbarrow"
+        kind: "wheelbarrow",
       },
       {
-        kind:"build",
+        kind: "build",
         build: "blacksmith",
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
-        kind: "age3"
-      }
-    ]
+        kind: "age3",
+      },
+    ],
   },
   "16": {
     name: "28 pop Malay Elephants",
@@ -2033,165 +2032,165 @@ export const defaultBuildOrders:{[id:string]: IBuildOrder} = {
         buildAmount: 2,
         from: "nothing",
         number: 3,
-        target: "sheep"
+        target: "sheep",
       },
       {
         kind: "create",
         number: 3,
-        target: "sheep"
+        target: "sheep",
       },
       {
         kind: "create",
         target: "wood",
-        number: 3
+        number: 3,
       },
       {
         kind: "create",
-        target: "boar"
+        target: "boar",
       },
       {
         kind: "build",
         from: "villager",
         build: "house",
         buildAmount: 2,
-        target: "berries"
+        target: "berries",
       },
       {
         kind: "build",
         from: "villager",
         build: "mill",
-        target: "berries"
-      },
-      {
-        kind: "create",
         target: "berries",
       },
       {
         kind: "create",
-        target: "wood"
-      },
-      {
-        kind:"create",
-        target: "boar",
-        targetText: "2"
-      },
-      {
-        kind: "create",
         target: "berries",
-        number: 2
       },
       {
         kind: "create",
         target: "wood",
-        number: 4
-      },
-      {
-        kind:"move",
-        from: "sheep",
-        target: "farm",
-        number: 2,
-        duringPrevious: true
       },
       {
         kind: "create",
-        number: 2,
-        target: "gold"
+        target: "boar",
+        targetText: "2",
       },
       {
         kind: "create",
-        target: "sheep",
-        number: 4
+        target: "berries",
+        number: 2,
+      },
+      {
+        kind: "create",
+        target: "wood",
+        number: 4,
       },
       {
         kind: "move",
         from: "sheep",
         target: "farm",
-        number: 5
+        number: 2,
+        duringPrevious: true,
       },
       {
-        kind: "loom"
+        kind: "create",
+        number: 2,
+        target: "gold",
       },
       {
-        kind:"move",
+        kind: "create",
+        target: "sheep",
+        number: 4,
+      },
+      {
+        kind: "move",
+        from: "sheep",
+        target: "farm",
+        number: 5,
+      },
+      {
+        kind: "loom",
+      },
+      {
+        kind: "move",
         from: "sheep",
         target: "wood",
-        number: 5
+        number: 5,
       },
       {
-        kind: "age2"
+        kind: "age2",
       },
       {
         kind: "build",
         build: "barracks",
         from: "sheep",
         target: "builder",
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
-        kind:"create",
+        kind: "create",
         target: "tree",
-        number: 3
+        number: 3,
       },
       {
         kind: "research",
-        techs: ['doublebitaxe'],
-        duringPrevious: true
+        techs: ["doublebitaxe"],
+        duringPrevious: true,
       },
       {
         kind: "build",
         build: "stable",
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
-        kind:"build",
+        kind: "build",
         build: "blacksmith",
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
-        kind: "age3"
+        kind: "age3",
       },
       {
         kind: "move",
         from: "wood",
         target: "farm",
         number: 8,
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
         kind: "move",
         from: "berries",
         target: "gold",
         number: 4,
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
         kind: "move",
         from: "berries",
         target: "wood",
         number: 1,
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
         kind: "create",
-        target: "wood"
+        target: "wood",
       },
       {
         kind: "build",
         build: "elephant",
         buildAmount: 12,
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
         kind: "create",
         number: 3,
-        target: "farm"
+        target: "farm",
       },
       {
         kind: "note",
         note: "research bow saw and gold mining",
-        duringPrevious: true
-      }
-    ]
+        duringPrevious: true,
+      },
+    ],
   },
   "17": {
     name: "28 pop drush > FC (knights)",
@@ -2205,17 +2204,17 @@ export const defaultBuildOrders:{[id:string]: IBuildOrder} = {
         buildAmount: 2,
         from: "nothing",
         number: 3,
-        target: "sheep"
+        target: "sheep",
       },
       {
         kind: "create",
         number: 3,
-        target: "sheep"
+        target: "sheep",
       },
       {
         kind: "create",
         target: "wood",
-        number: 4
+        number: 4,
       },
       {
         kind: "create",
@@ -2226,148 +2225,148 @@ export const defaultBuildOrders:{[id:string]: IBuildOrder} = {
         from: "villager",
         build: "house",
         buildAmount: 2,
-        target: "berries"
+        target: "berries",
       },
       {
         kind: "build",
         from: "villager",
         build: "mill",
-        target: "berries"
+        target: "berries",
       },
       {
         kind: "create",
         target: "berries",
       },
       {
-        kind:"move",
+        kind: "move",
         from: "boar",
         target: "boar",
         targetText: "2",
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
         kind: "build",
         from: "villager",
         build: "barracks",
         target: "gold",
-        targetText: "10"
+        targetText: "10",
       },
       {
         kind: "create",
-        target: "farm"
+        target: "farm",
       },
       {
         kind: "build",
         build: "barracks",
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
         kind: "build",
         build: "house",
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
         kind: "create",
         target: "wood",
-        number: 4
+        number: 4,
       },
       {
         kind: "move",
         from: "gold",
         target: "wood",
         note: "after collecting 10 gold, move the gold villager to wood",
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
         kind: "create",
         target: "berries",
-        number: 2
+        number: 2,
       },
       {
         kind: "create",
         target: "sheep",
-        number: 5
+        number: 5,
       },
       {
-        kind: "loom"
+        kind: "loom",
       },
       {
-        kind:"move",
+        kind: "move",
         from: "sheep",
         target: "gold",
-        number: 4
+        number: 4,
       },
       {
-        kind: "age2"
+        kind: "age2",
       },
       {
         kind: "move",
         from: "sheep",
         target: "farm",
         number: 9,
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
-        kind:"create",
+        kind: "create",
         target: "gold",
-        number: 2
+        number: 2,
       },
       {
         kind: "build",
         build: "stable",
         number: 2,
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
         kind: "build",
         build: "blacksmith",
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
-        kind: "age3"
+        kind: "age3",
       },
       {
         kind: "build",
         build: "stable",
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
         kind: "note",
         note: "research bloodlines and blacksmith upgrades",
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
         kind: "move",
         from: "sheep",
         target: "gold",
         number: 2,
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
         kind: "create",
         target: "farm",
-        number: 2
+        number: 2,
       },
       {
         kind: "research",
-        techs: ['doublebitaxe'],
-        duringPrevious: true
+        techs: ["doublebitaxe"],
+        duringPrevious: true,
       },
       {
         kind: "move",
         from: "berries",
         target: "farm",
         number: 4,
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
         kind: "move",
         from: "berries",
         target: "gold",
         number: 2,
-        duringPrevious: true
-      }
-    ]
+        duringPrevious: true,
+      },
+    ],
   },
   "18": {
     name: "31+2+2 pop Fast Imp",
@@ -2381,17 +2380,17 @@ export const defaultBuildOrders:{[id:string]: IBuildOrder} = {
         buildAmount: 2,
         from: "nothing",
         number: 3,
-        target: "sheep"
+        target: "sheep",
       },
       {
         kind: "create",
         number: 3,
-        target: "sheep"
+        target: "sheep",
       },
       {
         kind: "create",
         target: "wood",
-        number: 4
+        number: 4,
       },
       {
         kind: "create",
@@ -2402,91 +2401,91 @@ export const defaultBuildOrders:{[id:string]: IBuildOrder} = {
         from: "villager",
         build: "house",
         buildAmount: 2,
-        target: "berries"
+        target: "berries",
       },
       {
         kind: "build",
         from: "villager",
         build: "mill",
-        target: "berries"
+        target: "berries",
       },
       {
         kind: "create",
         target: "berries",
       },
       {
-        kind:"move",
+        kind: "move",
         from: "boar",
         target: "boar",
         targetText: "2",
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
         kind: "create",
         number: 5,
-        target: "wood"
+        target: "wood",
       },
       {
         kind: "create",
         number: 5,
-        target: "sheep"
+        target: "sheep",
       },
       {
         kind: "move",
         number: 12,
         target: "farm",
-        from: "sheep"
+        from: "sheep",
       },
       {
         kind: "create",
         target: "gold",
-        number: 6
+        number: 6,
       },
       {
-        kind: "loom"
+        kind: "loom",
       },
       {
-        kind: "age2"
+        kind: "age2",
       },
       {
-        kind:"create",
+        kind: "create",
         target: "gold",
-        number: 2
+        number: 2,
       },
       {
         kind: "build",
         build: "market",
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
         kind: "build",
         build: "blacksmith",
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
-        kind: "age3"
+        kind: "age3",
       },
       {
         kind: "research",
         techs: ["doublebitaxe"],
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
         kind: "create",
         target: "food",
-        number: 2
+        number: 2,
       },
       {
         kind: "build",
         build: "monastery",
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
         kind: "build",
         build: "siegeworkshop",
-        duringPrevious: true
-      }
-    ]
+        duringPrevious: true,
+      },
+    ],
   },
   "19": {
     name: "28+2+2 pop Byzantine Fast Imp",
@@ -2500,17 +2499,17 @@ export const defaultBuildOrders:{[id:string]: IBuildOrder} = {
         buildAmount: 2,
         from: "nothing",
         number: 3,
-        target: "sheep"
+        target: "sheep",
       },
       {
         kind: "create",
         number: 3,
-        target: "sheep"
+        target: "sheep",
       },
       {
         kind: "create",
         target: "wood",
-        number: 4
+        number: 4,
       },
       {
         kind: "create",
@@ -2521,92 +2520,92 @@ export const defaultBuildOrders:{[id:string]: IBuildOrder} = {
         from: "villager",
         build: "house",
         buildAmount: 2,
-        target: "berries"
+        target: "berries",
       },
       {
         kind: "build",
         from: "villager",
         build: "mill",
-        target: "berries"
+        target: "berries",
       },
       {
         kind: "create",
         target: "berries",
-        number: 2
+        number: 2,
       },
       {
-        kind:"move",
+        kind: "move",
         from: "boar",
         target: "boar",
         targetText: "2",
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
         kind: "create",
         number: 5,
-        target: "wood"
+        target: "wood",
       },
       {
         kind: "create",
         number: 3,
-        target: "sheep"
+        target: "sheep",
       },
       {
         kind: "move",
         number: 10,
         target: "farm",
-        from: "sheep"
+        from: "sheep",
       },
       {
         kind: "create",
         target: "gold",
-        number: 4
+        number: 4,
       },
       {
-        kind: "loom"
+        kind: "loom",
       },
       {
-        kind: "age2"
+        kind: "age2",
       },
       {
-        kind:"create",
+        kind: "create",
         target: "gold",
-        number: 2
+        number: 2,
       },
       {
         kind: "build",
         build: "market",
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
         kind: "build",
         build: "blacksmith",
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
-        kind: "age3"
+        kind: "age3",
       },
       {
         kind: "research",
         techs: ["doublebitaxe"],
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
         kind: "create",
         target: "food",
-        number: 2
+        number: 2,
       },
       {
         kind: "build",
         build: "monastery",
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
         kind: "build",
         build: "siegeworkshop",
-        duringPrevious: true
-      }
-    ]
+        duringPrevious: true,
+      },
+    ],
   },
   "20": {
     name: "26 pop Fire Galleys",
@@ -2620,17 +2619,17 @@ export const defaultBuildOrders:{[id:string]: IBuildOrder} = {
         buildAmount: 2,
         from: "nothing",
         number: 3,
-        target: "sheep"
+        target: "sheep",
       },
       {
         kind: "create",
         number: 3,
-        target: "sheep"
+        target: "sheep",
       },
       {
         kind: "create",
         target: "wood",
-        number: 4
+        number: 4,
       },
       {
         kind: "create",
@@ -2640,86 +2639,86 @@ export const defaultBuildOrders:{[id:string]: IBuildOrder} = {
         kind: "build",
         from: "villager",
         build: "dock",
-        target: "builder"
+        target: "builder",
       },
       {
         kind: "create",
         number: 2,
-        target: "wood"
+        target: "wood",
       },
       {
-        kind:"move",
+        kind: "move",
         from: "boar",
         target: "boar",
         targetText: "2",
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
         kind: "create",
         number: 7,
-        target: "sheep"
+        target: "sheep",
       },
       {
         kind: "build",
         build: "fishingship",
         buildAmount: 4,
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
-        kind: "loom"
+        kind: "loom",
       },
       {
-        kind: "age2"
+        kind: "age2",
       },
       {
         kind: "move",
         from: "sheep",
         number: 9,
         target: "wood",
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
         kind: "move",
         from: "sheep",
         number: 5,
         target: "gold",
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
         kind: "build",
         build: "dock",
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
         kind: "research",
-        techs: ["doublebitaxe"]
+        techs: ["doublebitaxe"],
       },
       {
-        kind:"create",
+        kind: "create",
         target: "gold",
-        number: 6
+        number: 6,
       },
       {
         kind: "build",
         build: "dock",
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
         kind: "create",
         target: "berries",
-        number: 6
+        number: 6,
       },
       {
         kind: "build",
         build: "mill",
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
         kind: "create",
         target: "farm",
-        number: 8
-      }
-    ]
+        number: 8,
+      },
+    ],
   },
   "21": {
     name: "22 pop Eagle Scouts",
@@ -2733,17 +2732,17 @@ export const defaultBuildOrders:{[id:string]: IBuildOrder} = {
         buildAmount: 2,
         from: "nothing",
         number: 3,
-        target: "sheep"
+        target: "sheep",
       },
       {
         kind: "create",
         number: 3,
-        target: "sheep"
+        target: "sheep",
       },
       {
         kind: "create",
         target: "wood",
-        number: 4
+        number: 4,
       },
       {
         kind: "create",
@@ -2754,13 +2753,13 @@ export const defaultBuildOrders:{[id:string]: IBuildOrder} = {
         from: "villager",
         build: "house",
         buildAmount: 2,
-        target: "berries"
+        target: "berries",
       },
       {
         kind: "build",
         from: "villager",
         build: "mill",
-        target: "berries"
+        target: "berries",
       },
       {
         kind: "create",
@@ -2768,73 +2767,73 @@ export const defaultBuildOrders:{[id:string]: IBuildOrder} = {
         target: "berries",
       },
       {
-        kind:"move",
+        kind: "move",
         from: "boar",
         target: "boar",
         targetText: "2",
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
         kind: "create",
         number: 3,
-        target: "boar"
+        target: "boar",
       },
       {
-        kind:"move",
+        kind: "move",
         from: "boar",
         target: "farm",
         number: 2,
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
         kind: "create",
         number: 3,
-        target: "wood"
+        target: "wood",
       },
       {
-        kind: "loom"
+        kind: "loom",
       },
       {
-        kind: "age2"
+        kind: "age2",
       },
       {
         kind: "move",
         from: "sheep",
         number: 4,
         target: "gold",
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
         kind: "build",
         build: "barracks",
         buildAmount: 2,
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
         kind: "research",
-        techs: ["doublebitaxe", "horsecollar"]
+        techs: ["doublebitaxe", "horsecollar"],
       },
       {
         kind: "create",
         number: 3,
-        target: "wood"
+        target: "wood",
       },
       {
         kind: "build",
         build: "blacksmith",
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
-        kind:"create",
+        kind: "create",
         target: "gold",
-        number: 6
+        number: 6,
       },
       {
-        kind:"create",
+        kind: "create",
         target: "farm",
-        number: 10
-      }
-    ]
+        number: 10,
+      },
+    ],
   },
   "22": {
     name: "22 + 2 Italian FC",
@@ -2848,29 +2847,29 @@ export const defaultBuildOrders:{[id:string]: IBuildOrder} = {
         buildAmount: 2,
         from: "nothing",
         number: 3,
-        target: "sheep"
+        target: "sheep",
       },
       {
         kind: "create",
         number: 3,
-        target: "sheep"
+        target: "sheep",
       },
       {
         kind: "create",
         target: "tree",
-        number: 1
+        number: 1,
       },
       {
         kind: "build",
         from: "villager",
         build: "house",
-        target: "berries"
+        target: "berries",
       },
       {
         kind: "build",
         from: "villager",
         build: "mill",
-        target: "berries"
+        target: "berries",
       },
       {
         kind: "create",
@@ -2878,89 +2877,89 @@ export const defaultBuildOrders:{[id:string]: IBuildOrder} = {
         target: "berries",
       },
       {
-        kind:"create",
+        kind: "create",
         target: "boar",
-        targetText: "2"
+        targetText: "2",
       },
       {
         kind: "create",
         number: 2,
-        target: "tree"
+        target: "tree",
       },
       {
         kind: "build",
         build: "house",
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
-        kind:"create",
+        kind: "create",
         target: "wood",
-        number: 4
+        number: 4,
       },
       {
         kind: "create",
         number: 2,
-        target: "boar"
+        target: "boar",
       },
       {
         kind: "move",
         number: 2,
         from: "boar",
         target: "farm",
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
         kind: "create",
         number: 2,
-        target: "gold"
+        target: "gold",
       },
       {
-        kind: "loom"
+        kind: "loom",
       },
       {
-        kind: "age2"
+        kind: "age2",
       },
       {
         kind: "move",
         from: "sheep",
         number: 4,
         target: "gold",
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
         kind: "create",
         number: 2,
-        target: "wood"
+        target: "wood",
       },
       {
         kind: "build",
         build: "blacksmith",
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
         kind: "build",
         build: "market",
-        duringPrevious: true
+        duringPrevious: true,
       },
       {
-        kind: "age3"
+        kind: "age3",
       },
       {
         kind: "research",
-        techs: ["horsecollar","doublebitaxe"],
-        duringPrevious: true
+        techs: ["horsecollar", "doublebitaxe"],
+        duringPrevious: true,
       },
       {
-        kind:"create",
+        kind: "create",
         target: "farm",
-        number: 20
+        number: 20,
       },
       {
         kind: "build",
         build: "tc",
         buildAmount: 2,
-        duringPrevious: true
-      }
-    ]
-  }
+        duringPrevious: true,
+      },
+    ],
+  },
 };
